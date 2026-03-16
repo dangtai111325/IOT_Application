@@ -1,0 +1,177 @@
+/* ĐỊNH NGHĨA BIẾN MÀU SẮC */
+:root {
+  --bg:      #f0f2f5;
+  --card:    #ffffff;
+  --text:    #1c1e21;
+  --accent:  #007bff;
+  --success: #28a745;
+  --danger:  #dc3545;
+  --warning: #ffc107;
+  --border:  #dddfe2;
+}
+
+/* THIẾT LẬP CHUNG */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, system-ui, sans-serif;
+  margin: 0; padding: 10px;
+}
+
+/* KHUNG CHỨA CHÍNH */
+.container { max-width: 450px; margin: auto; }
+
+/* HEADER */
+header {
+  background: var(--card); padding: 15px; border-radius: 12px;
+  text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 15px; border: 1px solid var(--border);
+}
+
+/* CHẤM TRẠNG THÁI */
+.dot-status {
+  height: 10px; width: 10px; background-color: #bbb;
+  border-radius: 50%; display: inline-block; margin-right: 5px;
+}
+
+/* CARD */
+.card {
+  background: var(--card); padding: 15px; border-radius: 12px;
+  border: 1px solid var(--border); margin-bottom: 15px;
+}
+
+/* TIÊU ĐỀ PHỤ */
+h3 {
+  margin-top: 0; font-size: 0.9rem; color: #606770;
+  text-transform: uppercase; border-bottom: 1px solid var(--border);
+  padding-bottom: 8px; margin-bottom: 12px;
+}
+
+/* LƯỚI SENSOR */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sensor-box { background: #f8f9fa; padding: 10px; border-radius: 8px; text-align: center; }
+.val { display: block; font-size: 1.6rem; font-weight: bold; color: var(--accent); }
+
+/* NÚT BẤM */
+.btn { width: 100%; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; margin-top: 10px; }
+.btn-srv       { background: #6c757d; color: white; }
+.btn-srv.connected { background: var(--success); }
+.btn-save      { background: var(--accent); color: white; }
+.btn-sm { padding: 8px 15px; border: none; border-radius: 6px; background: #e4e6eb; cursor: pointer; font-weight: 600; }
+.ctrl-row { display: flex; justify-content: space-between; align-items: center; }
+
+/* NEO GRID */
+.neo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.color-dot {
+  width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+  border: 3px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: transform 0.15s;
+}
+.color-dot:hover  { transform: scale(1.1); }
+.color-dot:active { transform: scale(0.92); }
+.dot-off {
+  background: #333; display: flex; align-items: center;
+  justify-content: center; color: white; font-size: 10px; font-weight: bold;
+}
+
+/* FORM */
+.field { margin-bottom: 10px; }
+label { display: block; font-size: 0.8rem; margin-bottom: 4px; font-weight: 600; color: #4b4f56; }
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  width: 100%; padding: 10px; border: 1px solid var(--border);
+  border-radius: 6px; box-sizing: border-box; font-size: 0.9rem;
+}
+.password-wrapper { position: relative; display: flex; align-items: center; }
+.password-wrapper input { padding-right: 40px; }
+.toggle-password { position: absolute; right: 10px; cursor: pointer; user-select: none; font-size: 1.2rem; }
+
+/* ════ AI SECTION ════════════════════════════════ */
+
+/* Badge trạng thái AI */
+.ai-status-row {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+}
+.ai-badge {
+  font-size: 0.85rem; font-weight: 700; padding: 4px 12px;
+  border-radius: 20px; letter-spacing: 0.5px;
+}
+.ai-badge.normal  { background: #d4edda; color: #155724; }
+.ai-badge.anomaly {
+  background: #f8d7da; color: #721c24;
+  animation: pulse 1s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+.ai-score-text { font-size: 0.85rem; color: #606770; }
+
+/* Thanh điểm số */
+.bar-wrap { margin-bottom: 14px; }
+.bar-track {
+  position: relative; height: 8px; background: #e9ecef;
+  border-radius: 4px; overflow: visible;
+}
+.bar-fill {
+  height: 100%; border-radius: 4px;
+  background: var(--success); transition: width 0.5s ease, background 0.3s;
+}
+.bar-fill.bar-anomaly { background: var(--danger); }
+
+/* Marker vị trí ngưỡng */
+.thr-marker {
+  position: absolute; top: -5px;
+  transform: translateX(-50%);
+  width: 3px; height: 18px;
+  background: var(--warning); border-radius: 2px;
+  transition: left 0.3s;
+}
+.bar-labels {
+  display: flex; justify-content: space-between;
+  font-size: 0.7rem; color: #888; margin-top: 5px;
+}
+
+/* ════ THRESHOLD SLIDER ════════════════════════ */
+.thr-section {
+  background: #f8f9fa; border-radius: 8px;
+  padding: 12px; border: 1px solid var(--border);
+}
+.thr-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px;
+}
+.thr-header label { margin: 0; }
+.thr-val {
+  font-size: 1.1rem; font-weight: 700; color: var(--accent);
+  min-width: 36px; text-align: right;
+}
+
+/* Range slider */
+input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 8px; border-radius: 4px; border: none; padding: 0;
+  background: linear-gradient(to right, var(--success) 0%, var(--danger) 100%);
+  outline: none; cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--accent);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: grab;
+  transition: border-color 0.2s, transform 0.1s;
+}
+input[type="range"]::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.15);
+  border-color: var(--danger);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--accent);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: grab;
+}
+
+.thr-hint {
+  display: flex; justify-content: space-between;
+  font-size: 0.68rem; color: #888; margin-top: 6px;
+}

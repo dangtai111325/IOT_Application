@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>ESP32 Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- ── HEADER ── -->
+    <header>
+      <h2 style="margin:0">ESP32 Smart AI Gateway</h2>
+      <div id="statusContainer">
+        <span id="wsDot" class="dot-status"></span>
+        <small id="wsStat">ĐANG KẾT NỐI...</small>
+      </div>
+    </header>
+
+    <!-- ── CARD 1: SENSOR & CLOUD ── -->
+    <section class="card">
+      <h3>Monitoring & Cloud</h3>
+      <div class="grid">
+        <div class="sensor-box"><span>Nhiệt độ</span><span class="val" id="temp">--</span></div>
+        <div class="sensor-box"><span>Độ ẩm</span><span class="val" id="humi">--</span></div>
+      </div>
+      <button id="btnServer" class="btn btn-srv" onclick="toggleServer()">CONNECT SERVER</button>
+    </section>
+
+    <!-- ── CARD 2: AI STATUS ── -->
+    <section class="card">
+      <h3>TinyML — Anomaly Detection</h3>
+
+      <!-- Trạng thái AI -->
+      <div class="ai-status-row">
+        <span id="aiLabel" class="ai-badge normal">NORMAL</span>
+        <span class="ai-score-text">Score: <b id="aiScore">0.0000</b></span>
+      </div>
+
+      <!-- Thanh điểm số AI với marker ngưỡng -->
+      <div class="bar-wrap">
+        <div class="bar-track">
+          <div id="aiBar" class="bar-fill"></div>
+          <div id="thrMarker" class="thr-marker" style="left:50%"></div>
+        </div>
+        <div class="bar-labels">
+          <span>0.0</span>
+          <span>Ngưỡng: <b id="thrDisplay">0.50</b></span>
+          <span>1.0</span>
+        </div>
+      </div>
+
+      <!-- Thanh trượt ngưỡng AI -->
+      <div class="thr-section">
+        <div class="thr-header">
+          <label for="thrSlider">Ngưỡng bất thường (Threshold)</label>
+          <span id="thrVal" class="thr-val">0.50</span>
+        </div>
+        <input type="range" id="thrSlider" min="0" max="1" step="0.01" value="0.5"
+               onmousedown="onThrDragStart()" ontouchstart="onThrDragStart()"
+               oninput="onThrInput(this.value)"
+               onchange="onThrChange(this.value)">
+        <div class="thr-hint">
+          <span>← Nhạy hơn (cảnh báo nhiều)</span>
+          <span>(ít cảnh báo) Kém nhạy →</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CARD 3: DEVICE CONTROL ── -->
+    <section class="card">
+      <h3>Device Control</h3>
+      <div style="margin: 10px 0;">
+        <small>Màu Neo: <b id="curColor">OFF</b></small>
+        <small style="color:#888; margin-left:8px;">(RPC từ Cloud chỉ bật/tắt theo màu đã chọn)</small>
+      </div>
+      <div class="neo-grid">
+        <div class="color-dot" style="background:red"     onclick="setNeo(255,0,0,'Red')"></div>
+        <div class="color-dot" style="background:green"   onclick="setNeo(0,255,0,'Green')"></div>
+        <div class="color-dot" style="background:blue"    onclick="setNeo(0,0,255,'Blue')"></div>
+        <div class="color-dot" style="background:yellow"  onclick="setNeo(255,255,0,'Yellow')"></div>
+        <div class="color-dot" style="background:cyan"    onclick="setNeo(0,255,255,'Cyan')"></div>
+        <div class="color-dot" style="background:magenta" onclick="setNeo(255,0,255,'Magenta')"></div>
+        <div class="color-dot" style="background:white"   onclick="setNeo(255,255,255,'White')"></div>
+        <div class="color-dot dot-off"                    onclick="setNeo(0,0,0,'OFF')">OFF</div>
+      </div>
+    </section>
+
+    <!-- ── CARD 4: CONFIGURATION ── -->
+    <section class="card">
+      <h3>Configuration</h3>
+      <div class="field">
+        <label>WiFi SSID</label>
+        <input type="text" id="ssid" placeholder="Tên WiFi">
+      </div>
+      <div class="field">
+        <label>WiFi Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="pass" placeholder="Mật khẩu">
+          <span class="toggle-password" onclick="togglePass()">👁️</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>MQTT Broker</label>
+        <input type="text" id="server" placeholder="app.coreiot.io">
+      </div>
+      <div class="field">
+        <label>MQTT Port</label>
+        <input type="number" id="port" placeholder="1883">
+      </div>
+      <div class="field">
+        <label>Device Token</label>
+        <input type="text" id="token" placeholder="Token từ CoreIoT">
+      </div>
+      <button class="btn btn-save" onclick="save()">LƯU & AUTO RESTART</button>
+    </section>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
