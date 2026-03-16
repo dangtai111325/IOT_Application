@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Espressif 32: development platform for [PlatformIO](https://platformio.org)
 
 [![Build Status](https://github.com/platformio/platform-espressif32/workflows/Examples/badge.svg)](https://github.com/platformio/platform-espressif32/actions)
@@ -45,3 +46,6 @@ build_flags =
 # Configuration
 
 Please navigate to [documentation](https://docs.platformio.org/page/platforms/espressif32.html).
+=======
+# ESP32_PhatTrienUngDungIOT
+>>>>>>> 2aeff65491a559eeb0ca377c4e1231598eedebf7
