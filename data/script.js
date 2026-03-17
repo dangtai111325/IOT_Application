@@ -62,6 +62,22 @@ function init() {
 
             // Đồng bộ thanh trượt threshold — chỉ khi không đang kéo
             if (!thrDragging && d.threshold != null) setSlider(d.threshold);
+
+            // [SỬA] Đồng bộ trạng thái nút CONNECT/DISCONNECT từ firmware
+            // Không gửi lệnh gì — chỉ cập nhật UI cho đúng trạng thái thật
+            if (d.serverConnected != null) {
+                const btn = document.getElementById('btnServer');
+                isSrvConnected = !!d.serverConnected;
+                if (isSrvConnected) {
+                    btn.innerText = "DISCONNECT SERVER";
+                    btn.classList.add('connected');
+                    btn.style.background = "";
+                } else {
+                    btn.innerText = "CONNECT SERVER";
+                    btn.classList.remove('connected');
+                    btn.style.background = "";
+                }
+            }
         }
     };
 
@@ -100,8 +116,10 @@ function updateAI(score, status, threshold) {
     document.getElementById('thrMarker').style.left  = (thr * 100) + '%';
     document.getElementById('thrDisplay').innerText  = thr.toFixed(2);
 
-    // Đồng bộ slider nếu threshold thay đổi từ server — nhưng KHÔNG làm khi đang kéo
-    if (!thrDragging && Math.abs(parseFloat(slider.value) - thr) > 0.001) {
+    // [SỬA] Đồng bộ slider nếu threshold thay đổi từ server
+    // TRƯỚC: slider.value  ← lỗi! biến 'slider' không tồn tại (id là 'thrSlider')
+    // SAU:   document.getElementById('thrSlider').value
+    if (!thrDragging && Math.abs(parseFloat(document.getElementById('thrSlider').value) - thr) > 0.001) {
         setSlider(thr);
     }
 }
