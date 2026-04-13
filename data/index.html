@@ -4,120 +4,184 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>ESP32 Dashboard</title>
+  <title>Bảng điều khiển sender ESP32</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-
-    <!-- ── HEADER ── -->
-    <header>
-      <h2 style="margin:0">ESP32 Smart AI Gateway</h2>
-      <div id="statusContainer">
-        <span id="wsDot" class="dot-status"></span>
-        <small id="wsStat">ĐANG KẾT NỐI...</small>
-      </div>
-    </header>
-
-    <!-- ── CARD 1: SENSOR & CLOUD ── -->
-    <section class="card">
-      <h3>Monitoring & Cloud</h3>
-      <div class="grid">
-        <div class="sensor-box"><span>Nhiệt độ</span><span class="val" id="temp">--</span></div>
-        <div class="sensor-box"><span>Độ ẩm</span><span class="val" id="humi">--</span></div>
-      </div>
-      <button id="btnServer" class="btn btn-srv" onclick="toggleServer()">CONNECT SERVER</button>
-    </section>
-
-    <!-- ── CARD 2: AI STATUS ── -->
-    <section class="card">
-      <h3>TinyML — Anomaly Detection</h3>
-
-      <!-- Trạng thái AI -->
-      <div class="ai-status-row">
-        <span id="aiLabel" class="ai-badge normal">NORMAL</span>
-        <span class="ai-score-text">Score: <b id="aiScore">0.0000</b></span>
-      </div>
-
-      <!-- Thanh điểm số AI với marker ngưỡng -->
-      <div class="bar-wrap">
-        <div class="bar-track">
-          <div id="aiBar" class="bar-fill"></div>
-          <div id="thrMarker" class="thr-marker" style="left:50%"></div>
+  <div class="app-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="status-chip compact">
+          <span id="wsDot" class="status-dot"></span>
+          <span id="wsLabel">Đang kết nối sender...</span>
         </div>
-        <div class="bar-labels">
-          <span>0.0</span>
-          <span>Ngưỡng: <b id="thrDisplay">0.50</b></span>
-          <span>1.0</span>
-        </div>
+        <p id="receiverSummary">Receiver: --</p>
+        <p id="uxGuardNote" class="guard-note hidden"></p>
       </div>
-
-      <!-- Thanh trượt ngưỡng AI -->
-      <div class="thr-section">
-        <div class="thr-header">
-          <label for="thrSlider">Ngưỡng bất thường (Threshold)</label>
-          <span id="thrVal" class="thr-val">0.50</span>
-        </div>
-        <input type="range" id="thrSlider" min="0" max="1" step="0.01" value="0.5"
-               onmousedown="onThrDragStart()" ontouchstart="onThrDragStart()"
-               oninput="onThrInput(this.value)"
-               onchange="onThrChange(this.value)">
-        <div class="thr-hint">
-          <span>← Nhạy hơn (cảnh báo nhiều)</span>
-          <span>(ít cảnh báo) Kém nhạy →</span>
-        </div>
+      <div class="hero-actions">
+        <button class="btn btn-secondary" data-requires-setup="true" onclick="openSettings()">Cài đặt sender</button>
       </div>
     </section>
 
-    <!-- ── CARD 3: DEVICE CONTROL ── -->
-    <section class="card">
-      <h3>Device Control</h3>
-      <div style="margin: 10px 0;">
-        <small>Màu Neo: <b id="curColor">OFF</b></small>
-        <small style="color:#888; margin-left:8px;">(RPC từ Cloud chỉ bật/tắt theo màu đã chọn)</small>
-      </div>
-      <div class="neo-grid">
-        <div class="color-dot" style="background:red"     onclick="setNeo(255,0,0,'Red')"></div>
-        <div class="color-dot" style="background:green"   onclick="setNeo(0,255,0,'Green')"></div>
-        <div class="color-dot" style="background:blue"    onclick="setNeo(0,0,255,'Blue')"></div>
-        <div class="color-dot" style="background:yellow"  onclick="setNeo(255,255,0,'Yellow')"></div>
-        <div class="color-dot" style="background:cyan"    onclick="setNeo(0,255,255,'Cyan')"></div>
-        <div class="color-dot" style="background:magenta" onclick="setNeo(255,0,255,'Magenta')"></div>
-        <div class="color-dot" style="background:white"   onclick="setNeo(255,255,255,'White')"></div>
-        <div class="color-dot dot-off"                    onclick="setNeo(0,0,0,'OFF')">OFF</div>
-      </div>
+    <section class="stats-grid">
+      <article class="stat-card">
+        <span class="stat-label">Nhiệt độ</span>
+        <strong id="statTemp">--</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Độ ẩm</span>
+        <strong id="statHumi">--</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">AI status</span>
+        <strong id="statAi" class="status-bad">--</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Receiver</span>
+        <strong id="statReceiver" class="status-bad">--</strong>
+      </article>
     </section>
 
-    <!-- ── CARD 4: CONFIGURATION ── -->
-    <section class="card">
-      <h3>Configuration</h3>
-      <div class="field">
-        <label>WiFi SSID</label>
-        <input type="text" id="ssid" placeholder="Tên WiFi">
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Giám sát thời gian thực</p>
+          <h3>Dữ liệu sender hiện tại</h3>
+        </div>
+        <p class="panel-meta">Sender tạo dữ liệu mẫu để bạn theo dõi trạng thái thiết bị và kiểm tra đường truyền tới receiver.</p>
       </div>
-      <div class="field">
-        <label>WiFi Password</label>
-        <div class="password-wrapper">
-          <input type="password" id="pass" placeholder="Mật khẩu">
-          <span class="toggle-password" onclick="togglePass()">👁️</span>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <span>Nhiệt độ</span>
+          <strong id="metricTemp">--</strong>
+        </div>
+        <div class="metric-card">
+          <span>Độ ẩm</span>
+          <strong id="metricHumi">--</strong>
+        </div>
+        <div class="metric-card">
+          <span>AI score</span>
+          <strong id="metricScore">--</strong>
+        </div>
+        <div class="metric-card">
+          <span>AI status</span>
+          <strong id="metricStatus">--</strong>
         </div>
       </div>
-      <div class="field">
-        <label>MQTT Broker</label>
-        <input type="text" id="server" placeholder="app.coreiot.io">
-      </div>
-      <div class="field">
-        <label>MQTT Port</label>
-        <input type="number" id="port" placeholder="1883">
-      </div>
-      <div class="field">
-        <label>Device Token</label>
-        <input type="text" id="token" placeholder="Token từ CoreIoT">
-      </div>
-      <button class="btn btn-save" onclick="save()">LƯU & AUTO RESTART</button>
     </section>
 
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Ngưỡng phát hiện</p>
+          <h3>Điều chỉnh threshold cục bộ</h3>
+        </div>
+        <p class="panel-meta">Bạn có thể điều chỉnh threshold ngay trên sender. Khi receiver gửi cấu hình mới, giá trị này sẽ tự cập nhật để khớp hệ thống.</p>
+      </div>
+
+      <div class="threshold-box">
+        <div class="threshold-header">
+          <strong id="thresholdValue">0.50</strong>
+          <span id="thresholdHint">Ngưỡng hiện tại của sender</span>
+        </div>
+        <input id="thresholdSlider" type="range" min="0" max="1" step="0.01">
+        <button class="btn btn-primary" data-requires-setup="true" onclick="saveThreshold()">Lưu threshold</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Định danh</p>
+          <h3>Thông tin thiết bị</h3>
+        </div>
+        <p class="panel-meta">Tên thiết bị sẽ xuất hiện sau khi receiver nhận diện và thêm sender này vào danh sách quản lý.</p>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span>Device ID / MAC</span>
+          <strong id="deviceId">--</strong>
+        </div>
+        <div class="info-item">
+          <span>Tên thiết bị</span>
+          <strong id="deviceName">Undefined</strong>
+        </div>
+        <div class="info-item">
+          <span>AP cấu hình</span>
+          <strong id="apSsid">--</strong>
+        </div>
+        <div class="info-item">
+          <span>IP cấu hình</span>
+          <strong id="apIp">--</strong>
+        </div>
+        <div class="info-item">
+          <span>IP STA</span>
+          <strong id="staIp">--</strong>
+        </div>
+        <div class="info-item">
+          <span>IP receiver đang dùng</span>
+          <strong id="resolvedReceiverIpText">--</strong>
+        </div>
+        <div class="info-item">
+          <span>Cấu hình version</span>
+          <strong id="configVersion">0</strong>
+        </div>
+      </div>
+    </section>
   </div>
+
+  <div id="overlay" class="overlay hidden" onclick="closeSettings()"></div>
+
+  <section id="settingsModal" class="modal hidden">
+    <div class="modal-card wide">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Cài đặt sender</p>
+          <h3>Kết nối Wi-Fi và receiver</h3>
+        </div>
+        <button class="icon-btn" onclick="closeSettings()">&times;</button>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="wifiSsid">Wi-Fi SSID</label>
+          <input id="wifiSsid" type="text" placeholder="Tên Wi-Fi">
+        </div>
+        <div class="field">
+          <label for="wifiPass">Mật khẩu Wi-Fi</label>
+          <div class="input-with-action">
+            <input id="wifiPass" type="password" placeholder="Mật khẩu Wi-Fi">
+            <button id="toggleWifiPass" class="field-action" type="button" onclick="togglePassword()">Hiện</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="receiverIp">IP receiver</label>
+          <input id="receiverIp" type="text" placeholder="Để trống để tự suy ra x.x.x.100">
+          <small id="receiverIpHint">IP đang dùng: --</small>
+        </div>
+        <div class="field">
+          <label for="receiverPort">Cổng TCP receiver</label>
+          <input id="receiverPort" type="number" placeholder="4100">
+        </div>
+      </div>
+
+      <div class="info-grid slim">
+        <div class="info-item">
+          <span>Receiver status</span>
+          <strong id="receiverStatusText">--</strong>
+        </div>
+        <div class="info-item">
+          <span>STA kết nối</span>
+          <strong id="wifiStatusText">--</strong>
+        </div>
+      </div>
+
+      <button class="btn btn-primary modal-primary" data-requires-setup="true" onclick="saveConfig()">Lưu và khởi động lại sender</button>
+    </div>
+  </section>
+
   <script src="script.js"></script>
 </body>
 </html>
