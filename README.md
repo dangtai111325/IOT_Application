@@ -56,7 +56,6 @@ Tại thư mục chứa `IOT_Application.tex`:
 
 ```bash
 xelatex -interaction=nonstopmode IOT_Application.tex
-xelatex -interaction=nonstopmode IOT_Application.tex
 ```
 
 Chạy **hai lần** để cập nhật mục lục, danh mục hình/bảng và tham chiếu nội bộ.

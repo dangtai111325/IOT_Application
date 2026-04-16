@@ -100,6 +100,10 @@
 \renewcommand{\tablename}{Bảng}
 \renewcommand{\chaptername}{Chương}
 \renewcommand{\bibname}{Tài liệu tham khảo}
+\renewcommand{\partname}{Phần}
+\titleformat{\part}[display]{\normalfont\bfseries\centering}{\partname~\thepart}{0.4em}{\Large}[\vspace{0.35em}\titlerule]
+\titlespacing*{\part}{0pt}{2.2em}{1.6em}
+\titlecontents{part}[0em]{\addvspace{1.1em}\bfseries\large}{}{}{}[\addvspace{0.25em}]
 \AtBeginDocument{\selectlanguage{vietnamese}}
 
 \definecolor{codebg}{RGB}{248,249,251}
@@ -202,6 +206,8 @@ Mục tiêu ảnh: #2}}}
 
 \pagenumbering{arabic}
 
+\part{Bối cảnh, mục tiêu và phạm vi}
+
 \section{Giới thiệu đề tài và bối cảnh}
 
 \subsection{Bài toán đặt ra}
@@ -231,6 +237,8 @@ Hai liên kết trên được dùng như nguồn tham chiếu gốc cho toàn b
 
 \reportfigure{assets/01_kien_truc_tong_the.png}{Kiến trúc tổng thể của hệ thống IoT Application theo mô hình nhiều sender, một receiver gateway và tầng cloud CoreIoT (demo hiện tại dùng hai sender).}{fig:overview}
 
+\part{Yêu cầu và định hướng thiết kế}
+
 \section{Yêu cầu hệ thống và định hướng thiết kế}
 
 \subsection{Định hướng từ đề bài môn học}
@@ -257,6 +265,8 @@ Ngoài các yêu cầu chức năng, hệ thống còn cần đáp ứng một s
 Nhóm chọn mô hình nhiều sender và một receiver vì đây là cấu trúc đủ nhỏ để kiểm soát trong phạm vi môn học, nhưng đủ lớn để thể hiện được tư duy thiết kế nhiều node. Cấu hình demo hiện tại dùng hai sender để giảm độ phức tạp khi trình diễn. Nếu chỉ có một sender, receiver gần như trở thành một điểm chuyển tiếp thụ động. Khi có từ hai sender trở lên, các vấn đề như quản lý danh tính thiết bị, phân rã trạng thái online/offline, xử lý đồng thời nhiều telemetry và đồng bộ cấu hình trở nên có ý nghĩa thật sự. Mô hình này cũng làm cho phần minh họa kiến trúc, luồng gói tin và dashboard trực quan hơn nhiều trong báo cáo.
 
 \reportfigure{assets/02_so_do_mang_noi_bo.png}{Sơ đồ mạng nội bộ cho thấy receiver vừa phát SoftAP vừa kết nối Wi-Fi STA, trong khi sender suy ra địa chỉ receiver ở host .100.}{fig:network}
+
+\part{Kiến trúc và thiết kế các khối}
 
 \section{Kiến trúc tổng thể và phân rã hệ thống}
 
@@ -368,6 +378,8 @@ Giao diện web của receiver có hai vai trò. Vai trò thứ nhất là quan 
 
 \userimageplaceholder{assets/receiver_dashboard.png}{Ảnh chụp giao diện receiver đang hiển thị đồng thời hai sender, trạng thái cloud và danh sách unknown devices (nếu có).}{Ảnh thực nghiệm giao diện quản trị của receiver.}
 
+\part{Giao thức, luồng điều khiển và tích hợp cloud}
+
 \section{Thiết kế giao thức truyền thông}
 
 \subsection{Lý do chọn TCP nội bộ}
@@ -429,6 +441,8 @@ Trong đồ án này, cloud không được dùng để thay thế web UI cục 
 
 \subsection{Ý nghĩa của việc hỗ trợ RPC}
 Hỗ trợ RPC \texttt{getThreshold}/\texttt{setThreshold} giúp hệ thống tiến gần hơn tới mô hình điều khiển từ xa thực sự. Thay vì cloud chỉ là nơi xem dữ liệu, người vận hành có thể gửi một yêu cầu điều chỉnh threshold từ dashboard. Yêu cầu đó đi qua receiver và được xác nhận bởi sender. Vì có vòng ACK nên RPC phản ánh chính xác trạng thái thực của thiết bị, chứ không chỉ là lệnh gửi đi mà không biết đã được áp dụng hay chưa.
+
+\part{Ràng buộc, độ tin cậy và phân tích mã nguồn}
 
 \section{Ràng buộc kỹ thuật và quyết định thiết kế}
 
@@ -660,6 +674,8 @@ void publishRpcResponse(const char *deviceName, uint32_t requestId,
 
 Đoạn mã này làm rõ vai trò cầu nối của receiver. Cloud không trực tiếp biết sender nội bộ đã áp dụng cấu hình hay chưa. Chỉ receiver mới tổng hợp được điều đó dựa trên ACK từ sender, rồi phát hành một RPC response có trạng thái thành công hoặc thất bại. Đó chính là giá trị của gateway trong thiết kế này.
 
+\part{Giao diện, đánh giá và kết luận}
+
 \section{Thiết kế web UI và trải nghiệm vận hành}
 
 \subsection{Web UI sender}
@@ -723,21 +739,23 @@ Sau khi hệ thống chạy ổn định ở các test case trên, có thể rú
 \subsection{Hạn chế hiện tại}
 Dù đạt được mục tiêu học thuật chính, hệ thống vẫn còn một số hạn chế cần nêu thẳng trong báo cáo. Thứ nhất, dữ liệu sensor hiện được mô phỏng nên chưa phản ánh đầy đủ nhiễu và sai số của cảm biến thật. Thứ hai, timestamp trên sender được sinh từ \texttt{millis()} cộng với một epoch giả định nên không phải đồng hồ thực chuẩn NTP hay RTC. Thứ ba, cơ chế suy luận địa chỉ receiver theo host \texttt{.100} chỉ tối ưu cho subnet \texttt{/24}; nếu chuyển sang cấu trúc mạng khác, logic này cần điều chỉnh. Thứ tư, TCP nội bộ chưa có lớp bảo mật và xác thực mạnh; trong môi trường sản phẩm thực tế cần thêm TLS hoặc cơ chế bảo vệ cao hơn.
 
-\section{Bàn luận kỹ thuật và hướng phát triển}
+\part{Hướng phát triển và kết luận}
 
-\subsection{Vì sao kiến trúc này phù hợp cho môn học}
-Một yêu cầu khó của học phần là hệ thống phải vừa đủ phức tạp để thể hiện năng lực thiết kế, nhưng vẫn đủ nhỏ để một nhóm sinh viên có thể hoàn thiện trong thời gian giới hạn. Mô hình nhiều sender -- một receiver thỏa mãn điều kiện đó; bản demo hiện tại triển khai hai sender để trình diễn ổn định. Nó không quá đơn giản như một board đơn lẻ, nhưng cũng chưa phức tạp tới mức cần thêm message broker riêng hay database ngoài. Nhờ vậy, đồ án trở thành một điểm cân bằng hợp lý giữa chiều sâu kiến trúc và khả năng hoàn thành.
+\section{Vì sao kiến trúc này phù hợp bối cảnh triển khai hiện tại}
+Các hệ IoT triển khai thực tế ngày nay thường không chỉ ``đẩy thẳng lên cloud'' mà tách rõ ba tầng: xử lý và cảnh báo sớm tại biên, tập trung trạng thái và chính sách ở một gateway cục bộ, rồi mới đồng bộ lên nền tảng đám mây để giám sát và điều khiển từ xa. Kiến trúc nhiều sender -- một receiver phản ánh đúng mô hình đó: mỗi sender đóng vai trò điểm đo độc lập (có thể mở rộng thêm node khi cần), còn receiver là đầu mối duy nhất cho kết nối nội bộ, đồng bộ cấu hình và đại diện thiết bị khi làm việc với cloud. Việc đặt TinyML tại sender giảm độ trễ và tải uplink; đường điều khiển hai chiều có xác nhận phù hợp khi ngưỡng hay metadata phải thay đổi an toàn từ giao diện cục bộ hoặc từ cloud. Ở quy mô lắp đặt vừa và nhỏ (văn phòng, phòng lab, khu sản xuất hẹp, nhà kính cỡ vừa), một gateway tích hợp sẵn TCP và MQTT thường đủ dùng mà chưa bắt buộc thêm message broker hay cơ sở dữ liệu riêng; khi nhu cầu tăng, có thể tách tầng lưu trữ hoặc broker mà không phải bỏ lại ý tưởng phân tầng edge -- gateway -- cloud. Demo với hai sender chỉ là minh họa đa điểm đo; bản thân kiến trúc vẫn giữ được sự vừa đủ về chi phí triển khai và vận hành so với một thiết bị đơn lẻ hay một hệ phân tán quá nặng ngay từ đầu.
 
-\subsection{Khả năng mở rộng trong tương lai}
-Từ nền tảng hiện tại, có thể mở rộng hệ thống theo nhiều hướng. Hướng thứ nhất là thay dữ liệu mô phỏng bằng cảm biến thật như DHT20, BME280 hoặc cảm biến khí, từ đó đánh giá lại sự ổn định của TinyML khi đầu vào có nhiễu thực. Hướng thứ hai là mở rộng số sender và đánh giá khả năng quản lý của receiver khi số socket tăng lên. Hướng thứ ba là bổ sung OTA update hoặc đồng bộ firmware để receiver không chỉ là gateway dữ liệu mà còn là điểm điều phối vòng đời thiết bị. Hướng thứ tư là tăng tính bảo mật bằng mã hóa, xác thực hai chiều hoặc quản lý khóa. Hướng thứ năm là làm giàu dashboard cloud để hỗ trợ rule engine và cảnh báo phức tạp hơn.
+\section{Khả năng mở rộng trong tương lai}
+Trên nền tảng đã triển khai, hệ thống có thể được đưa thêm theo nhiều hướng kỹ thuật. Thứ nhất, thay lớp mô phỏng bằng cảm biến thật (ví dụ DHT20, BME280 hoặc cảm biến khí) để kiểm chứng lại độ ổn định của TinyML khi tín hiệu có nhiễu và trôi dạt theo thời gian. Thứ hai, tăng số lượng sender và kiểm tra giới hạn vận hành của receiver khi số kết nối TCP đồng thời tăng (băng thông, RAM, công bằng xử lý vòng lặp). Thứ ba, bổ sung cập nhật firmware qua mạng (OTA) hoặc đồng bộ phiên bản để receiver đóng vai trò điều phối vòng đời thiết bị, không chỉ chuyển tiếp dữ liệu. Thứ tư, củng cố bảo mật tầng ứng dụng và truyền thông: mã hóa, xác thực thiết bị hai chiều, quản lý khóa và chính sách tin cậy. Thứ năm, gắn thêm tầng phân tích và cảnh báo trên cloud (rule engine, ngưỡng động, tích hợp cảnh báo đa kênh) khi nhu cầu vận hành vượt khả năng một dashboard tĩnh.
 
-\subsection{Khả năng áp dụng thực tế}
-Dù đây là một đồ án học phần, kiến trúc tổng quát của hệ thống có thể áp dụng vào nhiều bài toán thật với mức điều chỉnh vừa phải. Ví dụ, trong nhà kính thông minh, các sender có thể là các cụm đo nhiệt độ -- độ ẩm -- ánh sáng, còn receiver là gateway trung tâm đặt gần router. Trong phòng thí nghiệm, các sender có thể thu các đại lượng từ các khu vực khác nhau, còn receiver là nơi tập trung cấu hình và hiển thị. Nếu thay mô hình TinyML hiện tại bằng mô hình huấn luyện cho một bài toán cụ thể hơn, hệ thống có thể trở thành nền tảng prototype cho cảnh báo sớm ngay tại edge.
+\section{Khả năng áp dụng thực tế}
+Cùng một khung kiến trúc edge -- gateway -- cloud có thể được tái sử dụng cho nhiều bài toán triển khai thực tế, chỉ cần điều chỉnh cảm biến, mô hình suy luận và chính sách ngưỡng. Trong nông nghiệp công nghệ cao, mỗi sender có thể là một cụm đo nhiệt độ, độ ẩm và ánh sáng tại từng luống hoặc nhà màng, còn receiver đặt gần điểm phát Wi-Fi để gom dữ liệu và đồng bộ lên nền tảng giám sát. Trong môi trường công nghiệp nhẹ hoặc phòng lab, các sender thu thập đại lượng tại nhiều vị trí, receiver tập trung cấu hình, phân quyền truy cập và hiển thị trạng thái tại chỗ. Khi thay mô hình TinyML hiện tại bằng mô hình huấn luyện riêng cho từng miền ứng dụng, hệ thống vẫn giữ được luồng cảnh báo sớm tại biên và điều khiển có xác nhận qua gateway, phù hợp làm bản thử nghiệm (pilot) trước khi mở rộng quy mô.
 
 \section{Kết luận}
 Báo cáo đã trình bày đầy đủ quá trình phân tích và hiện thực hệ thống \textit{IoT Application} theo mô hình nhiều sender một receiver, trong đó sender chịu trách nhiệm mô phỏng cảm biến, thực hiện TinyML tại edge và cung cấp giao diện cục bộ, còn receiver đóng vai trò gateway trung tâm kết nối sender với CoreIoT. Điểm cốt lõi của đồ án không nằm ở số lượng tính năng rời rạc, mà nằm ở cách tổ chức các tính năng thành một kiến trúc thống nhất: dữ liệu đi lên qua data plane, cấu hình đi xuống qua control plane, và toàn bộ quá trình đều có trạng thái rõ ràng để theo dõi, xác nhận và phục hồi.
 
 Thông qua việc phân tích kiến trúc, giao thức, module và mã nguồn tiêu biểu, báo cáo cho thấy hệ thống đã vượt qua phạm vi một bài demo cảm biến đơn giản để tiến gần hơn tới một mô hình IoT gateway thực thụ. Cách triển khai này phù hợp với yêu cầu của môn học, đồng thời là nền tảng tốt để tiếp tục mở rộng ở các đồ án lớn hơn trong tương lai.
+
+\part{Phụ lục}
 
 \appendix
 \clearpage

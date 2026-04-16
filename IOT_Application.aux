@@ -8,171 +8,178 @@
 \babel@aux{vietnamese}{}
 \babel@aux{vietnamese}{}
 \HyPL@Entry{1<</S/r>>}
-\HyPL@Entry{6<</S/D>>}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Giới thiệu đề tài và bối cảnh}{1}{section.0.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Bài toán đặt ra}{1}{subsection.0.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Mục tiêu của đồ án}{1}{subsection.0.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Phạm vi và giới hạn}{1}{subsection.0.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Phương pháp trình bày báo cáo}{2}{subsection.0.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Nguồn mã và khả năng đối chiếu}{2}{subsection.0.1.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Kiến trúc tổng thể của hệ thống IoT Application theo mô hình nhiều sender, một receiver gateway và tầng cloud CoreIoT (demo hiện tại dùng hai sender).}}{3}{figure.caption.3}\protected@file@percent }
+\HyPL@Entry{7<</S/D>>}
+\@writefile{toc}{\contentsline {part}{I\hspace  {1em}Bối cảnh, mục tiêu và phạm vi}{1}{part.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Giới thiệu đề tài và bối cảnh}{2}{section.0.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Bài toán đặt ra}{2}{subsection.0.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Mục tiêu của đồ án}{2}{subsection.0.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Phạm vi và giới hạn}{2}{subsection.0.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Phương pháp trình bày báo cáo}{3}{subsection.0.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Nguồn mã và khả năng đối chiếu}{3}{subsection.0.1.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Kiến trúc tổng thể của hệ thống IoT Application theo mô hình nhiều sender, một receiver gateway và tầng cloud CoreIoT (demo hiện tại dùng hai sender).}}{4}{figure.caption.3}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:overview}{{1}{3}{Kiến trúc tổng thể của hệ thống IoT Application theo mô hình nhiều sender, một receiver gateway và tầng cloud CoreIoT (demo hiện tại dùng hai sender)}{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Yêu cầu hệ thống và định hướng thiết kế}{3}{section.0.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Định hướng từ đề bài môn học}{3}{subsection.0.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Yêu cầu chức năng}{3}{subsection.0.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Yêu cầu phi chức năng}{4}{subsection.0.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Lý do chọn kiến trúc nhiều sender -- một receiver}{4}{subsection.0.2.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Sơ đồ mạng nội bộ cho thấy receiver vừa phát SoftAP vừa kết nối Wi-Fi STA, trong khi sender suy ra địa chỉ receiver ở host .100.}}{5}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:network}{{2}{5}{Sơ đồ mạng nội bộ cho thấy receiver vừa phát SoftAP vừa kết nối Wi-Fi STA, trong khi sender suy ra địa chỉ receiver ở host .100}{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Kiến trúc tổng thể và phân rã hệ thống}{5}{section.0.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Bức tranh tổng quát của hệ thống}{5}{subsection.0.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Mô hình data plane và control plane}{5}{subsection.0.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Sơ đồ tách \textit  {data plane} và \textit  {control plane} giúp nhận diện rõ hai loại luồng trong hệ thống.}}{6}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:plane}{{3}{6}{Sơ đồ tách \textit {data plane} và \textit {control plane} giúp nhận diện rõ hai loại luồng trong hệ thống}{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Lợi ích của việc phân rã module}{6}{subsection.0.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Kiến trúc module của sender gồm các khối trạng thái, mô phỏng, AI, transport, lưu trữ và giao diện web.}}{7}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:sender-mod}{{4}{7}{Kiến trúc module của sender gồm các khối trạng thái, mô phỏng, AI, transport, lưu trữ và giao diện web}{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Kiến trúc module của receiver gồm runtime, transport, cloud gateway, lưu trữ và giao diện web.}}{7}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:receiver-mod}{{5}{7}{Kiến trúc module của receiver gồm runtime, transport, cloud gateway, lưu trữ và giao diện web}{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Bảng so sánh phần cứng và phần mềm của hai khối}{7}{subsection.0.3.4}\protected@file@percent }
+\newlabel{fig:overview}{{1}{4}{Kiến trúc tổng thể của hệ thống IoT Application theo mô hình nhiều sender, một receiver gateway và tầng cloud CoreIoT (demo hiện tại dùng hai sender)}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {part}{II\hspace  {1em}Yêu cầu và định hướng thiết kế}{5}{part.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Yêu cầu hệ thống và định hướng thiết kế}{6}{section.0.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Định hướng từ đề bài môn học}{6}{subsection.0.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Yêu cầu chức năng}{6}{subsection.0.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Yêu cầu phi chức năng}{6}{subsection.0.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Lý do chọn kiến trúc nhiều sender -- một receiver}{7}{subsection.0.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Sơ đồ mạng nội bộ cho thấy receiver vừa phát SoftAP vừa kết nối Wi-Fi STA, trong khi sender suy ra địa chỉ receiver ở host .100.}}{7}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:network}{{2}{7}{Sơ đồ mạng nội bộ cho thấy receiver vừa phát SoftAP vừa kết nối Wi-Fi STA, trong khi sender suy ra địa chỉ receiver ở host .100}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {part}{III\hspace  {1em}Kiến trúc và thiết kế các khối}{8}{part.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Kiến trúc tổng thể và phân rã hệ thống}{9}{section.0.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Bức tranh tổng quát của hệ thống}{9}{subsection.0.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Mô hình data plane và control plane}{9}{subsection.0.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Sơ đồ tách \textit  {data plane} và \textit  {control plane} giúp nhận diện rõ hai loại luồng trong hệ thống.}}{9}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:plane}{{3}{9}{Sơ đồ tách \textit {data plane} và \textit {control plane} giúp nhận diện rõ hai loại luồng trong hệ thống}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Lợi ích của việc phân rã module}{10}{subsection.0.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Kiến trúc module của sender gồm các khối trạng thái, mô phỏng, AI, transport, lưu trữ và giao diện web.}}{10}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:sender-mod}{{4}{10}{Kiến trúc module của sender gồm các khối trạng thái, mô phỏng, AI, transport, lưu trữ và giao diện web}{figure.caption.6}{}}
 \gdef \LT@i {\LT@entry 
     {1}{120.71478pt}\LT@entry 
     {1}{166.00742pt}\LT@entry 
     {1}{166.00742pt}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Thiết kế chi tiết khối Sender}{8}{section.0.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Vai trò của sender trong toàn hệ thống}{8}{subsection.0.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Luồng khởi tạo sender}{8}{subsection.0.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Flowchart phần khởi tạo và vòng lặp sender. Sơ đồ cho thấy sender liên tục mô phỏng cảm biến, chạy AI và duy trì mạng.}}{9}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:sender-loop}{{6}{9}{Flowchart phần khởi tạo và vòng lặp sender. Sơ đồ cho thấy sender liên tục mô phỏng cảm biến, chạy AI và duy trì mạng}{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Mô phỏng dữ liệu sensor}{9}{subsection.0.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}TinyML inference ở edge}{9}{subsection.0.4.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Pipeline TinyML trên sender: từ dữ liệu mô phỏng sang tensor input, qua bộ thông dịch TFLite Micro, rồi trả ra điểm bất thường và nhãn trạng thái.}}{10}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:ai-pipeline}{{7}{10}{Pipeline TinyML trên sender: từ dữ liệu mô phỏng sang tensor input, qua bộ thông dịch TFLite Micro, rồi trả ra điểm bất thường và nhãn trạng thái}{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Mô hình logic của TFLite được sử dụng ở mức báo cáo: hai đầu vào đặc trưng và một đầu ra điểm bất thường.}}{10}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:model-logic}{{8}{10}{Mô hình logic của TFLite được sử dụng ở mức báo cáo: hai đầu vào đặc trưng và một đầu ra điểm bất thường}{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Lớp mạng và sender transport}{11}{subsection.0.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Giao diện web cục bộ của sender}{11}{subsection.0.4.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Cơ chế WebSocket snapshot của sender và receiver, cho phép web UI nhận trạng thái thời gian thực mà không cần tải lại trang.}}{11}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:websocket}{{9}{11}{Cơ chế WebSocket snapshot của sender và receiver, cho phép web UI nhận trạng thái thời gian thực mà không cần tải lại trang}{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Ảnh thực nghiệm giao diện web của sender A.}}{12}{figure.caption.12}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Ảnh thực nghiệm giao diện web của sender B.}}{12}{figure.caption.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Thiết kế chi tiết khối Receiver}{12}{section.0.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Receiver như một gateway thực thụ}{12}{subsection.0.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Luồng khởi tạo receiver}{13}{subsection.0.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Flowchart phần khởi tạo và vòng lặp receiver. Sơ đồ cho thấy receiver đồng thời xử lý DNS, TCP, Wi-Fi, MQTT và snapshot cho UI.}}{13}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:receiver-loop}{{12}{13}{Flowchart phần khởi tạo và vòng lặp receiver. Sơ đồ cho thấy receiver đồng thời xử lý DNS, TCP, Wi-Fi, MQTT và snapshot cho UI}{figure.caption.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Mô hình dữ liệu trung tâm của receiver}{13}{subsection.0.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Mô hình dữ liệu trung tâm của receiver gồm cấu hình gateway, trạng thái sender đã đăng ký, thiết bị lạ và các kết nối TCP đang sống.}}{14}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:receiver-data}{{13}{14}{Mô hình dữ liệu trung tâm của receiver gồm cấu hình gateway, trạng thái sender đã đăng ký, thiết bị lạ và các kết nối TCP đang sống}{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Known sender và unknown device}{14}{subsection.0.5.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Flowchart phân loại telemetry theo mã thiết bị: sender đã đăng ký được cập nhật vào bảng trạng thái, còn sender chưa đăng ký được đưa vào danh sách thiết bị lạ.}}{15}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:known-unknown}{{14}{15}{Flowchart phân loại telemetry theo mã thiết bị: sender đã đăng ký được cập nhật vào bảng trạng thái, còn sender chưa đăng ký được đưa vào danh sách thiết bị lạ}{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Cơ chế online/offline}{15}{subsection.0.5.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Flowchart chuyển trạng thái online/offline của sender trên receiver dựa vào timeout.}}{16}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:offline}{{15}{16}{Flowchart chuyển trạng thái online/offline của sender trên receiver dựa vào timeout}{figure.caption.17}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Web UI quản trị của receiver}{16}{subsection.0.5.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Ảnh thực nghiệm giao diện quản trị của receiver.}}{16}{figure.caption.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Thiết kế giao thức truyền thông}{17}{section.0.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Lý do chọn TCP nội bộ}{17}{subsection.0.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Định dạng packet TCP}{17}{subsection.0.6.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Bảng tổng hợp ba loại message TCP và các trường dữ liệu chính được trao đổi giữa sender và receiver.}}{17}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:tcp-table}{{17}{17}{Bảng tổng hợp ba loại message TCP và các trường dữ liệu chính được trao đổi giữa sender và receiver}{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Sequence diagram mô tả nhiều sender gửi telemetry lên receiver, receiver cập nhật trạng thái và tiếp tục publish lên cloud.}}{18}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:seq-telemetry}{{18}{18}{Sequence diagram mô tả nhiều sender gửi telemetry lên receiver, receiver cập nhật trạng thái và tiếp tục publish lên cloud}{figure.caption.20}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Chi tiết packet telemetry}{18}{subsection.0.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Chi tiết packet config và ACK}{18}{subsection.0.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Giao thức MQTT với CoreIoT}{18}{subsection.0.6.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Bảng tổng hợp các topic MQTT gateway mà receiver dùng để làm việc với CoreIoT.}}{19}{figure.caption.21}\protected@file@percent }
-\newlabel{fig:mqtt-table}{{19}{19}{Bảng tổng hợp các topic MQTT gateway mà receiver dùng để làm việc với CoreIoT}{figure.caption.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Sequence diagram mô tả receiver đại diện sender khi gửi connect, telemetry, attribute và xử lý RPC qua MQTT gateway.}}{19}{figure.caption.22}\protected@file@percent }
-\newlabel{fig:mqtt-seq}{{20}{19}{Sequence diagram mô tả receiver đại diện sender khi gửi connect, telemetry, attribute và xử lý RPC qua MQTT gateway}{figure.caption.22}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Thiết kế luồng điều khiển cấu hình và RPC}{19}{section.0.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Tại sao cần đồng bộ cấu hình hai chiều}{19}{subsection.0.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Luồng đổi threshold từ receiver UI}{20}{subsection.0.7.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Sequence diagram mô tả quá trình receiver gửi packet cấu hình xuống sender và nhận lại gói xác nhận. Cùng cơ chế này cũng được dùng khi có RPC từ cloud.}}{20}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:config-seq}{{21}{20}{Sequence diagram mô tả quá trình receiver gửi packet cấu hình xuống sender và nhận lại gói xác nhận. Cùng cơ chế này cũng được dùng khi có RPC từ cloud}{figure.caption.23}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Luồng đổi threshold từ RPC cloud}{20}{subsection.0.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Retry và timeout}{21}{subsection.0.7.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces State machine đồng bộ cấu hình giữa receiver và sender.}}{21}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:cfg-state}{{22}{21}{State machine đồng bộ cấu hình giữa receiver và sender}{figure.caption.24}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Flowchart cơ chế retry cấu hình của receiver khi sender chưa ACK trong thời gian cho phép.}}{22}{figure.caption.25}\protected@file@percent }
-\newlabel{fig:retry}{{23}{22}{Flowchart cơ chế retry cấu hình của receiver khi sender chưa ACK trong thời gian cho phép}{figure.caption.25}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Tích hợp CoreIoT và vai trò của cloud}{22}{section.0.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Receiver như một MQTT gateway}{22}{subsection.0.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Giá trị của tầng cloud đối với hệ thống}{22}{subsection.0.8.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Kiến trúc module của receiver gồm runtime, transport, cloud gateway, lưu trữ và giao diện web.}}{11}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:receiver-mod}{{5}{11}{Kiến trúc module của receiver gồm runtime, transport, cloud gateway, lưu trữ và giao diện web}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Bảng so sánh phần cứng và phần mềm của hai khối}{11}{subsection.0.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Thiết kế chi tiết khối Sender}{12}{section.0.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Vai trò của sender trong toàn hệ thống}{12}{subsection.0.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Luồng khởi tạo sender}{12}{subsection.0.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Flowchart phần khởi tạo và vòng lặp sender. Sơ đồ cho thấy sender liên tục mô phỏng cảm biến, chạy AI và duy trì mạng.}}{13}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:sender-loop}{{6}{13}{Flowchart phần khởi tạo và vòng lặp sender. Sơ đồ cho thấy sender liên tục mô phỏng cảm biến, chạy AI và duy trì mạng}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Mô phỏng dữ liệu sensor}{13}{subsection.0.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}TinyML inference ở edge}{13}{subsection.0.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Pipeline TinyML trên sender: từ dữ liệu mô phỏng sang tensor input, qua bộ thông dịch TFLite Micro, rồi trả ra điểm bất thường và nhãn trạng thái.}}{14}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:ai-pipeline}{{7}{14}{Pipeline TinyML trên sender: từ dữ liệu mô phỏng sang tensor input, qua bộ thông dịch TFLite Micro, rồi trả ra điểm bất thường và nhãn trạng thái}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Mô hình logic của TFLite được sử dụng ở mức báo cáo: hai đầu vào đặc trưng và một đầu ra điểm bất thường.}}{14}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:model-logic}{{8}{14}{Mô hình logic của TFLite được sử dụng ở mức báo cáo: hai đầu vào đặc trưng và một đầu ra điểm bất thường}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Lớp mạng và sender transport}{14}{subsection.0.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Giao diện web cục bộ của sender}{15}{subsection.0.4.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Cơ chế WebSocket snapshot của sender và receiver, cho phép web UI nhận trạng thái thời gian thực mà không cần tải lại trang.}}{15}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:websocket}{{9}{15}{Cơ chế WebSocket snapshot của sender và receiver, cho phép web UI nhận trạng thái thời gian thực mà không cần tải lại trang}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Ảnh thực nghiệm giao diện web của sender A.}}{16}{figure.caption.12}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Ảnh thực nghiệm giao diện web của sender B.}}{16}{figure.caption.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Thiết kế chi tiết khối Receiver}{16}{section.0.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Receiver như một gateway thực thụ}{16}{subsection.0.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Luồng khởi tạo receiver}{17}{subsection.0.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Flowchart phần khởi tạo và vòng lặp receiver. Sơ đồ cho thấy receiver đồng thời xử lý DNS, TCP, Wi-Fi, MQTT và snapshot cho UI.}}{17}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:receiver-loop}{{12}{17}{Flowchart phần khởi tạo và vòng lặp receiver. Sơ đồ cho thấy receiver đồng thời xử lý DNS, TCP, Wi-Fi, MQTT và snapshot cho UI}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Mô hình dữ liệu trung tâm của receiver}{17}{subsection.0.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Mô hình dữ liệu trung tâm của receiver gồm cấu hình gateway, trạng thái sender đã đăng ký, thiết bị lạ và các kết nối TCP đang sống.}}{18}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:receiver-data}{{13}{18}{Mô hình dữ liệu trung tâm của receiver gồm cấu hình gateway, trạng thái sender đã đăng ký, thiết bị lạ và các kết nối TCP đang sống}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Known sender và unknown device}{18}{subsection.0.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Flowchart phân loại telemetry theo mã thiết bị: sender đã đăng ký được cập nhật vào bảng trạng thái, còn sender chưa đăng ký được đưa vào danh sách thiết bị lạ.}}{19}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:known-unknown}{{14}{19}{Flowchart phân loại telemetry theo mã thiết bị: sender đã đăng ký được cập nhật vào bảng trạng thái, còn sender chưa đăng ký được đưa vào danh sách thiết bị lạ}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Cơ chế online/offline}{19}{subsection.0.5.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Flowchart chuyển trạng thái online/offline của sender trên receiver dựa vào timeout.}}{20}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:offline}{{15}{20}{Flowchart chuyển trạng thái online/offline của sender trên receiver dựa vào timeout}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Web UI quản trị của receiver}{20}{subsection.0.5.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Ảnh thực nghiệm giao diện quản trị của receiver.}}{20}{figure.caption.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{IV\hspace  {1em}Giao thức, luồng điều khiển và tích hợp cloud}{21}{part.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Thiết kế giao thức truyền thông}{22}{section.0.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Lý do chọn TCP nội bộ}{22}{subsection.0.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Định dạng packet TCP}{22}{subsection.0.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Bảng tổng hợp ba loại message TCP và các trường dữ liệu chính được trao đổi giữa sender và receiver.}}{22}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:tcp-table}{{17}{22}{Bảng tổng hợp ba loại message TCP và các trường dữ liệu chính được trao đổi giữa sender và receiver}{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Sequence diagram mô tả nhiều sender gửi telemetry lên receiver, receiver cập nhật trạng thái và tiếp tục publish lên cloud.}}{23}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:seq-telemetry}{{18}{23}{Sequence diagram mô tả nhiều sender gửi telemetry lên receiver, receiver cập nhật trạng thái và tiếp tục publish lên cloud}{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Chi tiết packet telemetry}{23}{subsection.0.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Chi tiết packet config và ACK}{23}{subsection.0.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Giao thức MQTT với CoreIoT}{23}{subsection.0.6.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Bảng tổng hợp các topic MQTT gateway mà receiver dùng để làm việc với CoreIoT.}}{24}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:mqtt-table}{{19}{24}{Bảng tổng hợp các topic MQTT gateway mà receiver dùng để làm việc với CoreIoT}{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Sequence diagram mô tả receiver đại diện sender khi gửi connect, telemetry, attribute và xử lý RPC qua MQTT gateway.}}{24}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:mqtt-seq}{{20}{24}{Sequence diagram mô tả receiver đại diện sender khi gửi connect, telemetry, attribute và xử lý RPC qua MQTT gateway}{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Thiết kế luồng điều khiển cấu hình và RPC}{24}{section.0.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Tại sao cần đồng bộ cấu hình hai chiều}{24}{subsection.0.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Luồng đổi threshold từ receiver UI}{25}{subsection.0.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Sequence diagram mô tả quá trình receiver gửi packet cấu hình xuống sender và nhận lại gói xác nhận. Cùng cơ chế này cũng được dùng khi có RPC từ cloud.}}{25}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:config-seq}{{21}{25}{Sequence diagram mô tả quá trình receiver gửi packet cấu hình xuống sender và nhận lại gói xác nhận. Cùng cơ chế này cũng được dùng khi có RPC từ cloud}{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Luồng đổi threshold từ RPC cloud}{25}{subsection.0.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Retry và timeout}{26}{subsection.0.7.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces State machine đồng bộ cấu hình giữa receiver và sender.}}{26}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:cfg-state}{{22}{26}{State machine đồng bộ cấu hình giữa receiver và sender}{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Flowchart cơ chế retry cấu hình của receiver khi sender chưa ACK trong thời gian cho phép.}}{27}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:retry}{{23}{27}{Flowchart cơ chế retry cấu hình của receiver khi sender chưa ACK trong thời gian cho phép}{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Tích hợp CoreIoT và vai trò của cloud}{27}{section.0.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Receiver như một MQTT gateway}{27}{subsection.0.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Giá trị của tầng cloud đối với hệ thống}{27}{subsection.0.8.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Ảnh thực nghiệm dashboard CoreIoT sau khi receiver publish dữ liệu.}}{28}{figure.caption.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Ý nghĩa của việc hỗ trợ RPC}{28}{subsection.0.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{V\hspace  {1em}Ràng buộc, độ tin cậy và phân tích mã nguồn}{29}{part.5}\protected@file@percent }
 \gdef \LT@ii {\LT@entry 
     {1}{120.71478pt}\LT@entry 
     {1}{89.00371pt}\LT@entry 
     {1}{220.36827pt}}
-\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Ảnh thực nghiệm dashboard CoreIoT sau khi receiver publish dữ liệu.}}{23}{figure.caption.26}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Ý nghĩa của việc hỗ trợ RPC}{23}{subsection.0.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9}Ràng buộc kỹ thuật và quyết định thiết kế}{23}{section.0.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Bảng hằng số hệ thống và ý nghĩa vận hành}{23}{subsection.0.9.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Trade-off của các quyết định kiến trúc}{24}{subsection.0.9.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10}Tình huống lỗi, cơ chế phòng vệ và bằng chứng kỹ thuật}{24}{section.0.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Ràng buộc kỹ thuật và quyết định thiết kế}{30}{section.0.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Bảng hằng số hệ thống và ý nghĩa vận hành}{30}{subsection.0.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Trade-off của các quyết định kiến trúc}{30}{subsection.0.9.2}\protected@file@percent }
 \gdef \LT@iii {\LT@entry 
     {1}{138.83044pt}\LT@entry 
     {1}{156.95303pt}\LT@entry 
     {1}{152.41893pt}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Các tình huống lỗi điển hình}{25}{subsection.0.10.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Cơ chế phòng vệ trong mã nguồn}{25}{subsection.0.10.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Bảng đối chiếu luận điểm và bằng chứng mã nguồn}{25}{subsection.0.10.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Ghi chú hình cần chèn ở chương này}{26}{subsection.0.10.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Sơ đồ state machine đồng bộ cấu hình: pending, awaiting ACK, timeout, retry, success/fail.}}{26}{figure.caption.27}\protected@file@percent }
-\newlabel{fig:todo-state-config}{{25}{26}{Sơ đồ state machine đồng bộ cấu hình: pending, awaiting ACK, timeout, retry, success/fail}{figure.caption.27}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Sequence xử lý lỗi RPC khi sender offline và phản hồi lại cloud.}}{26}{figure.caption.28}\protected@file@percent }
-\newlabel{fig:todo-rpc-offline}{{26}{26}{Sequence xử lý lỗi RPC khi sender offline và phản hồi lại cloud}{figure.caption.28}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Flowchart phân bổ slot TCP nhiều sender và cơ chế chống starvation.}}{27}{figure.caption.29}\protected@file@percent }
-\newlabel{fig:todo-slot-fairness}{{27}{27}{Flowchart phân bổ slot TCP nhiều sender và cơ chế chống starvation}{figure.caption.29}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {11}Phân tích mã nguồn theo module và theo dòng ý nghĩa}{27}{section.0.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.1}Tổ chức phân tích mã nguồn}{27}{subsection.0.11.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}Trích đoạn 1: vòng lặp chính của sender}{27}{subsection.0.11.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.3}Trích đoạn 2: suy luận TinyML trên sender}{28}{subsection.0.11.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.4}Trích đoạn 3: gửi telemetry qua TCP}{29}{subsection.0.11.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.5}Trích đoạn 4: xử lý telemetry ở receiver}{29}{subsection.0.11.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.6}Trích đoạn 5: gửi cấu hình từ receiver xuống sender}{30}{subsection.0.11.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.7}Trích đoạn 6: publish RPC response lên CoreIoT}{31}{subsection.0.11.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {12}Thiết kế web UI và trải nghiệm vận hành}{31}{section.0.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {12.1}Web UI sender}{32}{subsection.0.12.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {12.2}Web UI receiver}{32}{subsection.0.12.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {12.3}Ảnh thực nghiệm giao diện và log}{32}{subsection.0.12.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Ảnh bảng trạng thái sender trên receiver.}}{32}{figure.caption.30}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Ảnh log serial của sender A.}}{33}{figure.caption.31}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Ảnh log serial của receiver.}}{33}{figure.caption.32}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {13}Danh sách ghi chú hình minh họa cần chèn}{33}{section.0.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {13.1}Nhóm hình kiến trúc và mạng}{33}{subsection.0.13.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Cấu trúc lưu trữ LittleFS của sender và receiver. Hình này giúp người đọc hiểu rõ những tệp nào là cấu hình và những tệp nào dùng để phục vụ web UI.}}{34}{figure.caption.33}\protected@file@percent }
-\newlabel{fig:lfs}{{31}{34}{Cấu trúc lưu trữ LittleFS của sender và receiver. Hình này giúp người đọc hiểu rõ những tệp nào là cấu hình và những tệp nào dùng để phục vụ web UI}{figure.caption.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Bảng topic MQTT dùng bởi receiver khi giao tiếp với CoreIoT.}}{34}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:mqtt-topics2}{{32}{34}{Bảng topic MQTT dùng bởi receiver khi giao tiếp với CoreIoT}{figure.caption.34}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Sequence end-to-end tổng hợp cả dữ liệu đi lên, điều khiển đi xuống và snapshot tới browser.}}{34}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:end-to-end}{{33}{34}{Sequence end-to-end tổng hợp cả dữ liệu đi lên, điều khiển đi xuống và snapshot tới browser}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Tình huống lỗi, cơ chế phòng vệ và bằng chứng kỹ thuật}{31}{section.0.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Các tình huống lỗi điển hình}{31}{subsection.0.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Cơ chế phòng vệ trong mã nguồn}{31}{subsection.0.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Bảng đối chiếu luận điểm và bằng chứng mã nguồn}{31}{subsection.0.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Ghi chú hình cần chèn ở chương này}{32}{subsection.0.10.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Sơ đồ state machine đồng bộ cấu hình: pending, awaiting ACK, timeout, retry, success/fail.}}{32}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:todo-state-config}{{25}{32}{Sơ đồ state machine đồng bộ cấu hình: pending, awaiting ACK, timeout, retry, success/fail}{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Sequence xử lý lỗi RPC khi sender offline và phản hồi lại cloud.}}{32}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:todo-rpc-offline}{{26}{32}{Sequence xử lý lỗi RPC khi sender offline và phản hồi lại cloud}{figure.caption.28}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Flowchart phân bổ slot TCP nhiều sender và cơ chế chống starvation.}}{33}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:todo-slot-fairness}{{27}{33}{Flowchart phân bổ slot TCP nhiều sender và cơ chế chống starvation}{figure.caption.29}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11}Phân tích mã nguồn theo module và theo dòng ý nghĩa}{33}{section.0.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.1}Tổ chức phân tích mã nguồn}{33}{subsection.0.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}Trích đoạn 1: vòng lặp chính của sender}{33}{subsection.0.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3}Trích đoạn 2: suy luận TinyML trên sender}{34}{subsection.0.11.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4}Trích đoạn 3: gửi telemetry qua TCP}{35}{subsection.0.11.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.5}Trích đoạn 4: xử lý telemetry ở receiver}{35}{subsection.0.11.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.6}Trích đoạn 5: gửi cấu hình từ receiver xuống sender}{36}{subsection.0.11.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.7}Trích đoạn 6: publish RPC response lên CoreIoT}{37}{subsection.0.11.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{VI\hspace  {1em}Giao diện, đánh giá và kết luận}{38}{part.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12}Thiết kế web UI và trải nghiệm vận hành}{39}{section.0.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.1}Web UI sender}{39}{subsection.0.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.2}Web UI receiver}{39}{subsection.0.12.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3}Ảnh thực nghiệm giao diện và log}{39}{subsection.0.12.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Ảnh bảng trạng thái sender trên receiver.}}{39}{figure.caption.30}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Ảnh log serial của sender A.}}{40}{figure.caption.31}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Ảnh log serial của receiver.}}{40}{figure.caption.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13}Kịch bản thực nghiệm và kế hoạch đánh giá}{40}{section.0.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.1}Mục tiêu đánh giá}{40}{subsection.0.13.1}\protected@file@percent }
 \gdef \LT@iv {\LT@entry 
     {1}{48.23825pt}\LT@entry 
     {1}{134.30325pt}\LT@entry 
     {1}{202.24568pt}\LT@entry 
     {1}{84.47652pt}}
-\@writefile{toc}{\contentsline {section}{\numberline {14}Kịch bản thực nghiệm và kế hoạch đánh giá}{35}{section.0.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {14.1}Mục tiêu đánh giá}{35}{subsection.0.14.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {14.2}Danh sách test case đề xuất}{35}{subsection.0.14.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {14.3}Chỉ số quan sát cần ghi lại}{36}{subsection.0.14.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces Ảnh minh họa test case đổi threshold.}}{37}{figure.caption.36}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces Ảnh minh họa test case sender offline rồi reconnect.}}{37}{figure.caption.37}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {14.4}Đánh giá ưu điểm của hệ thống}{37}{subsection.0.14.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {14.5}Hạn chế hiện tại}{38}{subsection.0.14.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {15}Bàn luận kỹ thuật và hướng phát triển}{38}{section.0.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {15.1}Vì sao kiến trúc này phù hợp cho môn học}{38}{subsection.0.15.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {15.2}Khả năng mở rộng trong tương lai}{38}{subsection.0.15.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {15.3}Khả năng áp dụng thực tế}{38}{subsection.0.15.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {16}Kết luận}{39}{section.0.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1}Phụ lục A: Trích đoạn mã nguồn tiêu biểu và diễn giải ngắn}{40}{section.Alph0.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Phụ lục B: Hình ảnh thực nghiệm bổ sung}{44}{section.Alph0.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces Bố trí phần cứng của hệ thống.}}{44}{figure.caption.38}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces Sender ở trạng thái ANOMALY.}}{45}{figure.caption.39}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Xác nhận RPC thay đổi threshold thành công.}}{46}{figure.caption.40}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.2}Danh sách test case đề xuất}{41}{subsection.0.13.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.3}Chỉ số quan sát cần ghi lại}{42}{subsection.0.13.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Ảnh minh họa test case đổi threshold.}}{43}{figure.caption.33}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Ảnh minh họa test case sender offline rồi reconnect.}}{43}{figure.caption.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.4}Đánh giá ưu điểm của hệ thống}{43}{subsection.0.13.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.5}Hạn chế hiện tại}{44}{subsection.0.13.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {14}Danh sách ghi chú hình minh họa cần chèn}{44}{section.0.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.1}Nhóm hình kiến trúc và mạng}{44}{subsection.0.14.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Cấu trúc lưu trữ LittleFS của sender và receiver. Hình này giúp người đọc hiểu rõ những tệp nào là cấu hình và những tệp nào dùng để phục vụ web UI.}}{44}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:lfs}{{33}{44}{Cấu trúc lưu trữ LittleFS của sender và receiver. Hình này giúp người đọc hiểu rõ những tệp nào là cấu hình và những tệp nào dùng để phục vụ web UI}{figure.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces Bảng topic MQTT dùng bởi receiver khi giao tiếp với CoreIoT.}}{45}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:mqtt-topics2}{{34}{45}{Bảng topic MQTT dùng bởi receiver khi giao tiếp với CoreIoT}{figure.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces Sequence end-to-end tổng hợp cả dữ liệu đi lên, điều khiển đi xuống và snapshot tới browser.}}{45}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:end-to-end}{{35}{45}{Sequence end-to-end tổng hợp cả dữ liệu đi lên, điều khiển đi xuống và snapshot tới browser}{figure.caption.37}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {15}Bàn luận kỹ thuật và hướng phát triển}{45}{section.0.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.1}Vì sao kiến trúc này phù hợp cho môn học}{45}{subsection.0.15.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.2}Khả năng mở rộng trong tương lai}{45}{subsection.0.15.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.3}Khả năng áp dụng thực tế}{46}{subsection.0.15.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {16}Kết luận}{46}{section.0.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{VII\hspace  {1em}Phụ lục}{47}{part.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Phụ lục A: Trích đoạn mã nguồn tiêu biểu và diễn giải ngắn}{48}{section.Alph0.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Phụ lục B: Hình ảnh thực nghiệm bổ sung}{52}{section.Alph0.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces Bố trí phần cứng của hệ thống.}}{52}{figure.caption.38}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces Sender ở trạng thái ANOMALY.}}{53}{figure.caption.39}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Xác nhận RPC thay đổi threshold thành công.}}{54}{figure.caption.40}\protected@file@percent }
 \ttl@finishall
-\newlabel{LastPage}{{2}{46}{Phụ lục B: Hình ảnh thực nghiệm bổ sung}{page.46}{}}
-\gdef\lastpage@lastpage{46}
-\gdef\lastpage@lastpageHy{46}
-\gdef \@abspage@last{52}
+\newlabel{LastPage}{{2}{54}{Phụ lục B: Hình ảnh thực nghiệm bổ sung}{page.54}{}}
+\gdef\lastpage@lastpage{54}
+\gdef\lastpage@lastpageHy{54}
+\gdef \@abspage@last{61}
