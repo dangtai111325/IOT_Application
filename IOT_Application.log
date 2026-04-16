@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.15)  16 APR 2026 12:29
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.15)  16 APR 2026 15:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -862,7 +862,14 @@ Package csquotes Warning: No style for language 'vietnamese'.
 (csquotes)                Using fallback style on input line 179.
 
 Package csquotes Info: Redefining alias 'default' -> 'fallback'.
-(./IOT_Application.aux)
+(./IOT_Application.aux
+
+LaTeX Warning: Label `fig:overview' multiply defined.
+
+
+LaTeX Warning: Label `fig:network' multiply defined.
+
+)
 \openout1 = `IOT_Application.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 179.
@@ -1190,117 +1197,126 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
  [5
 
 
-])
+] [6])
 \tf@lof=\write4
 \openout4 = `IOT_Application.lof'.
 
- [6]
+
+[7] [1
+
+]
+File: assets/01_kien_truc_tong_the.png Graphic file (type bmp)
+<assets/01_kien_truc_tong_the.png>
+ [2] [3]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `CourierNew' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-[1
+ [4
 
 ]
-Underfull \hbox (badness 1859) in paragraph at lines 243--244
+File: assets/02_so_do_mang_noi_bo.png Graphic file (type bmp)
+<assets/02_so_do_mang_noi_bo.png>
+
+Underfull \hbox (badness 1859) in paragraph at lines 304--305
 []\TU/TimesNewRoman(0)/m/n/12 nhánh Sender: []$[][][][][] [] [] [] [][][][][][]
  [] [][][] [] [][][][][][][][][][][][][] [] [][][] [] [][][][][][][][][][][] []
 
  []
 
+[5]
 File: assets/01_kien_truc_tong_the.png Graphic file (type bmp)
 <assets/01_kien_truc_tong_the.png>
-[2] [3] [4
+ [6] [7
 
 ]
 File: assets/02_so_do_mang_noi_bo.png Graphic file (type bmp)
 <assets/02_so_do_mang_noi_bo.png>
- [5]
+ [8]
 File: assets/20_websocket_snapshot.png Graphic file (type bmp)
 <assets/20_websocket_snapshot.png>
- [6
+ [9
 
 ]
 File: assets/03_module_sender.png Graphic file (type bmp)
 <assets/03_module_sender.png>
- [7]
+ [10]
 File: assets/04_module_receiver.png Graphic file (type bmp)
 <assets/04_module_receiver.png>
 
-Underfull \hbox (badness 6284) in paragraph at lines 307--307
+Underfull \hbox (badness 6284) in paragraph at lines 368--368
 []|\TU/TimesNewRoman(0)/m/n/12 Nút biên tạo dữ liệu, chạy
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 307--308
+Underfull \hbox (badness 1845) in paragraph at lines 368--369
 []|\TU/TimesNewRoman(0)/m/n/12 Gateway trung tâm thu nhận,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--309
+Underfull \hbox (badness 10000) in paragraph at lines 370--370
 []|\TU/TimesNewRoman(0)/m/n/12 AP + STA đồng thời
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
 []|\TU/TimesNewRoman(0)/m/n/12 AP + STA đồng thời
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--311
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
 []|\TU/TimesNewRoman(0)/m/n/12 AP quản trị receiver tại
  []
 
 
-Underfull \hbox (badness 5908) in paragraph at lines 311--312
+Underfull \hbox (badness 5908) in paragraph at lines 372--373
 []|\TU/TimesNewRoman(0)/m/n/12 TCP server lắng nghe cổng
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 312--313
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
 []|\TU/TimesNewRoman(0)/m/n/12 Quản lý sender theo khóa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--314
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
 []|\TU/CourierNew(0)/m/n/12 /receiver.json\TU/TimesNewRoman(0)/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--314
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
 \TU/CourierNew(0)/m/n/12 /senders.json \TU/TimesNewRoman(0)/m/n/12 trên
  []
 
 
-Underfull \hbox (badness 2582) in paragraph at lines 314--315
+Underfull \hbox (badness 2582) in paragraph at lines 375--376
 []|\TU/TimesNewRoman(0)/m/n/12 Kết nối CoreIoT qua MQTT
  []
 
-[8] [9]
+[11] [12]
 File: assets/05_flowchart_sender_main.png Graphic file (type bmp)
 <assets/05_flowchart_sender_main.png>
- [10]
+ [13]
 File: assets/07_pipeline_ai_inference.png Graphic file (type bmp)
 <assets/07_pipeline_ai_inference.png>
 File: assets/08_cau_truc_model_tflite.png Graphic file (type bmp)
 <assets/08_cau_truc_model_tflite.png>
- [11]
+ [14]
 File: assets/20_websocket_snapshot.png Graphic file (type bmp)
 <assets/20_websocket_snapshot.png>
- [12] [13]
+ [15] [16]
 File: assets/06_flowchart_receiver_main.png Graphic file (type bmp)
 <assets/06_flowchart_receiver_main.png>
- [14]
+ [17]
 File: assets/19_receiver_data_model.png Graphic file (type bmp)
 <assets/19_receiver_data_model.png>
 File: assets/13_flowchart_known_unknown.png Graphic file (type bmp)
 <assets/13_flowchart_known_unknown.png>
- [15]
+ [18]
 File: assets/14_flowchart_online_offline.png Graphic file (type bmp)
 <assets/14_flowchart_online_offline.png>
- [16] [17]
-Underfull \hbox (badness 1762) in paragraph at lines 402--403
+ [19] [20]
+Underfull \hbox (badness 1762) in paragraph at lines 463--464
 \TU/TimesNewRoman(0)/m/n/12 Trên đường TCP, hệ thống sử dụng ba loại packet chí
 nh: \TU/CourierNew(0)/m/n/12 telemetry\TU/TimesNewRoman(0)/m/n/12 , \TU/Courier
 New(0)/m/n/12 config \TU/TimesNewRoman(0)/m/n/12 và
@@ -1310,377 +1326,379 @@ File: assets/17_bang_message_tcp.png Graphic file (type bmp)
 <assets/17_bang_message_tcp.png>
 File: assets/09_seq_tcp_telemetry.png Graphic file (type bmp)
 <assets/09_seq_tcp_telemetry.png>
-[18
+[21
 
-] [19]
+] [22]
 File: assets/18_bang_mqtt_topics.png Graphic file (type bmp)
 <assets/18_bang_mqtt_topics.png>
 File: assets/12_seq_mqtt_gateway.png Graphic file (type bmp)
 <assets/12_seq_mqtt_gateway.png>
 
-Underfull \hbox (badness 1107) in paragraph at lines 424--425
+Underfull \hbox (badness 1107) in paragraph at lines 485--486
 \TU/TimesNewRoman(0)/m/n/12 quản lý. Nếu người vận hành thay đổi threshold trên
  một sender qua web local, thay
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 424--425
+Underfull \hbox (badness 10000) in paragraph at lines 485--486
 \TU/CourierNew(0)/m/n/12 reportedThreshold\TU/TimesNewRoman(0)/m/n/12 , \TU/Cou
 rierNew(0)/m/n/12 desiredThreshold\TU/TimesNewRoman(0)/m/n/12 , \TU/CourierNew(
 0)/m/n/12 pendingConfig\TU/TimesNewRoman(0)/m/n/12 , \TU/CourierNew(0)/m/n/12 a
 waitingAck\TU/TimesNewRoman(0)/m/n/12 ,
  []
 
-[20]
+[23]
 File: assets/10_seq_rpc_threshold.png Graphic file (type bmp)
 <assets/10_seq_rpc_threshold.png>
 
-Overfull \hbox (6.05115pt too wide) in paragraph at lines 432--433
+Overfull \hbox (6.05115pt too wide) in paragraph at lines 493--494
 \TU/TimesNewRoman(0)/m/n/12 sender theo tên, cập nhật \TU/CourierNew(0)/m/n/12 
 desiredThreshold\TU/TimesNewRoman(0)/m/n/12 , rồi gọi chính cơ chế \TU/CourierN
 ew(0)/m/n/12 sendConfigPacket()
  []
 
-[21]
+[24]
 File: assets/11_state_config_sync.png Graphic file (type bmp)
 <assets/11_state_config_sync.png>
 File: assets/15_flowchart_config_retry.png Graphic file (type bmp)
 <assets/15_flowchart_config_retry.png>
- [22]
-Underfull \hbox (badness 2478) in paragraph at lines 444--445
+ [25]
+Underfull \hbox (badness 2478) in paragraph at lines 505--506
 \TU/TimesNewRoman(0)/m/n/12 sau đó, receiver có thể gửi \TU/CourierNew(0)/m/n/1
 2 v1/gateway/attributes \TU/TimesNewRoman(0)/m/n/12 để đồng bộ metadata như
  []
 
-[23] [24]
-Underfull \hbox (badness 10000) in paragraph at lines 465--465
+[26] [27]
+Underfull \hbox (badness 10000) in paragraph at lines 526--526
 []|\TU/TimesNewRoman(0)/m/n/12 Ví dụ trong
  []
 
 
-Overfull \hbox (52.61739pt too wide) in paragraph at lines 468--468
+Overfull \hbox (52.61739pt too wide) in paragraph at lines 529--529
 []|\TU/CourierNew(0)/m/n/12 SENSOR_INTERVAL_MS| 
  []
 
 
-Overfull \hbox (74.2209pt too wide) in paragraph at lines 469--469
+Overfull \hbox (74.2209pt too wide) in paragraph at lines 530--530
 []|\TU/CourierNew(0)/m/n/12 TELEMETRY_INTERVAL_MS| 
  []
 
 
-Overfull \hbox (67.01973pt too wide) in paragraph at lines 470--470
+Overfull \hbox (67.01973pt too wide) in paragraph at lines 531--531
 []|\TU/CourierNew(0)/m/n/12 SNAPSHOT_INTERVAL_MS| 
  []
 
 
-Overfull \hbox (52.61739pt too wide) in paragraph at lines 471--471
+Overfull \hbox (52.61739pt too wide) in paragraph at lines 532--532
 []|\TU/CourierNew(0)/m/n/12 OFFLINE_TIMEOUT_MS| 
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 471--472
+Underfull \hbox (badness 1371) in paragraph at lines 532--533
 []|\TU/TimesNewRoman(0)/m/n/12 Ngưỡng quyết định sender bị đánh dấu
  []
 
 
-Overfull \hbox (31.01387pt too wide) in paragraph at lines 472--472
+Overfull \hbox (31.01387pt too wide) in paragraph at lines 533--533
 []|\TU/CourierNew(0)/m/n/12 CONFIG_RETRY_MS| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--473
+Underfull \hbox (badness 10000) in paragraph at lines 534--534
 []|\TU/TimesNewRoman(0)/m/n/12 Timeout ACK cấu
  []
 
 
-Overfull \hbox (74.2209pt too wide) in paragraph at lines 473--473
+Overfull \hbox (74.2209pt too wide) in paragraph at lines 534--534
 []|\TU/CourierNew(0)/m/n/12 CONFIG_ACK_TIMEOUT_MS| 
  []
 
 
-Overfull \hbox (18.11153pt too wide) in paragraph at lines 474--474
+Overfull \hbox (18.11153pt too wide) in paragraph at lines 535--535
 []|\TU/CourierNew(0)/m/n/12 WIFI_RETRY_MS\TU/TimesNewRoman(0)/m/n/12 ,
  []
 
 
-Overfull \hbox (16.61153pt too wide) in paragraph at lines 474--474
+Overfull \hbox (16.61153pt too wide) in paragraph at lines 535--535
 \TU/CourierNew(0)/m/n/12 MQTT_RETRY_MS| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 536--536
 []|\TU/TimesNewRoman(0)/m/n/12 Giới hạn số
  []
 
 
-Overfull \hbox (3.70918pt too wide) in paragraph at lines 475--475
+Overfull \hbox (3.70918pt too wide) in paragraph at lines 536--536
 []|\TU/CourierNew(0)/m/n/12 MAX_SENDERS\TU/TimesNewRoman(0)/m/n/12 ,
  []
 
 
-Overfull \hbox (31.01387pt too wide) in paragraph at lines 475--475
+Overfull \hbox (31.01387pt too wide) in paragraph at lines 536--536
 \TU/CourierNew(0)/m/n/12 MAX_TCP_CLIENTS| 
  []
 
 
-Underfull \hbox (badness 1231) in paragraph at lines 476--476
+Underfull \hbox (badness 1231) in paragraph at lines 537--537
 []|\TU/TimesNewRoman(0)/m/n/12 Giới hạn xử lý TCP
  []
 
 
-Overfull \hbox (90.12325pt too wide) in paragraph at lines 476--476
+Overfull \hbox (90.12325pt too wide) in paragraph at lines 537--537
 []|\TU/CourierNew(0)/m/n/12 TCP_MAX_BYTES_PER_CYCLE\TU/TimesNewRoman(0)/m/n/12 
 ,
  []
 
 
-Overfull \hbox (88.26324pt too wide) in paragraph at lines 476--476
+Overfull \hbox (88.26324pt too wide) in paragraph at lines 537--537
 \TU/CourierNew(0)/m/n/12 TCP_MAX_LINES_PER_CYCLE| 
  []
 
-[25
+[28
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 515--515
+Underfull \hbox (badness 10000) in paragraph at lines 576--576
 []|\TU/TimesNewRoman(0)/m/n/12 Sender suy luận bất
  []
 
 
-Underfull \hbox (badness 3364) in paragraph at lines 515--515
+Underfull \hbox (badness 3364) in paragraph at lines 576--576
 []|\TU/TimesNewRoman(0)/m/n/12 Hàm \TU/CourierNew(0)/m/n/12 runAiInference()
  []
 
 
-Underfull \hbox (badness 4954) in paragraph at lines 516--516
+Underfull \hbox (badness 4954) in paragraph at lines 577--577
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver điều phối cấu
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 516--516
+Underfull \hbox (badness 10000) in paragraph at lines 577--577
 []|\TU/CourierNew(0)/m/n/12 sendConfigPacket()\TU/TimesNewRoman(0)/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 2269) in paragraph at lines 516--517
+Underfull \hbox (badness 2269) in paragraph at lines 577--578
 \TU/TimesNewRoman(0)/m/n/12 xác nhận thay vì gửi một
  []
 
 
-Overfull \hbox (85.48447pt too wide) in paragraph at lines 517--517
+Overfull \hbox (85.48447pt too wide) in paragraph at lines 578--578
 []|\TU/CourierNew(0)/m/n/12 handleSenderOfflineTransitions()| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--518
+Underfull \hbox (badness 10000) in paragraph at lines 578--579
 []|\TU/TimesNewRoman(0)/m/n/12 Trạng thái online/offline
  []
 
 
-Underfull \hbox (badness 1721) in paragraph at lines 519--519
+Underfull \hbox (badness 1721) in paragraph at lines 580--580
 []|\TU/TimesNewRoman(0)/m/n/12 Nhóm hàm MQTT gateway
  []
 
-[26] [27] [28] [29] [30] [31] [32] [33
+[29] [30] [31] [32] [33] [34] [35] [36
 
-] [34]
+] [37]
 File: assets/16_cau_truc_littlefs.png Graphic file (type bmp)
 <assets/16_cau_truc_littlefs.png>
 File: assets/18_bang_mqtt_topics.png Graphic file (type bmp)
 <assets/18_bang_mqtt_topics.png>
- [35]
+ [38]
 File: assets/19_seq_end_to_end.png Graphic file (type bmp)
 <assets/19_seq_end_to_end.png>
- [36]
-Overfull \hbox (16.2958pt too wide) in alignment at lines 724--728
+ [39]
+Overfull \hbox (16.2958pt too wide) in alignment at lines 785--789
  [] [] [] [] 
  []
 
 
-Underfull \hbox (badness 2351) in paragraph at lines 729--729
+Underfull \hbox (badness 2351) in paragraph at lines 790--790
 []|\TU/TimesNewRoman(0)/m/n/12 Bật nguồn receiver, sau đó bật các
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 729--730
+Underfull \hbox (badness 10000) in paragraph at lines 790--791
 []|\TU/TimesNewRoman(0)/m/n/12 Các sender
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 729--730
+Underfull \hbox (badness 10000) in paragraph at lines 790--791
 \TU/TimesNewRoman(0)/m/n/12 online trên
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 729--730
+Underfull \hbox (badness 10000) in paragraph at lines 790--791
 \TU/TimesNewRoman(0)/m/n/12 receiver, có
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 729--730
+Underfull \hbox (badness 10000) in paragraph at lines 790--791
 \TU/TimesNewRoman(0)/m/n/12 telemetry,
  []
 
 
-Underfull \hbox (badness 3503) in paragraph at lines 729--730
+Underfull \hbox (badness 3503) in paragraph at lines 790--791
 \TU/TimesNewRoman(0)/m/n/12 cloud kết nối
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 730--731
+Underfull \hbox (badness 1281) in paragraph at lines 791--792
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver nhận
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--731
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
 \TU/TimesNewRoman(0)/m/n/12 dữ liệu tuần
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--731
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
 \TU/TimesNewRoman(0)/m/n/12 tự, cloud có
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--731
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
 \TU/TimesNewRoman(0)/m/n/12 timeline mới,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--731
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
 \TU/TimesNewRoman(0)/m/n/12 UI cập nhật
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 731--732
+Underfull \hbox (badness 10000) in paragraph at lines 792--793
 \TU/CourierNew(0)/m/n/12 config\TU/TimesNewRoman(0)/m/n/12 , cập
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 731--732
+Underfull \hbox (badness 10000) in paragraph at lines 792--793
 \TU/TimesNewRoman(0)/m/n/12 trả ACK,
  []
 
 
-Underfull \hbox (badness 3098) in paragraph at lines 732--732
+Underfull \hbox (badness 3098) in paragraph at lines 793--793
 []|\TU/TimesNewRoman(0)/m/n/12 Đổi threshold từ cloud
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 732--733
+Underfull \hbox (badness 1281) in paragraph at lines 793--794
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver nhận
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--733
+Underfull \hbox (badness 10000) in paragraph at lines 793--794
 \TU/TimesNewRoman(0)/m/n/12 RPC, gửi
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--733
+Underfull \hbox (badness 10000) in paragraph at lines 793--794
 \TU/TimesNewRoman(0)/m/n/12 packet xuống
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--733
+Underfull \hbox (badness 10000) in paragraph at lines 793--794
 \TU/TimesNewRoman(0)/m/n/12 sender B,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--733
+Underfull \hbox (badness 10000) in paragraph at lines 793--794
 \TU/TimesNewRoman(0)/m/n/12 cloud nhận
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 733--734
+Underfull \hbox (badness 1281) in paragraph at lines 794--795
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver đánh
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 733--734
+Underfull \hbox (badness 10000) in paragraph at lines 794--795
 \TU/TimesNewRoman(0)/m/n/12 cần publish
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 734--735
+Underfull \hbox (badness 1281) in paragraph at lines 795--796
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver nhận
  []
 
 
-Underfull \hbox (badness 4048) in paragraph at lines 734--735
+Underfull \hbox (badness 4048) in paragraph at lines 795--796
 \TU/TimesNewRoman(0)/m/n/12 telemetry mới
  []
 
 
-Underfull \hbox (badness 6125) in paragraph at lines 734--735
+Underfull \hbox (badness 6125) in paragraph at lines 795--796
 \TU/TimesNewRoman(0)/m/n/12 lại trạng thái
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 735--736
+Underfull \hbox (badness 10000) in paragraph at lines 796--797
 []|\TU/CourierNew(0)/m/n/12 ai_status
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 735--736
+Underfull \hbox (badness 10000) in paragraph at lines 796--797
 \TU/TimesNewRoman(0)/m/n/12 chuyển sang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 735--736
+Underfull \hbox (badness 10000) in paragraph at lines 796--797
 \TU/CourierNew(0)/m/n/12 ANOMALY
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 735--736
+Underfull \hbox (badness 10000) in paragraph at lines 796--797
 \TU/TimesNewRoman(0)/m/n/12 trên sender,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 735--736
+Underfull \hbox (badness 10000) in paragraph at lines 796--797
 \TU/TimesNewRoman(0)/m/n/12 receiver và
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 736--737
+Underfull \hbox (badness 10000) in paragraph at lines 797--798
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 736--737
+Underfull \hbox (badness 10000) in paragraph at lines 797--798
 \TU/TimesNewRoman(0)/m/n/12 không thêm
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 736--737
+Underfull \hbox (badness 10000) in paragraph at lines 797--798
 \TU/TimesNewRoman(0)/m/n/12 vào sender
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 736--737
+Underfull \hbox (badness 1888) in paragraph at lines 797--798
 \TU/TimesNewRoman(0)/m/n/12 đưa vào danh
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 736--737
+Underfull \hbox (badness 1253) in paragraph at lines 797--798
 \TU/TimesNewRoman(0)/m/n/12 sách unknown
  []
 
 
-Overfull \hbox (16.2958pt too wide) in alignment at lines 728--738
+Overfull \hbox (16.2958pt too wide) in alignment at lines 789--799
  [] [] [] [] 
  []
 
-[37] [38] [39] [40
+[40] [41] [42] [43
 
-] [41] [42
+] [44] [45
 
-] [43
+] [46
 
-] [44] [45] [46] [47
+] [47
 
-] [48
+] [48] [49] [50] [51
 
-] [49
+] [52
+
+] [53
 
 ]
 
@@ -1690,14 +1708,18 @@ enddocument/afterlastpage: lastpage setting LastPage.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 26177 strings out of 474773
- 478584 string characters out of 5757723
+ 26202 strings out of 474773
+ 479208 string characters out of 5757723
  2139839 words of memory out of 5000000
- 47906 multiletter control sequences out of 15000+600000
- 568411 words of font info for 131 fonts, out of 8000000 for 9000
+ 47926 multiletter control sequences out of 15000+600000
+ 568451 words of font info for 136 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  79i,13n,114p,1251b,1981s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on IOT_Application.pdf (56 pages).
+Output written on IOT_Application.pdf (61 pages).

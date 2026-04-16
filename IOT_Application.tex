@@ -197,7 +197,7 @@ Mục tiêu ảnh: #2}}}
     \vspace{0.3cm}
     {\small
     \begin{tabular}{@{} l l c @{}}
-        Giảng viên hướng dẫn & Lê Trọng Nhân & \\
+        Giảng viên hướng dẫn & TS. Lê Trọng Nhân & \\
         Sinh viên thực hiện 1 & Đoàn Trần Cao Trí & 2470510 \\
         Sinh viên thực hiện 2 & Đặng Nguyễn Tấn Tài & 2570357 \\
     \end{tabular}\par
@@ -217,28 +217,89 @@ Mục tiêu ảnh: #2}}}
 
 \pagenumbering{arabic}
 
-\part{Bối cảnh, mục tiêu và phạm vi}
+\part{Bối cảnh và phát biểu bài toán chuỗi lạnh vaccine}
 
-\section{Giới thiệu đề tài và bối cảnh}
+\section{Introduction và Problem Statement}
 
-\subsection{Bài toán đặt ra}
-Hệ thống được đặt trong bối cảnh các triển khai IoT hiện đại ngày càng dịch chuyển từ mô hình \textit{đọc cảm biến rồi gửi thẳng lên cloud} sang mô hình phân tầng gồm thiết bị biên, gateway cục bộ và nền tảng cloud. Với cách tổ chức này, dữ liệu không chỉ được truyền đi một chiều mà còn được xử lý cục bộ ở edge, được quản lý và đồng bộ tập trung ở gateway, sau đó mới được đưa lên nền tảng cloud để trực quan hóa và điều khiển từ xa. Cách tiếp cận này phản ánh tương đối đúng với nhiều hệ thống thực tế trong công nghiệp, nông nghiệp thông minh và smart building.
+\subsection{Bối cảnh nghiệp vụ}
+Trong vận hành tiêm chủng, chất lượng vaccine phụ thuộc trực tiếp vào việc duy trì nghiêm ngặt chuỗi lạnh (\textit{cold chain}) từ kho bảo quản đến điểm sử dụng. Theo bài tổng hợp của VNVC, phần lớn vaccine được bảo quản trong dải \(2\text{--}8^\circ\mathrm{C}\) (mức trung bình ưu tiên khoảng \(5^\circ\mathrm{C}\)); một số loại cần dải đông lạnh \(-15\text{--}-25^\circ\mathrm{C}\), và một số vaccine đặc thù yêu cầu âm sâu như \(-40^\circ\mathrm{C}\) hoặc \(-70^\circ\mathrm{C}\). Chỉ một sai lệch ngắn ngoài ngưỡng cho phép cũng có thể làm giảm hiệu lực sinh học.
 
-Thiết kế triển khai theo kiến trúc nhiều sender và một receiver gateway; cấu hình demo hiện tại dùng hai sender để kiểm thử và minh họa luồng đa node. Mỗi sender giả lập một điểm đo môi trường có khả năng phát sinh dữ liệu nhiệt độ, độ ẩm và vị trí GPS. Trên sender, dữ liệu cảm biến được đưa trực tiếp vào mô hình TinyML để tính ra điểm bất thường \texttt{ai\_score} và nhãn \texttt{NORMAL}/\texttt{ANOMALY}. Receiver không phải là một thiết bị hiển thị đơn thuần mà là một gateway thực thụ: lắng nghe TCP server, quản lý trạng thái của nhiều sender, đồng bộ cấu hình hai chiều và đại diện cho các sender khi làm việc với CoreIoT.
+Ở quy mô vận hành nhiều tủ lạnh/tủ đông, dữ liệu nhiệt độ và độ ẩm biến thiên theo thời gian thực, trong khi thao tác mở cửa, xuất/nhập hàng và dao động tải nhiệt diễn ra liên tục. Vì vậy, mô hình theo dõi định kỳ bằng tay khó phát hiện các spike ngắn hoặc sự cố cục bộ xảy ra ngoài khung kiểm tra.
 
-\subsection{Mục tiêu kỹ thuật}
-Mục tiêu kỹ thuật của hệ thống gồm năm nhóm chính. Thứ nhất, thiết kế được kiến trúc nhiều sender một receiver có phân vai rõ ràng và có thể mở rộng tăng số node trong tương lai. Thứ hai, đưa một mô hình TinyML chạy trực tiếp trên sender nhằm thực hiện suy luận cục bộ ở edge thay vì phụ thuộc hoàn toàn vào cloud. Thứ ba, tổ chức được luồng cấu hình hai chiều từ giao diện web hoặc RPC cloud xuống sender thông qua receiver. Thứ tư, xây dựng web UI cục bộ cho cả sender và receiver để người dùng có thể quan sát và điều khiển hệ thống không cần công cụ phụ trợ. Thứ năm, kết nối receiver với CoreIoT thông qua MQTT gateway để minh họa luồng dữ liệu đầu cuối từ edge đến cloud.
+\subsection{Tầm nhìn sản phẩm}
+Hệ thống hướng tới một nền tảng \textit{IoT-based Vaccine Cold Chain Monitoring} với bốn mục tiêu cốt lõi: giám sát realtime nhiệt độ/độ ẩm/trạng thái thiết bị, cảnh báo sớm khi vượt ngưỡng rủi ro, lưu vết dữ liệu đầy đủ phục vụ audit--compliance, và giảm tải vận hành thủ công thông qua tự động hóa quan sát.
 
-Tài liệu này trình bày các nội dung trên theo cấu trúc rõ ràng, kèm hình minh họa, giải thích quyết định thiết kế và chỉ ra cách mã nguồn hiện thực các quyết định đó. Cách trình bày cân bằng giữa \textit{kiến trúc hệ thống}, \textit{luồng hoạt động} và \textit{phân tích mã nguồn có chọn lọc}.
+\subsection{Phạm vi sản phẩm}
+Giải pháp bao gồm ba lớp chính. Lớp thiết bị hiện trường gồm sensor node (sender) và gateway (receiver). Lớp xử lý dữ liệu gồm ingestion, chuẩn hóa packet, quản lý trạng thái và đẩy dữ liệu lên nền tảng cloud. Lớp ứng dụng gồm dashboard giám sát, cảnh báo và các luồng điều khiển cấu hình từ xa.
 
-\subsection{Phạm vi và giới hạn}
-Phạm vi triển khai tập trung vào tầng firmware và gateway, bao gồm mô phỏng dữ liệu sensor, TinyML inference, web UI cục bộ, TCP nội bộ và tích hợp CoreIoT. Tài liệu không đi sâu vào phần huấn luyện mô hình TinyML ở phía máy tính ngoài, cũng không xây dựng dashboard web cloud tùy biến ngoài phần hiển thị và RPC sẵn có của CoreIoT. Dữ liệu môi trường và GPS hiện được mô phỏng theo thời gian; trọng tâm là xác minh đúng luồng kỹ thuật và kiến trúc, thay vì tối ưu độ chính xác của cảm biến thật.
+Trong phạm vi tài liệu này, hệ thống được mô tả theo kiến trúc nhiều sender -- một receiver để phản ánh vận hành đa tủ/lô điểm đo. Dữ liệu đầu vào hiện có thể được mô phỏng cho mục đích kiểm thử pipeline, nhưng toàn bộ luồng kỹ thuật được thiết kế tương thích khi thay bằng cảm biến thật.
 
-\subsection{Phương pháp trình bày tài liệu}
-Để dễ theo dõi, tài liệu không chèn nguyên khối mã nguồn dài gây loãng nội dung. Thay vào đó, mỗi phần trước hết nêu bài toán kỹ thuật, sau đó dùng sơ đồ và trích đoạn mã ngắn để minh chứng. Sơ đồ là công cụ chính để mô tả kiến trúc, flowchart và sequence diagram; mã nguồn chỉ đưa vào khi cần làm rõ cơ chế của một module, một packet hoặc một trạng thái hệ thống.
+\subsection{Đối tượng sử dụng}
+\begin{itemize}[leftmargin=1.5em]
+    \item Nhân sự vận hành kho/lab vaccine cần theo dõi điều kiện bảo quản theo thời gian thực.
+    \item Quản lý cơ sở cần cái nhìn tập trung và trạng thái cảnh báo tức thời.
+    \item Bộ phận QA/Compliance cần dữ liệu liên tục, truy vết được và khó bị chỉnh sửa.
+    \item Cấp điều hành cần báo cáo tổng hợp rủi ro vận hành và mức độ tuân thủ.
+\end{itemize}
 
-\subsection{Nguồn mã và khả năng đối chiếu}
-Để bảo đảm tính minh bạch và khả năng kiểm chứng, tài liệu đối chiếu trực tiếp với hai nhánh mã nguồn công khai của dự án:
+\subsection{Phát biểu bài toán}
+Vấn đề cốt lõi là nhiều điểm bảo quản vẫn dựa vào kiểm tra theo ca hoặc ghi chép rời rạc, dẫn đến khoảng trống quan sát giữa các lần kiểm tra. Khi xảy ra sự cố như mất điện cục bộ, cửa mở lâu hoặc suy giảm hiệu suất làm lạnh, hệ thống thiếu cơ chế cảnh báo tức thời và thiếu chuỗi bằng chứng dữ liệu để truy nguyên.
+
+\subsection{Pain points kỹ thuật}
+\begin{enumerate}[leftmargin=1.7em]
+    \item \textbf{Thiếu giám sát realtime liên tục}: khó bắt được các biến động đột ngột (spike) ngắn nhưng ảnh hưởng chất lượng vaccine.
+    \item \textbf{Thiếu cảnh báo tức thời}: độ trễ phát hiện cao làm tăng nguy cơ hỏng lô.
+    \item \textbf{Truy vết mở cửa và sai lệch vận hành còn yếu}: khó xác định nguyên nhân gốc khi có sự cố.
+    \item \textbf{Audit trail không đầy đủ}: dữ liệu phân tán/đứt đoạn gây rủi ro compliance.
+    \item \textbf{Chi phí vận hành thủ công cao}: phụ thuộc vào nhân sự kiểm tra định kỳ và ghi chép tay.
+    \item \textbf{Thiếu năng lực dự đoán}: chưa có cơ chế nhận diện xu hướng bất thường trước khi lỗi xảy ra.
+\end{enumerate}
+
+\subsection{Tác động và cơ hội}
+Nếu không cải thiện, rủi ro bao gồm thất thoát tài chính do hỏng vaccine, gián đoạn vận hành, tăng rủi ro pháp lý và giảm độ tin cậy hệ thống tiêm chủng. Ngược lại, triển khai nền tảng IoT giám sát chuỗi lạnh tạo ra cơ hội nâng mức an toàn vận hành, tự động hóa kiểm soát, và xây dựng nền dữ liệu phục vụ phân tích tối ưu dài hạn.
+
+\reportfigure{assets/01_kien_truc_tong_the.png}{Bức tranh tổng thể cho bài toán Vaccine Cold Chain Monitoring: nhiều điểm đo (sender) theo dõi nhiệt độ/độ ẩm gửi về một gateway receiver, sau đó đồng bộ cloud để giám sát, cảnh báo và truy vết.}{fig:overview}
+
+\part{Yêu cầu hệ thống cho Vaccine Cold Chain Monitoring}
+
+\section{Yêu cầu hệ thống và định hướng thiết kế}
+
+\subsection{Định hướng thiết kế}
+Thiết kế ưu tiên ba nguyên tắc: (1) \textbf{phát hiện sớm} sai lệch điều kiện bảo quản, (2) \textbf{truy vết đầy đủ} phục vụ audit, và (3) \textbf{vận hành bền vững} ở quy mô nhiều điểm đo. Vì vậy kiến trúc được tổ chức theo mô hình sender--receiver--cloud thay vì để từng node kết nối rời rạc trực tiếp lên cloud.
+
+Sender tập trung đo lường và tiền xử lý tại biên; receiver làm gateway tập trung trạng thái, điều phối cấu hình và đồng bộ cloud; cloud đảm nhiệm giám sát đa điểm, lưu trữ lịch sử và luồng điều khiển từ xa. Cách phân lớp này giảm độ phức tạp khi mở rộng số thiết bị và cải thiện khả năng kiểm soát rủi ro.
+
+\subsection{Yêu cầu chức năng}
+Các yêu cầu chức năng chính của hệ thống cho bài toán chuỗi lạnh vaccine gồm:
+\begin{itemize}[leftmargin=1.5em]
+    \item Mỗi sender phải thu thập (hoặc mô phỏng để kiểm thử) nhiệt độ, độ ẩm và timestamp dưới dạng telemetry.
+    \item Sender phải đánh giá trạng thái cục bộ theo ngưỡng và sinh các chỉ báo bất thường (\texttt{ai\_score}, \texttt{ai\_status}).
+    \item Receiver phải nhận telemetry từ nhiều sender qua TCP và quản lý trạng thái tập trung theo \texttt{device\_id}.
+    \item Receiver phải hỗ trợ đồng bộ cấu hình hai chiều (ngưỡng, metadata) và xác nhận qua ACK.
+    \item Hệ thống phải có giao diện cục bộ để quan sát realtime và thao tác vận hành cơ bản.
+    \item Receiver phải đồng bộ dữ liệu, thuộc tính và RPC lên cloud qua MQTT gateway.
+    \item Hệ thống phải lưu được chuỗi dữ liệu đủ để truy vết sự kiện vượt ngưỡng và hành động xử lý.
+\end{itemize}
+
+\subsection{Yêu cầu phi chức năng}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Realtime}: độ trễ cảnh báo mục tiêu thấp (ví dụ dưới 30 giây trong điều kiện mạng ổn định).
+    \item \textbf{Reliability}: có timeout/retry và cơ chế online--offline rõ ràng để tránh mất trạng thái âm thầm.
+    \item \textbf{Traceability}: dữ liệu phải nhất quán, liên tục theo thời gian và dễ đối chiếu khi audit.
+    \item \textbf{Scalability}: receiver phải quản lý được nhiều sender trong giới hạn tài nguyên firmware.
+    \item \textbf{Maintainability}: mã nguồn chia module rõ ràng để nâng cấp cảm biến, mô hình hoặc giao thức.
+    \item \textbf{Usability}: giao diện đủ trực quan để vận hành không phụ thuộc serial log.
+\end{itemize}
+
+\subsection{Success criteria mức hệ thống}
+\begin{itemize}[leftmargin=1.5em]
+    \item 100\% điểm đo trong phạm vi triển khai được giám sát liên tục.
+    \item Cảnh báo vượt ngưỡng được phát sinh với độ trễ phù hợp mục tiêu vận hành.
+    \item Dữ liệu lịch sử đủ để truy vết theo dòng thời gian cho mọi sự kiện quan trọng.
+    \item Giảm đáng kể thao tác kiểm tra thủ công và sai sót do con người.
+\end{itemize}
+
+\reportfigure{assets/02_so_do_mang_noi_bo.png}{Sơ đồ mạng nội bộ cho kịch bản chuỗi lạnh vaccine: receiver vừa phát SoftAP phục vụ vận hành tại chỗ vừa kết nối hạ tầng Wi-Fi, sender gửi telemetry về gateway để hợp nhất và đẩy cloud.}{fig:network}
 \begin{itemize}
     \item nhánh Sender: \url{https://github.com/dangtai111325/IOT_Application/tree/sender}
     \item nhánh Receiver: \url{https://github.com/dangtai111325/IOT_Application/tree/receiver}
@@ -765,6 +826,13 @@ Cùng một khung kiến trúc edge -- gateway -- cloud có thể được tái 
 Tài liệu đã trình bày quá trình phân tích và hiện thực hệ thống \textit{IoT Application} theo mô hình nhiều sender một receiver, trong đó sender đảm nhiệm mô phỏng cảm biến, thực hiện TinyML tại edge và cung cấp giao diện cục bộ, còn receiver đóng vai trò gateway trung tâm kết nối sender với CoreIoT. Giá trị cốt lõi không nằm ở danh sách tính năng rời rạc mà ở cách tổ chức thành một kiến trúc thống nhất: dữ liệu đi lên qua data plane, cấu hình đi xuống qua control plane, và toàn bộ quá trình có trạng thái rõ ràng để theo dõi, xác nhận và phục hồi.
 
 Phân tích kiến trúc, giao thức, module và mã nguồn tiêu biểu cho thấy hệ thống vượt qua phạm vi một bản demo cảm biến đơn giản và tiệm cận mô hình IoT gateway dùng trong triển khai thực tế. Cách triển khai này phù hợp bối cảnh edge -- gateway -- cloud hiện nay và là nền tảng để mở rộng quy mô, tính năng bảo mật và tích hợp vận hành trong các bước kế tiếp.
+
+\part{Tài liệu tham khảo}
+
+\section{Nguồn tham khảo}
+\begin{itemize}[leftmargin=1.5em]
+    \item VNVC, \textit{Nhiệt độ bảo quản vắc xin: 3 tiêu chuẩn nghiêm ngặt}. \url{https://vnvc.vn/nhiet-do-bao-quan-vac-xin/}
+\end{itemize}
 
 \part{Phụ lục}
 
