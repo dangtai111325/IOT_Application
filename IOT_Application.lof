@@ -22,18 +22,18 @@
 \contentsline {figure}{\numberline {20}{\ignorespaces Sequence diagram mô tả receiver đại diện sender khi gửi connect, telemetry, attribute và xử lý RPC qua MQTT gateway.}}{19}{figure.caption.22}%
 \contentsline {figure}{\numberline {21}{\ignorespaces Sequence diagram mô tả quá trình receiver gửi packet cấu hình xuống sender và nhận lại gói xác nhận. Cùng cơ chế này cũng được dùng khi có RPC từ cloud.}}{20}{figure.caption.23}%
 \contentsline {figure}{\numberline {22}{\ignorespaces State machine đồng bộ cấu hình giữa receiver và sender.}}{21}{figure.caption.24}%
-\contentsline {figure}{\numberline {23}{\ignorespaces Flowchart cơ chế retry cấu hình của receiver khi sender chưa ACK trong thời gian cho phép.}}{21}{figure.caption.25}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Ảnh thực nghiệm dashboard CoreIoT sau khi receiver publish dữ liệu.}}{22}{figure.caption.26}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Sơ đồ state machine đồng bộ cấu hình: pending, awaiting ACK, timeout, retry, success/fail.}}{25}{figure.caption.27}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Flowchart cơ chế retry cấu hình của receiver khi sender chưa ACK trong thời gian cho phép.}}{22}{figure.caption.25}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Ảnh thực nghiệm dashboard CoreIoT sau khi receiver publish dữ liệu.}}{23}{figure.caption.26}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Sơ đồ state machine đồng bộ cấu hình: pending, awaiting ACK, timeout, retry, success/fail.}}{26}{figure.caption.27}%
 \contentsline {figure}{\numberline {26}{\ignorespaces Sequence xử lý lỗi RPC khi sender offline và phản hồi lại cloud.}}{26}{figure.caption.28}%
-\contentsline {figure}{\numberline {27}{\ignorespaces Flowchart phân bổ slot TCP nhiều sender và cơ chế chống starvation.}}{26}{figure.caption.29}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Flowchart phân bổ slot TCP nhiều sender và cơ chế chống starvation.}}{27}{figure.caption.29}%
 \contentsline {figure}{\numberline {28}{\ignorespaces Ảnh bảng trạng thái sender trên receiver.}}{32}{figure.caption.30}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Ảnh log serial của sender A.}}{32}{figure.caption.31}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Ảnh log serial của sender A.}}{33}{figure.caption.31}%
 \contentsline {figure}{\numberline {30}{\ignorespaces Ảnh log serial của receiver.}}{33}{figure.caption.32}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Cấu trúc lưu trữ LittleFS của sender và receiver. Hình này giúp người đọc hiểu rõ những tệp nào là cấu hình và những tệp nào dùng để phục vụ web UI.}}{33}{figure.caption.33}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Cấu trúc lưu trữ LittleFS của sender và receiver. Hình này giúp người đọc hiểu rõ những tệp nào là cấu hình và những tệp nào dùng để phục vụ web UI.}}{34}{figure.caption.33}%
 \contentsline {figure}{\numberline {32}{\ignorespaces Bảng topic MQTT dùng bởi receiver khi giao tiếp với CoreIoT.}}{34}{figure.caption.34}%
 \contentsline {figure}{\numberline {33}{\ignorespaces Sequence end-to-end tổng hợp cả dữ liệu đi lên, điều khiển đi xuống và snapshot tới browser.}}{34}{figure.caption.35}%
-\contentsline {figure}{\numberline {34}{\ignorespaces Ảnh minh họa test case đổi threshold.}}{36}{figure.caption.36}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Ảnh minh họa test case đổi threshold.}}{37}{figure.caption.36}%
 \contentsline {figure}{\numberline {35}{\ignorespaces Ảnh minh họa test case sender offline rồi reconnect.}}{37}{figure.caption.37}%
 \contentsline {figure}{\numberline {36}{\ignorespaces Bố trí phần cứng của hệ thống.}}{44}{figure.caption.38}%
 \contentsline {figure}{\numberline {37}{\ignorespaces Sender ở trạng thái ANOMALY.}}{45}{figure.caption.39}%

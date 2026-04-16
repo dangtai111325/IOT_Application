@@ -40,7 +40,7 @@
 \contentsline {subsection}{\numberline {7.1}Tại sao cần đồng bộ cấu hình hai chiều}{19}{subsection.0.7.1}%
 \contentsline {subsection}{\numberline {7.2}Luồng đổi threshold từ receiver UI}{20}{subsection.0.7.2}%
 \contentsline {subsection}{\numberline {7.3}Luồng đổi threshold từ RPC cloud}{20}{subsection.0.7.3}%
-\contentsline {subsection}{\numberline {7.4}Retry và timeout}{20}{subsection.0.7.4}%
+\contentsline {subsection}{\numberline {7.4}Retry và timeout}{21}{subsection.0.7.4}%
 \contentsline {section}{\numberline {8}Tích hợp CoreIoT và vai trò của cloud}{22}{section.0.8}%
 \contentsline {subsection}{\numberline {8.1}Receiver như một MQTT gateway}{22}{subsection.0.8.1}%
 \contentsline {subsection}{\numberline {8.2}Giá trị của tầng cloud đối với hệ thống}{22}{subsection.0.8.2}%
@@ -49,35 +49,35 @@
 \contentsline {subsection}{\numberline {9.1}Bảng hằng số hệ thống và ý nghĩa vận hành}{23}{subsection.0.9.1}%
 \contentsline {subsection}{\numberline {9.2}Trade-off của các quyết định kiến trúc}{24}{subsection.0.9.2}%
 \contentsline {section}{\numberline {10}Tình huống lỗi, cơ chế phòng vệ và bằng chứng kỹ thuật}{24}{section.0.10}%
-\contentsline {subsection}{\numberline {10.1}Các tình huống lỗi điển hình}{24}{subsection.0.10.1}%
-\contentsline {subsection}{\numberline {10.2}Cơ chế phòng vệ trong mã nguồn}{24}{subsection.0.10.2}%
-\contentsline {subsection}{\numberline {10.3}Bảng đối chiếu luận điểm và bằng chứng mã nguồn}{24}{subsection.0.10.3}%
-\contentsline {subsection}{\numberline {10.4}Ghi chú hình cần chèn ở chương này}{25}{subsection.0.10.4}%
-\contentsline {section}{\numberline {11}Phân tích mã nguồn theo module và theo dòng ý nghĩa}{26}{section.0.11}%
-\contentsline {subsection}{\numberline {11.1}Tổ chức phân tích mã nguồn}{26}{subsection.0.11.1}%
+\contentsline {subsection}{\numberline {10.1}Các tình huống lỗi điển hình}{25}{subsection.0.10.1}%
+\contentsline {subsection}{\numberline {10.2}Cơ chế phòng vệ trong mã nguồn}{25}{subsection.0.10.2}%
+\contentsline {subsection}{\numberline {10.3}Bảng đối chiếu luận điểm và bằng chứng mã nguồn}{25}{subsection.0.10.3}%
+\contentsline {subsection}{\numberline {10.4}Ghi chú hình cần chèn ở chương này}{26}{subsection.0.10.4}%
+\contentsline {section}{\numberline {11}Phân tích mã nguồn theo module và theo dòng ý nghĩa}{27}{section.0.11}%
+\contentsline {subsection}{\numberline {11.1}Tổ chức phân tích mã nguồn}{27}{subsection.0.11.1}%
 \contentsline {subsection}{\numberline {11.2}Trích đoạn 1: vòng lặp chính của sender}{27}{subsection.0.11.2}%
-\contentsline {subsection}{\numberline {11.3}Trích đoạn 2: suy luận TinyML trên sender}{27}{subsection.0.11.3}%
-\contentsline {subsection}{\numberline {11.4}Trích đoạn 3: gửi telemetry qua TCP}{28}{subsection.0.11.4}%
+\contentsline {subsection}{\numberline {11.3}Trích đoạn 2: suy luận TinyML trên sender}{28}{subsection.0.11.3}%
+\contentsline {subsection}{\numberline {11.4}Trích đoạn 3: gửi telemetry qua TCP}{29}{subsection.0.11.4}%
 \contentsline {subsection}{\numberline {11.5}Trích đoạn 4: xử lý telemetry ở receiver}{29}{subsection.0.11.5}%
 \contentsline {subsection}{\numberline {11.6}Trích đoạn 5: gửi cấu hình từ receiver xuống sender}{30}{subsection.0.11.6}%
-\contentsline {subsection}{\numberline {11.7}Trích đoạn 6: publish RPC response lên CoreIoT}{30}{subsection.0.11.7}%
+\contentsline {subsection}{\numberline {11.7}Trích đoạn 6: publish RPC response lên CoreIoT}{31}{subsection.0.11.7}%
 \contentsline {section}{\numberline {12}Thiết kế web UI và trải nghiệm vận hành}{31}{section.0.12}%
-\contentsline {subsection}{\numberline {12.1}Web UI sender}{31}{subsection.0.12.1}%
-\contentsline {subsection}{\numberline {12.2}Web UI receiver}{31}{subsection.0.12.2}%
-\contentsline {subsection}{\numberline {12.3}Ảnh thực nghiệm giao diện và log}{31}{subsection.0.12.3}%
+\contentsline {subsection}{\numberline {12.1}Web UI sender}{32}{subsection.0.12.1}%
+\contentsline {subsection}{\numberline {12.2}Web UI receiver}{32}{subsection.0.12.2}%
+\contentsline {subsection}{\numberline {12.3}Ảnh thực nghiệm giao diện và log}{32}{subsection.0.12.3}%
 \contentsline {section}{\numberline {13}Danh sách ghi chú hình minh họa cần chèn}{33}{section.0.13}%
 \contentsline {subsection}{\numberline {13.1}Nhóm hình kiến trúc và mạng}{33}{subsection.0.13.1}%
-\contentsline {section}{\numberline {14}Kịch bản thực nghiệm và kế hoạch đánh giá}{34}{section.0.14}%
-\contentsline {subsection}{\numberline {14.1}Mục tiêu đánh giá}{34}{subsection.0.14.1}%
-\contentsline {subsection}{\numberline {14.2}Danh sách test case đề xuất}{34}{subsection.0.14.2}%
+\contentsline {section}{\numberline {14}Kịch bản thực nghiệm và kế hoạch đánh giá}{35}{section.0.14}%
+\contentsline {subsection}{\numberline {14.1}Mục tiêu đánh giá}{35}{subsection.0.14.1}%
+\contentsline {subsection}{\numberline {14.2}Danh sách test case đề xuất}{35}{subsection.0.14.2}%
 \contentsline {subsection}{\numberline {14.3}Chỉ số quan sát cần ghi lại}{36}{subsection.0.14.3}%
 \contentsline {subsection}{\numberline {14.4}Đánh giá ưu điểm của hệ thống}{37}{subsection.0.14.4}%
-\contentsline {subsection}{\numberline {14.5}Hạn chế hiện tại}{37}{subsection.0.14.5}%
-\contentsline {section}{\numberline {15}Bàn luận kỹ thuật và hướng phát triển}{37}{section.0.15}%
+\contentsline {subsection}{\numberline {14.5}Hạn chế hiện tại}{38}{subsection.0.14.5}%
+\contentsline {section}{\numberline {15}Bàn luận kỹ thuật và hướng phát triển}{38}{section.0.15}%
 \contentsline {subsection}{\numberline {15.1}Vì sao kiến trúc này phù hợp cho môn học}{38}{subsection.0.15.1}%
 \contentsline {subsection}{\numberline {15.2}Khả năng mở rộng trong tương lai}{38}{subsection.0.15.2}%
 \contentsline {subsection}{\numberline {15.3}Khả năng áp dụng thực tế}{38}{subsection.0.15.3}%
-\contentsline {section}{\numberline {16}Kết luận}{38}{section.0.16}%
+\contentsline {section}{\numberline {16}Kết luận}{39}{section.0.16}%
 \contentsline {section}{\numberline {1}Phụ lục A: Trích đoạn mã nguồn tiêu biểu và diễn giải ngắn}{40}{section.Alph0.1}%
 \contentsline {section}{\numberline {2}Phụ lục B: Hình ảnh thực nghiệm bổ sung}{44}{section.Alph0.2}%
 \contentsfinish 
