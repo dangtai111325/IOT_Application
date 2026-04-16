@@ -1,98 +1,111 @@
-# Báo cáo — Phát triển ứng dụng IoT
+# Vaccine Cold Chain Monitoring (IoT) — Documentation Repository
 
-Repository này chứa **mã nguồn LaTeX** và tài nguyên phục vụ báo cáo bài tập lớn môn *Phát triển ứng dụng IoT* (ĐHQG-HCM — Đại học Bách Khoa). Mục tiêu là duy trì một kênh phát hành tài liệu **độc lập** với mã nguồn firmware (Receiver/Sender), giúp theo dõi phiên bản báo cáo và chia sẻ tài liệu mà không trộn lịch sử commit với embedded code.
+## 1) Tổng quan về topic Vaccine Cold Chain Monitoring
+
+Hệ thống Vaccine Cold Chain Monitoring tập trung vào việc giám sát điều kiện bảo quản vaccine theo thời gian thực, đặc biệt là nhiệt độ và độ ẩm trong suốt chuỗi lưu trữ/vận chuyển.
+
+Mục tiêu kỹ thuật chính:
+
+- Giám sát realtime nhiều điểm đo (multi-node).
+- Cảnh báo sớm khi vượt ngưỡng rủi ro.
+- Truy vết dữ liệu đầy đủ phục vụ audit/compliance.
+- Hỗ trợ vận hành tập trung qua mô hình edge-gateway-cloud.
+
+Kiến trúc trong tài liệu hiện tại dùng mô hình:
+
+- `Sender` (edge node): thu thập dữ liệu cảm biến / mô phỏng dữ liệu.
+- `Receiver` (gateway): tập trung trạng thái và điều phối cấu hình.
+- `Cloud`: lưu trữ, quan sát và điều khiển từ xa.
+
+![Minh họa hệ thống Vaccine Cold Chain Monitoring](assets/Gemini_Generated_Image_ofyee1ofyee1ofye.png)
 
 ---
 
-## Nội dung chính
+## 2) Tổng quan repository
+
+Repository này tập trung vào **tài liệu kỹ thuật bằng LaTeX** cho hệ thống, không phải nơi phát triển firmware đầy đủ.
+
+### Thành phần chính
 
 | Thành phần | Mô tả |
-|------------|--------|
-| `IOT_Application.tex` | File nguồn chính của báo cáo (Unicode, tiếng Việt). |
-| `IOT_Application.pdf` | Kết quả biên dịch (tạo sau khi chạy XeLaTeX). |
-| `assets/` | Logo, hình minh họa và ảnh thực nghiệm (đường dẫn được tham chiếu trong `.tex`). |
-| `MISSING_IMAGES_NOTES.md` | Danh sách ảnh tùy chọn cần bổ sung nếu muốn thay placeholder. |
-| `scripts/` | Script PowerShell hỗ trợ tạo/batch diagram (môi trường Windows). |
+|------------|------|
+| `IOT_Application.tex` | File nguồn LaTeX chính của tài liệu. |
+| `IOT_Application.pdf` | File PDF sinh ra sau khi biên dịch từ `.tex`. |
+| `assets/` | Hình ảnh, sơ đồ, logo, ảnh minh họa dùng trong tài liệu. |
+| `scripts/` | Script hỗ trợ thao tác phụ trợ (ví dụ batch/generate). |
+| `MISSING_IMAGES_NOTES.md` | Ghi chú các ảnh còn thiếu hoặc placeholder cần bổ sung. |
 
-Các file phụ sinh khi biên dịch (`.aux`, `.log`, `.toc`, `.lof`, …) có thể được git-ignore tùy chính sách dự án; chúng không cần chỉnh sửa thủ công.
+### Ghi chú file sinh tự động
+
+Khi build LaTeX sẽ sinh thêm các file như:
+`.aux`, `.log`, `.toc`, `.lof`, ...
+
+Các file này là file trung gian, không chỉnh sửa thủ công.
 
 ---
 
-## Yêu cầu môi trường
+## 3) Cài đặt XeLaTeX và build tài liệu
 
-Báo cáo được thiết kế cho **XeLaTeX** (`fontspec`, `unicode-math`, nội dung tiếng Việt). **Không** dùng `pdflatex` cho file này.
+Tài liệu yêu cầu **XeLaTeX** (do dùng `fontspec`, `unicode-math`, nội dung tiếng Việt).  
+Không dùng `pdflatex` cho file này.
 
-Sau khi cài bộ phân phối TeX phù hợp, xác nhận:
+### 3.1 Kiểm tra sau khi cài
 
 ```bash
 xelatex --version
 ```
 
-### Cài đặt gợi ý theo hệ điều hành
+### 3.2 Cài đặt theo môi trường
 
-- **macOS**  
-  - [MacTeX](https://tug.org/mactex/) hoặc cài gói nhẹ hơn:  
-    `brew install --cask mactex-no-gui`  
-  - Bản đầy đủ GUI: `brew install --cask mactex`
+#### macOS
 
-- **Windows**  
-  - [MiKTeX](https://miktex.org/download) hoặc [TeX Live](https://tug.org/texlive/)  
-  - Đảm bảo thành phần **XeLaTeX** được cài đặt.
+- Khuyến nghị: [MacTeX](https://tug.org/mactex/)
+- Hoặc dùng Homebrew:
 
-- **Linux (Debian/Ubuntu)**  
+```bash
+brew install --cask mactex-no-gui
+```
 
-  ```bash
-  sudo apt update
-  sudo apt install texlive-xetex texlive-lang-other texlive-fonts-recommended
-  ```
+(Nếu cần đầy đủ GUI thì dùng `mactex`.)
 
-  Nếu thiếu gói cụ thể khi biên dịch, cài thêm `texlive-latex-extra` hoặc gói `texlive-full` (nặng hơn nhưng đầy đủ).
+#### Windows
 
----
+- Cài một trong hai:
+  - [MiKTeX](https://miktex.org/download)
+  - [TeX Live](https://tug.org/texlive/)
+- Đảm bảo thành phần `xelatex` đã được cài.
 
-## Biên dịch và nhận file PDF
+#### Linux (Debian/Ubuntu)
+
+```bash
+sudo apt update
+sudo apt install texlive-xetex texlive-lang-other texlive-fonts-recommended
+```
+
+Nếu thiếu package khi build, cài thêm:
+
+```bash
+sudo apt install texlive-latex-extra
+```
+
+### 3.3 Build PDF
 
 Tại thư mục chứa `IOT_Application.tex`:
 
 ```bash
 xelatex -interaction=nonstopmode IOT_Application.tex
+xelatex -interaction=nonstopmode IOT_Application.tex
 ```
 
-Chạy **hai lần** để cập nhật mục lục, danh mục hình/bảng và tham chiếu nội bộ.
+Chạy 2 lần để cập nhật mục lục, danh mục hình và cross-reference.
 
-**Đầu ra:** `IOT_Application.pdf` được ghi **cùng thư mục** với file `.tex`. Trong quy trình LaTeX tiêu chuẩn, “xuất PDF” chính là bước biên dịch; không có bước export riêng.
-
-**Tùy chọn — tự động lặp khi cần:**
+### 3.4 Build tự động (tùy chọn)
 
 ```bash
 latexmk -xelatex IOT_Application.tex
 ```
 
-**VS Code / Cursor (LaTeX Workshop):** cấu hình recipe dùng engine **XeLaTeX**. PDF mặc định nằm cạnh `.tex` trừ khi bạn đặt `outDir` khác.
+### 3.5 Kết quả đầu ra
 
-### Lưu trữ và chia sẻ
-
-- Sao chép hoặc đổi tên `IOT_Application.pdf` tới vị trí cần nộp/lưu trữ.  
-- Có thể dùng **File → Save As** (hoặc **Export as PDF**) trong trình đọc PDF nếu muốn tạo bản đặt tên riêng.
-
----
-
-## Hình ảnh và placeholder
-
-Một số hình tham chiếu đường dẫn trong `assets/`. Nếu file chưa có, báo cáo có thể hiển thị khung placeholder theo macro trong `.tex`. Chi tiết file ảnh gợi ý nằm trong `MISSING_IMAGES_NOTES.md`.
-
----
-
-## Vai trò nhánh `main`
-
-Nhánh `main` của repository này tập trung vào **tài liệu báo cáo**, tách biệt với lịch sử phát triển firmware Receiver/Sender, nhằm:
-
-- quản lý phiên bản tài liệu rõ ràng;  
-- cho phép clone/chỉnh sửa chỉ phần báo cáo;  
-- giảm nhiễu giữa commit phần cứng/phần mềm nhúng và commit văn bản.
-
----
-
-## Ghi chú
-
-Tài liệu phục vụ mục đích học tập theo khung môn *Phát triển ứng dụng IoT*. Khi trích dẫn hoặc tái sử dụng, tuân thủ quy định của nhà trường và ghi rõ nguồn.
+- File đầu ra: `IOT_Application.pdf`
+- Vị trí mặc định: cùng thư mục với `IOT_Application.tex` (nếu không cấu hình `outDir` khác).
