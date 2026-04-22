@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.4.4)  20 APR 2026 15:17
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.4.4)  22 APR 2026 08:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1850,7 +1850,7 @@ LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
 \openout5 = `IOT_Application.lof'.
 
  [6]
-[7] [1
+[1
 
 ]
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1860,287 +1860,300 @@ Package microtype Info: Loading generic protrusion settings for font family
  [2] [3] [4
 
 ]
-Overfull \hbox (5.85535pt too wide) in paragraph at lines 436--437
- [][] 
- []
-
-
-Underfull \hbox (badness 1859) in paragraph at lines 441--442
+Underfull \hbox (badness 1859) in paragraph at lines 452--453
 []\TU/TimesNewRoman(0)/m/n/12 nhánh Sender: []$[][][][][] [] [] [] [][][][][][]
  [] [][][] [] [][][][][][][][][][][][][] [] [][][] [] [][][][][][][][][][][] []
 
  []
 
-[5] [6
+[5] [6] [7
 
-] [7] [8
+] [8] [9
 
-] [9]
-Underfull \hbox (badness 6284) in paragraph at lines 585--585
+] [10]
+Underfull \hbox (badness 6284) in paragraph at lines 596--596
 []|\TU/TimesNewRoman(0)/m/n/12 Nút biên tạo dữ liệu, chạy
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 585--586
+Underfull \hbox (badness 1845) in paragraph at lines 596--597
 []|\TU/TimesNewRoman(0)/m/n/12 Gateway trung tâm thu nhận,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 587--587
+Underfull \hbox (badness 10000) in paragraph at lines 598--598
 []|\TU/TimesNewRoman(0)/m/n/12 AP + STA đồng thời
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 587--588
+Underfull \hbox (badness 10000) in paragraph at lines 598--599
 []|\TU/TimesNewRoman(0)/m/n/12 AP + STA đồng thời
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 588--589
+Underfull \hbox (badness 10000) in paragraph at lines 599--600
 []|\TU/TimesNewRoman(0)/m/n/12 AP quản trị receiver tại
  []
 
 
-Underfull \hbox (badness 5908) in paragraph at lines 589--590
+Underfull \hbox (badness 5908) in paragraph at lines 600--601
 []|\TU/TimesNewRoman(0)/m/n/12 TCP server lắng nghe cổng
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 591--592
+Underfull \hbox (badness 10000) in paragraph at lines 602--603
 []|\TU/CourierNew(0)/m/n/12 /receiver.json\TU/TimesNewRoman(0)/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 591--592
+Underfull \hbox (badness 10000) in paragraph at lines 602--603
 \TU/CourierNew(0)/m/n/12 /senders.json \TU/TimesNewRoman(0)/m/n/12 trên Lit-
  []
 
 
-Underfull \hbox (badness 2582) in paragraph at lines 592--593
+Underfull \hbox (badness 2582) in paragraph at lines 603--604
 []|\TU/TimesNewRoman(0)/m/n/12 Kết nối CoreIoT qua MQTT
  []
 
-[10] [11]
-Overfull \hbox (7.94986pt too wide) in paragraph at lines 658--659
+[11]
+Overfull \hbox (13.35968pt too wide) in paragraph at lines 640--641
  [][] 
  []
 
-[12]
+[12] [13] [14]
 File: assets/21_sender_1_dashboard.png Graphic file (type bmp)
 <assets/21_sender_1_dashboard.png>
- [13]
+ [15]
 File: assets/22_sender_2_dashboard.png Graphic file (type bmp)
 <assets/22_sender_2_dashboard.png>
- [14]
+ [16]
 File: assets/23_sender_setup_dashboard.png Graphic file (type bmp)
 <assets/23_sender_setup_dashboard.png>
- [15] [16] [17] [18] [19] [20]
+ [17] [18] [19]
+Overfull \hbox (31.52878pt too wide) in paragraph at lines 808--809
+ [][] 
+ []
+
+[20] [21] [22]
 File: assets/24_receiver_dashboard.png Graphic file (type bmp)
 <assets/24_receiver_dashboard.png>
+ [23]
 File: assets/26_sender_detail_1_dashboard.png Graphic file (type bmp)
 <assets/26_sender_detail_1_dashboard.png>
- [21]
+ [24]
 File: assets/27_sender_detail_2_dashboard.png Graphic file (type bmp)
 <assets/27_sender_detail_2_dashboard.png>
- [22]
+ [25]
 File: assets/25_receiver_setup_dashboard.png Graphic file (type bmp)
 <assets/25_receiver_setup_dashboard.png>
- [23] [24] [25
+ [26] [27] [28
 
-] [26]
-[27] [28] [29]
+] [29] [30]
+Overfull \hbox (19.53873pt too wide) in paragraph at lines 1028--1029
+ [][] 
+ []
+
+[31]
+Overfull \hbox (3.07602pt too wide) in paragraph at lines 1055--1056
+ [][] 
+ []
+
+[32] [33]
 File: assets/28_gateway_coreiot_dashboard.png Graphic file (type bmp)
 <assets/28_gateway_coreiot_dashboard.png>
 File: assets/29_device_list_coreiot_dashboard.png Graphic file (type bmp)
 <assets/29_device_list_coreiot_dashboard.png>
- [30]
 File: assets/30_dashboard_coreiot.png Graphic file (type bmp)
 <assets/30_dashboard_coreiot.png>
+ [34]
 File: assets/31_telemetry_coreiot.png Graphic file (type bmp)
 <assets/31_telemetry_coreiot.png>
- [31]
 File: assets/32_device_detail_coreiot.png Graphic file (type bmp)
 <assets/32_device_detail_coreiot.png>
- [32]
-ignored error: Infinite glue shrinkage found in box being split [33
+ [35] [36]
+ignored error: Infinite glue shrinkage found in box being split [37
 
-] [34]
-Underfull \hbox (badness 10000) in paragraph at lines 1175--1175
+] [38]
+Underfull \hbox (badness 10000) in paragraph at lines 1169--1169
 []|\TU/TimesNewRoman(0)/m/n/12 Sender suy luận bất
  []
 
 
-Underfull \hbox (badness 3364) in paragraph at lines 1175--1175
+Underfull \hbox (badness 3364) in paragraph at lines 1169--1169
 []|\TU/TimesNewRoman(0)/m/n/12 Hàm \TU/CourierNew(0)/m/n/12 runAiInference()
  []
 
 
-Underfull \hbox (badness 4954) in paragraph at lines 1176--1176
+Underfull \hbox (badness 4954) in paragraph at lines 1170--1170
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver điều phối cấu
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1176
+Underfull \hbox (badness 10000) in paragraph at lines 1170--1170
 []|\TU/CourierNew(0)/m/n/12 sendConfigPacket()\TU/TimesNewRoman(0)/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 2269) in paragraph at lines 1176--1177
+Underfull \hbox (badness 2269) in paragraph at lines 1170--1171
 \TU/TimesNewRoman(0)/m/n/12 xác nhận thay vì gửi một
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1177--1177
+Underfull \hbox (badness 10000) in paragraph at lines 1171--1171
 []|\TU/CourierNew(0)/m/n/10.95 handleSender-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1177--1178
+Underfull \hbox (badness 10000) in paragraph at lines 1171--1172
 []|\TU/TimesNewRoman(0)/m/n/12 Trạng thái online/offline
  []
 
 
-Underfull \hbox (badness 1721) in paragraph at lines 1179--1179
+Underfull \hbox (badness 1721) in paragraph at lines 1173--1173
 []|\TU/TimesNewRoman(0)/m/n/12 Nhóm hàm MQTT gateway
  []
 
-[35] [36] [37] [38] [39] [40] [41
+[39] [40] [41] [42] [43] [44] [45]
+Overfull \hbox (11.61191pt too wide) in paragraph at lines 1420--1421
+ [][] 
+ []
+
+[46
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1441--1441
+Underfull \hbox (badness 10000) in paragraph at lines 1437--1437
 []|\TU/TimesNewRoman(0)/m/n/12 Hai sender on-
  []
 
 
-Underfull \hbox (badness 7796) in paragraph at lines 1441--1441
+Underfull \hbox (badness 7796) in paragraph at lines 1437--1437
 \TU/TimesNewRoman(0)/m/n/12 line trên receiver,
  []
 
 
-Underfull \hbox (badness 3333) in paragraph at lines 1441--1441
+Underfull \hbox (badness 3333) in paragraph at lines 1437--1437
 \TU/TimesNewRoman(0)/m/n/12 telemetry liên tục,
  []
 
 
-Underfull \hbox (badness 5847) in paragraph at lines 1441--1441
+Underfull \hbox (badness 5847) in paragraph at lines 1437--1437
 \TU/TimesNewRoman(0)/m/n/12 cloud kết nối ổn
  []
 
 
-Underfull \hbox (badness 4479) in paragraph at lines 1442--1442
+Underfull \hbox (badness 4479) in paragraph at lines 1438--1438
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver nhận dữ
  []
 
 
-Underfull \hbox (badness 3601) in paragraph at lines 1442--1442
+Underfull \hbox (badness 3601) in paragraph at lines 1438--1438
 \TU/TimesNewRoman(0)/m/n/12 liệu tuần tự, Cor-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1442--1442
+Underfull \hbox (badness 10000) in paragraph at lines 1438--1438
 \TU/TimesNewRoman(0)/m/n/12 eIoT có timeline
  []
 
 
-Underfull \hbox (badness 3098) in paragraph at lines 1442--1442
+Underfull \hbox (badness 3098) in paragraph at lines 1438--1438
 \TU/TimesNewRoman(0)/m/n/12 mới, UI cập nhật
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1443--1443
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1439
 []|\TU/TimesNewRoman(0)/m/n/12 Mở receiver UI, đổi threshold
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 1443--1443
+Underfull \hbox (badness 1424) in paragraph at lines 1439--1439
 []|\TU/TimesNewRoman(0)/m/n/12 Sender nhận \TU/CourierNew(0)/m/n/12 con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1443--1443
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1439
 \TU/CourierNew(0)/m/n/12 fig\TU/TimesNewRoman(0)/m/n/12 , cập nhật
  []
 
 
-Underfull \hbox (badness 4303) in paragraph at lines 1443--1443
+Underfull \hbox (badness 4303) in paragraph at lines 1439--1439
 \TU/TimesNewRoman(0)/m/n/12 receiver hiện “Đã
  []
 
 
-Underfull \hbox (badness 3503) in paragraph at lines 1444--1444
+Underfull \hbox (badness 3503) in paragraph at lines 1440--1440
 \TU/TimesNewRoman(0)/m/n/12 gửi packet config,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1445--1445
+Underfull \hbox (badness 10000) in paragraph at lines 1441--1441
 \TU/TimesNewRoman(0)/m/n/12 CoreIoT nhận
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1442--1442
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver nhận
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1442--1442
 \TU/TimesNewRoman(0)/m/n/12 telemetry mới,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
+Underfull \hbox (badness 10000) in paragraph at lines 1443--1443
 []|\TU/CourierNew(0)/m/n/12 ai_status
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
+Underfull \hbox (badness 10000) in paragraph at lines 1443--1443
 \TU/TimesNewRoman(0)/m/n/12 chuyển
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
+Underfull \hbox (badness 10000) in paragraph at lines 1443--1443
 \TU/TimesNewRoman(0)/m/n/12 ANOMALY;
  []
 
 
-Underfull \hbox (badness 1354) in paragraph at lines 1447--1447
+Underfull \hbox (badness 1354) in paragraph at lines 1443--1443
 \TU/TimesNewRoman(0)/m/n/12 CoreIoT kích hoạt
  []
 
 
-Underfull \hbox (badness 4582) in paragraph at lines 1447--1447
+Underfull \hbox (badness 4582) in paragraph at lines 1443--1443
 \TU/TimesNewRoman(0)/m/n/12 alarm \TU/TimesNewRoman(0)/m/it/12 Temp High\TU/Tim
 esNewRoman(0)/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 5374) in paragraph at lines 1448--1449
+Underfull \hbox (badness 5374) in paragraph at lines 1444--1445
 []|\TU/TimesNewRoman(0)/m/n/12 Receiver đưa vào
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1448--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1444--1445
 \TU/TimesNewRoman(0)/m/n/12 vào sender chính
  []
 
-ignored error: Infinite glue shrinkage found in box being split [42]
+ignored error: Infinite glue shrinkage found in box being split [47]
 File: assets/33_device_alarm_dashboard.png Graphic file (type bmp)
 <assets/33_device_alarm_dashboard.png>
- [43]
-[44] [45
+ [48]
+[49] [50
 
-] [46]
-Underfull \hbox (badness 3078) in paragraph at lines 1498--1499
+] [51]
+Underfull \hbox (badness 3078) in paragraph at lines 1494--1495
 \TU/TimesNewRoman(0)/m/n/12 sif Systems, 2024. []$[][][][][] [] [] [] [][][] []
  [][][][][][][][][] [] [][][] [] [][][][][] [] [][][][][][][] [] [][][][][] []
  []
 
-[47
+[52
 
-] [48] [49
+] [53] [54
 
-] [50
 
-] [51] [52] [53]
+] [55] [56] [57]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (IOT_Application.aux)
@@ -2148,18 +2161,14 @@ enddocument/afterlastpage (AED): lastpage setting LastPage.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 38749 strings out of 402987
- 745048 string characters out of 5448732
- 1713498 words of memory out of 5000000
- 66843 multiletter control sequences out of 15000+600000
- 640126 words of font info for 151 fonts, out of 8000000 for 9000
+ 38547 strings out of 402987
+ 741616 string characters out of 5448732
+ 1723498 words of memory out of 5000000
+ 66638 multiletter control sequences out of 15000+600000
+ 640150 words of font info for 154 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 88i,13n,107p,1253b,1900s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,13n,107p,1253b,2000s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on IOT_Application.pdf (61 pages).
+Output written on IOT_Application.pdf (64 pages).

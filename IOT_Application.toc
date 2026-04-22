@@ -15,80 +15,79 @@
 \contentsline {subsection}{\numberline {2.2}Yêu cầu chức năng}{4}{subsection.0.2.2}%
 \contentsline {subsection}{\numberline {2.3}Yêu cầu phi chức năng}{4}{subsection.0.2.3}%
 \contentsline {subsection}{\numberline {2.4}Success criteria mức hệ thống}{5}{subsection.0.2.4}%
-\contentsline {part}{III\hspace {1em}Yêu cầu và định hướng thiết kế}{6}{part.3}%
-\contentsline {section}{\numberline {3}Yêu cầu hệ thống và định hướng thiết kế}{6}{section.0.3}%
-\contentsline {subsection}{\numberline {3.1}Định hướng thiết kế}{6}{subsection.0.3.1}%
-\contentsline {subsection}{\numberline {3.2}Yêu cầu chức năng}{6}{subsection.0.3.2}%
-\contentsline {subsection}{\numberline {3.3}Yêu cầu phi chức năng}{6}{subsection.0.3.3}%
-\contentsline {subsection}{\numberline {3.4}Lý do chọn kiến trúc nhiều sender -- một receiver}{7}{subsection.0.3.4}%
-\contentsline {part}{IV\hspace {1em}Kiến trúc và thiết kế các khối}{8}{part.4}%
-\contentsline {section}{\numberline {4}Kiến trúc tổng thể và phân rã hệ thống}{8}{section.0.4}%
-\contentsline {subsection}{\numberline {4.1}Bức tranh tổng quát của hệ thống}{8}{subsection.0.4.1}%
-\contentsline {subsection}{\numberline {4.2}Mô hình data plane và control plane}{8}{subsection.0.4.2}%
-\contentsline {subsection}{\numberline {4.3}Lợi ích của việc phân rã module}{9}{subsection.0.4.3}%
-\contentsline {subsection}{\numberline {4.4}Bảng so sánh phần cứng và phần mềm của hai khối}{10}{subsection.0.4.4}%
-\contentsline {section}{\numberline {5}Thiết kế chi tiết khối Sender}{10}{section.0.5}%
-\contentsline {subsection}{\numberline {5.1}Vai trò của sender trong toàn hệ thống}{10}{subsection.0.5.1}%
-\contentsline {subsection}{\numberline {5.2}Luồng khởi tạo sender}{11}{subsection.0.5.2}%
-\contentsline {subsection}{\numberline {5.3}Mô phỏng dữ liệu sensor}{11}{subsection.0.5.3}%
-\contentsline {subsection}{\numberline {5.4}TinyML inference ở edge}{12}{subsection.0.5.4}%
-\contentsline {subsection}{\numberline {5.5}Lớp mạng và sender transport}{12}{subsection.0.5.5}%
-\contentsline {subsection}{\numberline {5.6}Giao diện web cục bộ của sender}{13}{subsection.0.5.6}%
-\contentsline {section}{\numberline {6}Thiết kế chi tiết khối Receiver}{16}{section.0.6}%
-\contentsline {subsection}{\numberline {6.1}Receiver như một gateway thực thụ}{16}{subsection.0.6.1}%
-\contentsline {subsection}{\numberline {6.2}Luồng khởi tạo receiver}{17}{subsection.0.6.2}%
-\contentsline {subsection}{\numberline {6.3}Mô hình dữ liệu trung tâm của receiver}{18}{subsection.0.6.3}%
-\contentsline {subsection}{\numberline {6.4}Known sender và unknown device}{19}{subsection.0.6.4}%
-\contentsline {subsection}{\numberline {6.5}Cơ chế online/offline}{20}{subsection.0.6.5}%
-\contentsline {subsection}{\numberline {6.6}Web UI quản trị của receiver}{21}{subsection.0.6.6}%
-\contentsline {part}{V\hspace {1em}Giao thức, luồng điều khiển và tích hợp cloud}{25}{part.5}%
-\contentsline {section}{\numberline {7}Thiết kế giao thức truyền thông}{25}{section.0.7}%
-\contentsline {subsection}{\numberline {7.1}Lý do chọn TCP nội bộ}{25}{subsection.0.7.1}%
-\contentsline {subsection}{\numberline {7.2}Định dạng packet TCP}{25}{subsection.0.7.2}%
-\contentsline {subsection}{\numberline {7.3}Chi tiết packet telemetry}{26}{subsection.0.7.3}%
-\contentsline {subsection}{\numberline {7.4}Chi tiết packet config và ACK}{26}{subsection.0.7.4}%
-\contentsline {subsection}{\numberline {7.5}Giao thức MQTT với CoreIoT}{26}{subsection.0.7.5}%
-\contentsline {section}{\numberline {8}Thiết kế luồng điều khiển cấu hình và RPC}{27}{section.0.8}%
-\contentsline {subsection}{\numberline {8.1}Tại sao cần đồng bộ cấu hình hai chiều}{27}{subsection.0.8.1}%
-\contentsline {subsection}{\numberline {8.2}Luồng đổi threshold từ receiver UI}{28}{subsection.0.8.2}%
-\contentsline {subsection}{\numberline {8.3}Luồng đổi threshold từ RPC cloud}{28}{subsection.0.8.3}%
-\contentsline {subsection}{\numberline {8.4}Retry và timeout}{28}{subsection.0.8.4}%
-\contentsline {section}{\numberline {9}Tích hợp CoreIoT và vai trò của cloud}{29}{section.0.9}%
-\contentsline {subsection}{\numberline {9.1}Receiver như một MQTT gateway}{29}{subsection.0.9.1}%
-\contentsline {subsection}{\numberline {9.2}Giá trị của tầng cloud đối với hệ thống}{30}{subsection.0.9.2}%
-\contentsline {subsection}{\numberline {9.3}Ý nghĩa của việc hỗ trợ RPC}{32}{subsection.0.9.3}%
-\contentsline {part}{VI\hspace {1em}Ràng buộc, độ tin cậy và phân tích mã nguồn}{33}{part.6}%
-\contentsline {section}{\numberline {10}Ràng buộc kỹ thuật và quyết định thiết kế}{33}{section.0.10}%
-\contentsline {subsection}{\numberline {10.1}Bảng hằng số hệ thống và ý nghĩa vận hành}{33}{subsection.0.10.1}%
-\contentsline {subsection}{\numberline {10.2}Trade-off của các quyết định kiến trúc}{34}{subsection.0.10.2}%
-\contentsline {section}{\numberline {11}Tình huống lỗi, cơ chế phòng vệ và bằng chứng kỹ thuật}{34}{section.0.11}%
-\contentsline {subsection}{\numberline {11.1}Các tình huống lỗi điển hình}{34}{subsection.0.11.1}%
-\contentsline {subsection}{\numberline {11.2}Cơ chế phòng vệ trong mã nguồn}{34}{subsection.0.11.2}%
-\contentsline {subsection}{\numberline {11.3}Bảng đối chiếu luận điểm và bằng chứng mã nguồn}{35}{subsection.0.11.3}%
-\contentsline {subsection}{\numberline {11.4}Ghi chú hình cần chèn ở chương này}{35}{subsection.0.11.4}%
-\contentsline {section}{\numberline {12}Phân tích mã nguồn theo module và theo dòng ý nghĩa}{36}{section.0.12}%
-\contentsline {subsection}{\numberline {12.1}Tổ chức phân tích mã nguồn}{36}{subsection.0.12.1}%
-\contentsline {subsection}{\numberline {12.2}Trích đoạn 2: suy luận TinyML trên sender}{37}{subsection.0.12.2}%
-\contentsline {subsection}{\numberline {12.3}Trích đoạn 3: gửi telemetry qua TCP}{37}{subsection.0.12.3}%
-\contentsline {subsection}{\numberline {12.4}Trích đoạn 4: xử lý telemetry ở receiver}{38}{subsection.0.12.4}%
-\contentsline {subsection}{\numberline {12.5}Trích đoạn 5: gửi cấu hình từ receiver xuống sender}{39}{subsection.0.12.5}%
-\contentsline {subsection}{\numberline {12.6}Trích đoạn 6: publish RPC response lên CoreIoT}{40}{subsection.0.12.6}%
-\contentsline {part}{VII\hspace {1em}Giao diện, đánh giá và kết luận}{41}{part.7}%
-\contentsline {section}{\numberline {13}Kết quả thực nghiệm}{41}{section.0.13}%
-\contentsline {subsection}{\numberline {13.1}Thiết lập thực nghiệm}{41}{subsection.0.13.1}%
-\contentsline {section}{\numberline {14}Kịch bản thực nghiệm và kết quả đánh giá}{41}{section.0.14}%
-\contentsline {subsection}{\numberline {14.1}Mục tiêu và kết quả tổng quát}{41}{subsection.0.14.1}%
-\contentsline {subsection}{\numberline {14.2}Danh sách test case và kết quả}{42}{subsection.0.14.2}%
-\contentsline {subsection}{\numberline {14.3}Bằng chứng thực nghiệm: cảnh báo AI và trạng thái thiết bị}{43}{subsection.0.14.3}%
-\contentsline {subsection}{\numberline {14.4}Đánh giá ưu điểm của hệ thống}{44}{subsection.0.14.4}%
-\contentsline {subsection}{\numberline {14.5}Hạn chế hiện tại}{44}{subsection.0.14.5}%
-\contentsline {part}{VIII\hspace {1em}Hướng phát triển và kết luận}{45}{part.8}%
-\contentsline {section}{\numberline {15}Vì sao kiến trúc này phù hợp bối cảnh triển khai hiện tại}{45}{section.0.15}%
-\contentsline {section}{\numberline {16}Khả năng mở rộng trong tương lai}{45}{section.0.16}%
-\contentsline {section}{\numberline {17}Khả năng áp dụng thực tế}{45}{section.0.17}%
-\contentsline {section}{\numberline {18}Kết luận}{46}{section.0.18}%
-\contentsline {part}{IX\hspace {1em}Tài liệu tham khảo}{47}{part.9}%
-\contentsline {section}{\numberline {19}Nguồn tham khảo}{47}{section.0.19}%
-\contentsline {part}{X\hspace {1em}Phụ lục}{49}{part.10}%
-\contentsline {section}{\numberline {1}Phụ lục A: Trích đoạn mã nguồn tiêu biểu và diễn giải ngắn}{50}{section.Alph0.1}%
+\contentsline {part}{III\hspace {1em}Yêu cầu và định hướng thiết kế}{7}{part.3}%
+\contentsline {section}{\numberline {3}Yêu cầu hệ thống và định hướng thiết kế}{7}{section.0.3}%
+\contentsline {subsection}{\numberline {3.1}Định hướng thiết kế}{7}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {3.2}Yêu cầu chức năng}{7}{subsection.0.3.2}%
+\contentsline {subsection}{\numberline {3.3}Yêu cầu phi chức năng}{7}{subsection.0.3.3}%
+\contentsline {subsection}{\numberline {3.4}Lý do chọn kiến trúc nhiều sender -- một receiver}{8}{subsection.0.3.4}%
+\contentsline {part}{IV\hspace {1em}Kiến trúc và thiết kế các khối}{9}{part.4}%
+\contentsline {section}{\numberline {4}Kiến trúc tổng thể và phân rã hệ thống}{9}{section.0.4}%
+\contentsline {subsection}{\numberline {4.1}Bức tranh tổng quát của hệ thống}{9}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {4.2}Mô hình data plane và control plane}{9}{subsection.0.4.2}%
+\contentsline {subsection}{\numberline {4.3}Lợi ích của việc phân rã module}{10}{subsection.0.4.3}%
+\contentsline {subsection}{\numberline {4.4}Bảng so sánh phần cứng và phần mềm của hai khối}{11}{subsection.0.4.4}%
+\contentsline {section}{\numberline {5}Thiết kế chi tiết khối Sender}{11}{section.0.5}%
+\contentsline {subsection}{\numberline {5.1}Vai trò của sender trong toàn hệ thống}{11}{subsection.0.5.1}%
+\contentsline {subsection}{\numberline {5.2}Luồng khởi tạo sender}{12}{subsection.0.5.2}%
+\contentsline {subsection}{\numberline {5.3}Mô phỏng dữ liệu sensor}{13}{subsection.0.5.3}%
+\contentsline {subsection}{\numberline {5.4}TinyML inference ở edge}{13}{subsection.0.5.4}%
+\contentsline {subsection}{\numberline {5.5}Lớp mạng và sender transport}{14}{subsection.0.5.5}%
+\contentsline {subsection}{\numberline {5.6}Giao diện web cục bộ của sender}{15}{subsection.0.5.6}%
+\contentsline {section}{\numberline {6}Thiết kế chi tiết khối Receiver}{18}{section.0.6}%
+\contentsline {subsection}{\numberline {6.1}Receiver như một gateway thực thụ}{18}{subsection.0.6.1}%
+\contentsline {subsection}{\numberline {6.2}Luồng khởi tạo receiver}{19}{subsection.0.6.2}%
+\contentsline {subsection}{\numberline {6.3}Mô hình dữ liệu trung tâm của receiver}{20}{subsection.0.6.3}%
+\contentsline {subsection}{\numberline {6.4}Known sender và unknown device}{21}{subsection.0.6.4}%
+\contentsline {subsection}{\numberline {6.5}Cơ chế online/offline}{22}{subsection.0.6.5}%
+\contentsline {subsection}{\numberline {6.6}Web UI quản trị của receiver}{23}{subsection.0.6.6}%
+\contentsline {part}{V\hspace {1em}Giao thức, luồng điều khiển và tích hợp cloud}{28}{part.5}%
+\contentsline {section}{\numberline {7}Thiết kế giao thức truyền thông}{28}{section.0.7}%
+\contentsline {subsection}{\numberline {7.1}Lý do chọn TCP nội bộ}{28}{subsection.0.7.1}%
+\contentsline {subsection}{\numberline {7.2}Định dạng packet TCP}{28}{subsection.0.7.2}%
+\contentsline {subsection}{\numberline {7.3}Chi tiết packet telemetry}{29}{subsection.0.7.3}%
+\contentsline {subsection}{\numberline {7.4}Chi tiết packet config và ACK}{29}{subsection.0.7.4}%
+\contentsline {subsection}{\numberline {7.5}Giao thức MQTT với CoreIoT}{29}{subsection.0.7.5}%
+\contentsline {section}{\numberline {8}Thiết kế luồng điều khiển cấu hình và RPC}{30}{section.0.8}%
+\contentsline {subsection}{\numberline {8.1}Tại sao cần đồng bộ cấu hình hai chiều}{31}{subsection.0.8.1}%
+\contentsline {subsection}{\numberline {8.2}Luồng đổi threshold từ receiver UI}{31}{subsection.0.8.2}%
+\contentsline {subsection}{\numberline {8.3}Luồng đổi threshold từ RPC cloud}{31}{subsection.0.8.3}%
+\contentsline {subsection}{\numberline {8.4}Retry và timeout}{32}{subsection.0.8.4}%
+\contentsline {section}{\numberline {9}Tích hợp CoreIoT và vai trò của cloud}{33}{section.0.9}%
+\contentsline {subsection}{\numberline {9.1}Receiver như một MQTT gateway}{33}{subsection.0.9.1}%
+\contentsline {subsection}{\numberline {9.2}Giá trị của tầng cloud đối với hệ thống}{33}{subsection.0.9.2}%
+\contentsline {subsection}{\numberline {9.3}Ý nghĩa của việc hỗ trợ RPC}{36}{subsection.0.9.3}%
+\contentsline {part}{VI\hspace {1em}Ràng buộc, độ tin cậy và phân tích mã nguồn}{37}{part.6}%
+\contentsline {section}{\numberline {10}Ràng buộc kỹ thuật và quyết định thiết kế}{37}{section.0.10}%
+\contentsline {subsection}{\numberline {10.1}Bảng hằng số hệ thống và ý nghĩa vận hành}{37}{subsection.0.10.1}%
+\contentsline {subsection}{\numberline {10.2}Trade-off của các quyết định kiến trúc}{38}{subsection.0.10.2}%
+\contentsline {section}{\numberline {11}Tình huống lỗi, cơ chế phòng vệ và bằng chứng kỹ thuật}{38}{section.0.11}%
+\contentsline {subsection}{\numberline {11.1}Các tình huống lỗi điển hình}{38}{subsection.0.11.1}%
+\contentsline {subsection}{\numberline {11.2}Cơ chế phòng vệ trong mã nguồn}{38}{subsection.0.11.2}%
+\contentsline {subsection}{\numberline {11.3}Bảng đối chiếu luận điểm và bằng chứng mã nguồn}{39}{subsection.0.11.3}%
+\contentsline {subsection}{\numberline {11.4}Ghi chú hình cần chèn ở chương này}{40}{subsection.0.11.4}%
+\contentsline {section}{\numberline {12}Phân tích mã nguồn theo module và theo dòng ý nghĩa}{41}{section.0.12}%
+\contentsline {subsection}{\numberline {12.1}Tổ chức phân tích mã nguồn}{41}{subsection.0.12.1}%
+\contentsline {subsection}{\numberline {12.2}Trích đoạn 2: suy luận TinyML trên sender}{41}{subsection.0.12.2}%
+\contentsline {subsection}{\numberline {12.3}Trích đoạn 3: gửi telemetry qua TCP}{42}{subsection.0.12.3}%
+\contentsline {subsection}{\numberline {12.4}Trích đoạn 4: xử lý telemetry ở receiver}{43}{subsection.0.12.4}%
+\contentsline {subsection}{\numberline {12.5}Trích đoạn 5: gửi cấu hình từ receiver xuống sender}{44}{subsection.0.12.5}%
+\contentsline {subsection}{\numberline {12.6}Trích đoạn 6: publish RPC response lên CoreIoT}{44}{subsection.0.12.6}%
+\contentsline {part}{VII\hspace {1em}Giao diện, đánh giá và kết luận}{46}{part.7}%
+\contentsline {section}{\numberline {13}Kết quả thực nghiệm}{46}{section.0.13}%
+\contentsline {subsection}{\numberline {13.1}Thiết lập thực nghiệm}{46}{subsection.0.13.1}%
+\contentsline {section}{\numberline {14}Kịch bản thực nghiệm và kết quả đánh giá}{46}{section.0.14}%
+\contentsline {subsection}{\numberline {14.1}Mục tiêu và kết quả tổng quát}{47}{subsection.0.14.1}%
+\contentsline {subsection}{\numberline {14.2}Danh sách test case và kết quả}{47}{subsection.0.14.2}%
+\contentsline {subsection}{\numberline {14.3}Bằng chứng thực nghiệm: cảnh báo AI và trạng thái thiết bị}{48}{subsection.0.14.3}%
+\contentsline {subsection}{\numberline {14.4}Đánh giá ưu điểm của hệ thống}{49}{subsection.0.14.4}%
+\contentsline {subsection}{\numberline {14.5}Hạn chế hiện tại}{49}{subsection.0.14.5}%
+\contentsline {part}{VIII\hspace {1em}Hướng phát triển và kết luận}{50}{part.8}%
+\contentsline {section}{\numberline {15}Vì sao kiến trúc này phù hợp bối cảnh triển khai hiện tại}{50}{section.0.15}%
+\contentsline {section}{\numberline {16}Khả năng mở rộng trong tương lai}{50}{section.0.16}%
+\contentsline {section}{\numberline {17}Khả năng áp dụng thực tế}{50}{section.0.17}%
+\contentsline {section}{\numberline {18}Kết luận}{51}{section.0.18}%
+\contentsline {part}{IX\hspace {1em}Tài liệu tham khảo}{52}{part.9}%
+\contentsline {section}{\numberline {19}Nguồn tham khảo}{52}{section.0.19}%
+\contentsline {chapter}{Phụ lục}{54}{appendix*.41}%
 \contentsfinish 

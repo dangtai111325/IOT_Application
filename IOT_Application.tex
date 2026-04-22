@@ -53,7 +53,7 @@
 
 % Define TikZ styles for professional technical diagrams
 \tikzset{
-  base/.style = {font=\normalsize\selectfont, align=center, line width=0.8pt},
+  base/.style = {font=\small\selectfont, align=center, line width=0.8pt},
   box/.style = {base, draw=black, minimum width=3.0cm, minimum height=1.1cm, fill=white},
   roundbox/.style = {box, rounded corners=0.15cm},
   diamondbox/.style = {base, draw=black, diamond, aspect=2, minimum width=3.0cm, fill=white, inner sep=2pt},
@@ -63,8 +63,8 @@
   line/.style = {line width=1pt},
   dashed_line/.style = {dashed, line width=0.8pt, draw=black!70},
   container/.style = {draw=black!50, dashed, inner sep=0.5cm, rounded corners=0.2cm},
-  label_text/.style = {font=\normalsize\itshape, text=black!80},
-  title_text/.style = {font=\normalsize\bfseries},
+  label_text/.style = {font=\small\itshape, text=black!80},
+  title_text/.style = {font=\small\bfseries},
   data_field/.style = {draw=black, rectangle, minimum height=0.7cm, font=\ttfamily\small, fill=white},
   ui_window/.style = {draw=black!70, rounded corners=0.18cm, line width=1pt, fill=black!2},
   ui_bar/.style = {draw=black!45, rounded corners=0.12cm, line width=0.8pt, fill=white},
@@ -344,30 +344,36 @@ Nếu không cải thiện, rủi ro bao gồm thất thoát tài chính do hỏ
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.5cm, auto, scale=0.9, every node/.style={scale=0.9}]
-    \node[label_text] (cloud_label) at (-2.5, 7.5) {Lớp Cloud (CoreIoT)};
-    \node[label_text] (gateway_label) at (-2.5, 4.0) {Lớp Gateway (ESP32-S3)};
-    \node[label_text] (edge_label) at (-2.5, 0.5) {Lớp Edge (ESP32)};
+\begin{tikzpicture}[node distance=2.5cm, auto]
+    % Lớp Cloud (Top)
+    \node[box, minimum width=8cm, minimum height=2cm] (cloud) at (0, 6)
+    {\textbf{Nền tảng CoreIoT}\\[5pt](MQTT Gateway / RPC)};
+    \node[label_text, right=0.2cm of cloud] {Lớp Cloud};
 
-    \node[cloudbox, minimum width=6cm, minimum height=2cm] (cloud) at (5, 7.5)
-    {\textbf{Nền tảng CoreIoT}\\[3pt](MQTT Gateway / RPC / Dashboard)};
+    % Lớp Gateway (Middle)
+    \node[box, fill=black!5, minimum width=8cm, minimum height=2cm] (gateway) at (0, 2)
+    {\textbf{Bộ tập trung dữ liệu (Receiver Gateway)}\\[5pt]Quản lý thiết bị / Đồng bộ Cloud};
+    \node[label_text, right=0.2cm of gateway] {Lớp Gateway};
 
-    \node[roundbox, fill=black!5, minimum width=8cm, minimum height=1.8cm] (gateway) at (5, 4.0)
-    {\textbf{Bộ tập trung dữ liệu (Receiver Gateway)}\\[3pt]Quản lý thiết bị / Điều phối trạng thái / Cầu nối Cloud};
+    % Lớp Edge (Bottom)
+    \node[box, minimum width=3.5cm, minimum height=1.5cm] (senderA) at (-3.5, -2)
+    {\textbf{Sender A}\\[3pt](ESP32)};
+    \node[box, minimum width=3.5cm, minimum height=1.5cm] (senderB) at (3.5, -2)
+    {\textbf{Sender B}\\[3pt](ESP32)};
+    \node[label_text, right=0.2cm of senderB] {Lớp Edge};
 
-    \node[roundbox, minimum width=4.5cm, minimum height=1.5cm] (senderA) at (0, 0.5)
-    {\textbf{Sender A}\\[3pt](ESP32, TinyML)};
-    \node[roundbox, minimum width=4.5cm, minimum height=1.5cm] (senderB) at (10, 0.5)
-    {\textbf{Sender B}\\[3pt](ESP32, TinyML)};
-    \node[base] (dots) at (5, 0.5) {$\dots$};
+    % Connections: Bottom to Middle
+    % Sender A (Left side)
+    \draw[arrow] ([xshift=-0.5cm]senderA.north) -- node[left, font=\small, align=right] {Telemetry\\(TCP)} ([xshift=-4cm]gateway.south);
+    \draw[arrow, dashed, black!60] ([xshift=-3cm]gateway.south) -- node[right, font=\small] {Sync Config} ([xshift=0.5cm]senderA.north);
 
-    \draw[arrow] (senderA.north) -- node[left, ui_small] {telemetry} ([xshift=-2.5cm]gateway.south);
-    \draw[arrow] (senderB.north) -- node[right, ui_small] {telemetry} ([xshift=2.5cm]gateway.south);
-    \draw[arrow] (gateway.north) -- node[right, ui_small] {\codedata{MQTT} / \codedata{TLS} / \codedata{TCP}} (cloud.south);
+    % Sender B (Right side)
+    \draw[arrow] ([xshift=0.5cm]senderB.north) -- node[right, font=\small, align=left] {Telemetry\\(TCP)} ([xshift=4cm]gateway.south);
+    \draw[arrow, dashed, black!60] ([xshift=3cm]gateway.south) -- node[left, font=\small] {Sync Config} ([xshift=-0.5cm]senderB.north);
 
-    \draw[arrow, dashed, black!60] ([xshift=-1cm]cloud.south) -- node[left, ui_small] {\codeflow{RPC}} ([xshift=-1cm]gateway.north);
-    \draw[arrow, dashed, black!60] ([xshift=-1.5cm]gateway.south) |- node[pos=0.28, left, ui_small] {sync config} (senderA.north);
-    \draw[arrow, dashed, black!60] ([xshift=1.5cm]gateway.south) |- node[pos=0.28, right, ui_small] {sync config} (senderB.north);
+    % Connections: Middle to Top
+    \draw[arrow] ([xshift=-1cm]gateway.north) -- node[left, font=\small, align=right] {\codedata{MQTT}\\\codedata{TLS / TCP}} ([xshift=-1cm]cloud.south);
+    \draw[arrow, dashed, black!60] ([xshift=1cm]cloud.south) -- node[right, font=\small] {\codeflow{RPC}} ([xshift=1cm]gateway.north);
 \end{tikzpicture}
 \caption{Bức tranh tổng thể cho bài toán Vaccine Cold Chain Monitoring: nhiều điểm đo (sender) gửi telemetry về một gateway receiver, sau đó đồng bộ cloud để giám sát, cảnh báo và truy vết.}
 \label{fig:overview}
@@ -414,25 +420,30 @@ Các yêu cầu chức năng chính của hệ thống cho bài toán chuỗi l�
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.5cm, auto, scale=0.9, every node/.style={scale=0.9}]
-    \node[roundbox, fill=black!5, minimum width=6cm, minimum height=2.8cm] (receiver) at (6.5,3) {};
-    \node[title_text, below=0.2cm of receiver.north] {Bộ tập trung (Receiver Gateway)};
-    \node[base, font=\small] at (6.5, 3.0) {IP STA: \codevar{.100} (mong muốn)};
-    \node[base, font=\small] at (6.5, 2.3) {IP AP: \codevar{192.168.7.1}};
+\begin{tikzpicture}[node distance=2.5cm, auto]
+    % Router at Top
+    \node[box, minimum width=6cm, minimum height=2cm] (router) at (0, 5) {\textbf{Router / AP}\\[3pt](Mạng Wi-Fi hạ tầng\\IP: 192.168.1.1)};
 
-    \node[roundbox, minimum width=3.5cm, minimum height=1.3cm] (sender1) at (0, 5.5) {\textbf{Sender 1}};
-    \node[roundbox, minimum width=3.5cm, minimum height=1.3cm] (sender2) at (0, 0.5) {\textbf{Sender 2}};
+    % Receiver in Middle
+    \node[box, fill=black!5, minimum width=7cm, minimum height=2.5cm] (receiver) at (0, 1) {};
+    \node[title_text, anchor=north, yshift=-0.2cm] at (receiver.north) {Bộ tập trung (Receiver Gateway)};
+    \node[base, font=\small] at (0, 1.2) {IP STA: \codevar{192.168.1.100}};
+    \node[base, font=\small] at (0, 0.5) {IP AP: \codevar{192.168.7.1}};
 
-    \node[cloudbox, minimum width=4cm, minimum height=2cm] (router) at (13, 3) {Router / AP\\(Mạng Wi-Fi hạ tầng)};
+    % Senders at Bottom
+    \node[box, minimum width=3.5cm, minimum height=1.5cm] (sender1) at (-3, -3) {\textbf{Sender 1}};
+    \node[box, minimum width=3.5cm, minimum height=1.5cm] (sender2) at (3, -3) {\textbf{Sender 2}};
 
-    \draw[dashed_line] (sender1.east) -- node[above, sloped, ui_small] {STA kết nối} ([xshift=-0.5cm]receiver.west);
-    \draw[dashed_line] (sender2.east) -- node[below, sloped, ui_small] {STA kết nối} ([xshift=-0.5cm]receiver.west);
-    \draw[dashed_line] (receiver.east) -- node[above, ui_small] {STA Uplink} (router.west);
+    % Connections
+    \draw[dashed_line] (receiver.north) -- node[right, font=\small] {STA nối mạng} (router.south);
 
-    \draw[arrow, draw=black!40] ([yshift=-0.2cm]sender1.east) to[out=5,in=160]
-      node[above, ui_small] {\codevar{TCP:4100}} ([xshift=-0.7cm,yshift=0.7cm]receiver.west);
-    \draw[arrow, draw=black!40] ([yshift=0.2cm]sender2.east) to[out=-5,in=-160]
-      node[below, ui_small] {\codevar{TCP:4100}} ([xshift=-0.7cm,yshift=-0.7cm]receiver.west);
+    % Sender 1 (Left side)
+    \draw[dashed_line] ([xshift=-0.5cm]sender1.north) -- node[left, font=\small, align=right] {Wi-Fi STA\\nối SoftAP} ([xshift=-3.5cm]receiver.south);
+    \draw[arrow, draw=black!40] ([xshift=0.5cm]sender1.north) -- node[right, font=\small] {\codevar{TCP:4100}} ([xshift=-2.5cm]receiver.south);
+
+    % Sender 2 (Right side)
+    \draw[arrow, draw=black!40] ([xshift=-0.5cm]sender2.north) -- node[left, font=\small] {\codevar{TCP:4100}} ([xshift=2.5cm]receiver.south);
+    \draw[dashed_line] ([xshift=0.5cm]sender2.north) -- node[right, font=\small, align=left] {Wi-Fi STA\\nối SoftAP} ([xshift=3.5cm]receiver.south);
 \end{tikzpicture}
 \caption{Sơ đồ mạng nội bộ cho kịch bản chuỗi lạnh vaccine: receiver vừa phát SoftAP phục vụ vận hành tại chỗ vừa kết nối hạ tầng Wi-Fi, sender gửi telemetry về gateway để hợp nhất và đẩy cloud.}
 \label{fig:network}
@@ -489,27 +500,27 @@ Một cách nhìn khác rất hữu ích khi mô tả hệ thống là tách ri�
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=2.5cm, auto]
-    % Data Plane (Upward)
-    \node[roundbox, minimum width=3.5cm] (s1) at (0,0) {Sender};
-    \node[roundbox, fill=black!5, minimum width=3.5cm] (r1) at (5.5,0) {Receiver};
-    \node[cloudbox, minimum width=3.5cm] (c1) at (11,0) {CoreIoT};
+\begin{tikzpicture}[node distance=3.5cm, auto]
+    % Data Plane (Left)
+    \node[title_text, align=center] at (-3, 9.5) {LUỒNG DỮ LIỆU\\(Upward)};
+    \node[box, minimum width=3.5cm, minimum height=1.5cm] (s1) at (-3, 0) {Sender};
+    \node[box, fill=black!5, minimum width=3.5cm, minimum height=1.5cm] (r1) at (-3, 3) {Receiver};
+    \node[box, minimum width=3.5cm, minimum height=1.8cm] (c1) at (-3, 8) {CoreIoT};
 
-    \draw[arrow] (s1) -- node[above, font=\small] {Telemetry (JSON)} (r1);
-    \draw[arrow] (r1) -- node[above, font=\small] {MQTT Publish} (c1);
-    \node[title_text] at (5.5, 1.2) {LUỒNG DỮ LIỆU (Data Plane - Upward)};
+    \draw[arrow] (s1) -- node[right, font=\small, align=left] {Telemetry (JSON)\\Mỗi 5 giây} (r1);
+    \draw[arrow] (r1) -- node[right, font=\small, align=left] {MQTT Publish\\Topic:\\v1/gateway/telemetry} (c1);
 
-    % Control Plane (Downward)
-    \node[roundbox, minimum width=3.5cm] (s2) at (0,-4) {Sender};
-    \node[roundbox, fill=black!5, minimum width=3.5cm] (r2) at (5.5,-4) {Receiver};
-    \node[cloudbox, minimum width=3.5cm] (c2) at (11,-4) {CoreIoT};
+    % Control Plane (Right)
+    \node[title_text, align=center] at (4, 9.5) {LUỒNG ĐIỀU KHIỂN\\(Downward)};
+    \node[box, minimum width=3.5cm, minimum height=1.5cm] (s2) at (4, 0) {Sender};
+    \node[box, fill=black!5, minimum width=3.5cm, minimum height=1.5cm] (r2) at (4, 3) {Receiver};
+    \node[box, minimum width=3.5cm, minimum height=1.8cm] (c2) at (4, 8) {CoreIoT};
 
-    \draw[arrow] (c2) -- node[above, font=\small] {RPC / Attributes} (r2);
-    \draw[arrow] (r2) -- node[above, font=\small] {Gói tin Config} (s2);
-    \draw[arrow, dashed] (s2) to[bend right=25] node[below, font=\small] {Config ACK} (r2);
-    \draw[arrow, dashed] (r2) to[bend right=25] node[below, font=\small] {Phản hồi RPC} (c2);
-    \node[title_text] at (5.5, -2.8) {LUỒNG ĐIỀU KHIỂN (Control Plane - Downward)};
-
+    \draw[arrow] ([xshift=-0.5cm]c2.south) -- node[left, font=\small, align=right] {RPC Command\\Attributes\\Update} ([xshift=-0.5cm]r2.north);
+    \draw[arrow] ([xshift=-0.5cm]r2.south) -- node[left, font=\small, align=right] {Gói tin Config\\(Ngưỡng mới)} ([xshift=-0.5cm]s2.north);
+    
+    \draw[arrow, dashed] ([xshift=0.5cm]s2.north) -- node[right, font=\small, align=left] {Config ACK\\(Xác nhận)} ([xshift=0.5cm]r2.south);
+    \draw[arrow, dashed] ([xshift=0.5cm]r2.north) -- node[right, font=\small, align=left] {Phản hồi RPC\\(Kết quả)} ([xshift=0.5cm]c2.south);
 \end{tikzpicture}
 \caption{Sơ đồ tách \textit{data plane} và \textit{control plane} giúp nhận diện rõ hai loại luồng trong hệ thống.}
 \label{fig:plane}
@@ -605,24 +616,27 @@ Khi khởi động, sender phải hoàn tất một chuỗi bước có tính ph
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.6cm, auto]
-    \node[roundbox, fill=black!20, minimum width=3.5cm] (start) at (0,8.5) {Bắt đầu};
-    \node[box, minimum width=4.5cm, minimum height=1.2cm] (sensor) at (0,6.5) {Mô phỏng Sensor\\(\codedata{random walk})};
-    \node[box, minimum width=4.5cm, minimum height=1.2cm] (ai) at (0,4.5) {Suy luận AI\\(\codevar{TFLite Micro})};
-    \node[box, minimum width=4.5cm, minimum height=1.2cm] (wifi) at (0,2.5) {Duy trì Wi-Fi STA\\(\codevar{WiFi.begin})};
-    \node[box, minimum width=4.5cm, minimum height=1.2cm] (tcp) at (0,0.5) {Duy trì TCP Link\\(\codevar{JSON} telemetry)};
+\begin{tikzpicture}[node distance=2.5cm, auto]
+    \node[roundbox, fill=black!20, minimum width=4cm] (start) at (0, 10.5) {Bắt đầu};
+    \node[box, minimum width=6cm, minimum height=1.5cm] (sensor) at (0, 8.5) {Mô phỏng Sensor (\codedata{random walk})};
+    \node[box, minimum width=6cm, minimum height=1.5cm] (ai) at (0, 6.5) {Suy luận AI (\codevar{TFLite Micro})};
+    \node[box, minimum width=6cm, minimum height=1.5cm] (wifi) at (0, 4.5) {Duy trì Wi-Fi STA (\codevar{WiFi.begin})};
+    \node[box, minimum width=6cm, minimum height=1.5cm] (tcp) at (0, 2.5) {Duy trì TCP Link (\codevar{JSON} telemetry)};
 
-    \node[diamondbox, minimum width=3.5cm] (check) at (6.5, 0.5) {Chu kỳ\\Web UI?};
-    \node[box, minimum width=4.5cm, minimum height=1.2cm] (push) at (6.5, 3.5) {Push WebSocket\\Snapshot};
+    \node[diamondbox, minimum width=4.5cm] (check) at (0, 0) {Chu kỳ Web UI?};
+    
+    \node[box, minimum width=5cm, minimum height=1.5cm] (push) at (6, 0) {Push WebSocket\\Snapshot};
 
     \draw[arrow] (start) -- (sensor);
     \draw[arrow] (sensor) -- (ai);
     \draw[arrow] (ai) -- (wifi);
     \draw[arrow] (wifi) -- (tcp);
     \draw[arrow] (tcp) -- (check);
-    \draw[arrow] (check) -- node[right, ui_small] {Có} (push);
-    \draw[arrow] (push.west) -- node[above, ui_small] {cập nhật UI} ++(-1.8,0) |- (wifi.east);
-    \draw[arrow] (check.east) -- node[above, ui_small] {Không} ++(1,0) -| (sensor.east);
+    \draw[arrow] (check) -- node[above, font=\small] {Có} (push);
+    
+    % Return paths using explicit coordinates to avoid overlapping
+    \draw[arrow] (push.east) -- +(1, 0) |- node[right, font=\small] {cập nhật UI} (wifi.east);
+    \draw[arrow] (check.west) -- node[above, font=\small] {Không} +(-2.5, 0) |- (sensor.west);
 \end{tikzpicture}
 \caption{Flowchart phần khởi tạo và vòng lặp sender. Sơ đồ cho thấy sender liên tục mô phỏng cảm biến, chạy AI và duy trì mạng.}
 \label{fig:sender-loop}
@@ -638,23 +652,19 @@ Mô hình TinyML của sender nhận hai đầu vào là nhiệt độ và độ
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.2cm, auto]
-    % Elements — positions compressed to fit within text width
-    \node[base] (env) at (0,0) {Môi trường\\(Temp, Hum)};
-    \node[box, minimum width=2.8cm] (preprocess) at (3.2,0) {Chuẩn hóa\\(Scaling)};
-    \node[module, minimum width=3.2cm] (tflite) at (6.7,0) {TFLite Micro\\Interpreter};
-    \node[box, minimum width=2.8cm] (post) at (10.2,0) {Hậu xử lý\\(Clamp [0,1])};
-    \node[roundbox, minimum width=2.8cm] (status) at (13.5,0) {Kết quả\\(Output)};
+\begin{tikzpicture}[node distance=2.5cm, auto]
+    \node[base, minimum width=4.5cm, minimum height=1.5cm] (env) at (0, 10) {Môi trường (Temp, Hum)};
+    \node[box, minimum width=4.5cm, minimum height=1.5cm] (preprocess) at (0, 7.5) {Chuẩn hóa (Scaling)};
+    \node[module, minimum width=4.5cm, minimum height=1.5cm] (tflite) at (0, 5) {TFLite Micro\\Interpreter};
+    \node[box, minimum width=4.5cm, minimum height=1.5cm] (post) at (0, 2.5) {Hậu xử lý (Clamp [0,1])};
+    \node[roundbox, minimum width=4.5cm, minimum height=1.5cm] (status) at (0, 0) {Kết quả (Output)};
 
-    % Arrows
-    \draw[arrow] (env) -- (preprocess);
-    \draw[arrow] (preprocess) -- node[above, font=\small] {In Tensor} (tflite);
-    \draw[arrow] (tflite) -- node[above, font=\small] {Out Tensor} (post);
-    \draw[arrow] (post) -- node[above, font=\small] {score} (status);
+    \draw[arrow] (env) -- node[right, font=\small] {Cảm biến đọc giá trị thô} (preprocess);
+    \draw[arrow] (preprocess) -- node[right, font=\small] {Chuyển đổi thành In Tensor (float32)} (tflite);
+    \draw[arrow] (tflite) -- node[right, font=\small] {Tính toán và trả về Out Tensor} (post);
+    \draw[arrow] (post) -- node[right, font=\small] {Điểm số bất thường (ai\_score)} (status);
 
-    % TFLite Details
-    \node[label_text, below=0.5cm of tflite] {\small Model: MLP (dht\_anomaly\_model.tflite)};
-
+    \node[label_text, right=0.5cm of tflite] {\small Model: MLP (dht\_anomaly\_model.tflite)};
 \end{tikzpicture}
 \caption{Pipeline TinyML trên sender: từ dữ liệu mô phỏng sang tensor input, qua bộ thông dịch TFLite Micro, rồi trả ra điểm bất thường và nhãn trạng thái.}
 \label{fig:ai-pipeline}
@@ -691,20 +701,19 @@ Sender có web UI riêng để người dùng quan sát trạng thái AI, mạng
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=2.5cm, auto]
+\begin{tikzpicture}[node distance=3.5cm, auto]
     % Components
-    \node[roundbox, minimum width=4cm] (esp) at (0,0) {ESP32 Firmware\\(WebSocket Server)};
-    \node[roundbox, fill=black!5, minimum width=4cm] (browser) at (9,0) {Web Browser\\(WebSocket Client)};
+    \node[roundbox, minimum width=4.5cm, minimum height=1.5cm] (esp) at (0,0) {ESP32 Firmware\\(WebSocket Server)};
+    \node[roundbox, fill=black!5, minimum width=4.5cm, minimum height=1.5cm] (browser) at (10,0) {Web Browser\\(WebSocket Client)};
 
     % Steps
-    \draw[arrow] ([yshift=0.5cm]browser.west) -- node[above, font=\small] {1. HTTP GET /} ([yshift=0.5cm]esp.east);
-    \draw[arrow] ([yshift=0.15cm]esp.east) -- node[above, font=\small] {2. index.html} ([yshift=0.15cm]browser.west);
-    \draw[arrow] ([yshift=-0.25cm]browser.west) -- node[below, font=\small] {3. WS Handshake} ([yshift=-0.25cm]esp.east);
+    \draw[arrow] ([yshift=0.8cm]browser.west) -- node[above, font=\small] {1. HTTP GET /} ([yshift=0.8cm]esp.east);
+    \draw[arrow] ([yshift=0.3cm]esp.east) -- node[above, font=\small] {2. index.html} ([yshift=0.3cm]browser.west);
+    \draw[arrow] ([yshift=-0.2cm]browser.west) -- node[below, font=\small] {3. WS Handshake} ([yshift=-0.2cm]esp.east);
     
-    \node[box, minimum width=4.5cm, below=1.5cm of esp] (snapshot) {JSON Snapshot\\(Thay đổi trạng thái)};
+    \node[box, minimum width=5cm, minimum height=1.5cm, below=2cm of esp] (snapshot) {JSON Snapshot\\(Thay đổi trạng thái)};
     \draw[arrow] (snapshot) -- (esp);
-    \draw[arrow, thick, color=blue!70!black] ([yshift=-0.65cm]esp.east) -- node[below, font=\small] {4. Đẩy dữ liệu thời gian thực (Push)} ([yshift=-0.65cm]browser.west);
-
+    \draw[arrow, thick] ([yshift=-0.8cm]esp.east) -- node[below, font=\small] {4. Đẩy dữ liệu thời gian thực (Push)} ([yshift=-0.8cm]browser.west);
 \end{tikzpicture}
 \caption{Cơ chế WebSocket snapshot của sender và receiver, cho phép web UI nhận trạng thái thời gian thực mà không cần tải lại trang.}
 \label{fig:websocket}
@@ -779,23 +788,23 @@ Mô hình dữ liệu này là một điểm nổi bật vì nó cho thấy rece
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.6cm, auto]
-    \node[roundbox, fill=black!5, minimum width=6cm, minimum height=1.6cm] (registry) at (5,3.5)
+\begin{tikzpicture}[node distance=2.5cm, auto]
+    \node[roundbox, fill=black!5, minimum width=7cm, minimum height=2cm] (registry) at (6,4)
     {\textbf{Sổ đăng ký Receiver}\\(Danh sách đối tượng quản lý)};
 
-    \node[box, minimum width=4.5cm, minimum height=3.0cm] (state) at (0,0)
-    {\textbf{SenderState}\\[3pt]- \codevar{deviceId} (MAC)\\- \codedata{online}\\- \codedata{telemetry}};
+    \node[box, minimum width=5cm, minimum height=3.5cm, align=left] (state) at (0,0)
+    {\textbf{SenderState}\\[5pt]- \codevar{deviceId} (MAC)\\- \codedata{online}\\- \codedata{telemetry}};
 
-    \node[box, minimum width=4.5cm, minimum height=3.0cm] (unknown) at (10,0)
-    {\textbf{UnknownDevice}\\[3pt]- \codevar{deviceId}\\- \codevar{lastSeenMs}\\- \codevar{remoteIp}};
+    \node[box, minimum width=5cm, minimum height=3.5cm, align=left] (unknown) at (12,0)
+    {\textbf{UnknownDevice}\\[5pt]- \codevar{deviceId}\\- \codevar{lastSeenMs}\\- \codevar{remoteIp}};
 
-    \node[box, minimum width=5.5cm, minimum height=2.8cm] (tcp) at (5,-3.5)
-    {\textbf{SenderTcpClient}\\[3pt]- \codevar{socket}\\- \codevar{buffer}\\- \codedata{active}};
+    \node[box, minimum width=6cm, minimum height=3.5cm, align=left] (tcp) at (6,-4.5)
+    {\textbf{SenderTcpClient}\\[5pt]- \codevar{socket}\\- \codevar{buffer}\\- \codedata{active}};
 
-    \draw[line] (registry.south west) -- node[left, ui_small] {quản lý} (state.north);
-    \draw[line] (registry.south east) -- node[right, ui_small] {phát hiện} (unknown.north);
-    \draw[arrow, dashed] (state.south) -- node[left, ui_small] {liên kết kiểu \codevar{id}} ([xshift=-1cm]tcp.north);
-    \draw[arrow, dashed] (unknown.south) -- node[right, ui_small] {liên kết tạm thời} ([xshift=1cm]tcp.north);
+    \draw[line] (registry.south west) -- node[left, font=\small] {quản lý} (state.north);
+    \draw[line] (registry.south east) -- node[right, font=\small] {phát hiện} (unknown.north);
+    \draw[arrow, dashed] (state.south) -- node[left, font=\small] {liên kết kiểu \codevar{id}} ([xshift=-1.5cm]tcp.north);
+    \draw[arrow, dashed] (unknown.south) -- node[right, font=\small] {liên kết tạm thời} ([xshift=1.5cm]tcp.north);
 \end{tikzpicture}
 \caption{Mô hình dữ liệu trung tâm của receiver gồm cấu hình gateway, trạng thái sender đã đăng ký, thiết bị lạ và các kết nối TCP đang sống.}
 \label{fig:receiver-data}
@@ -808,19 +817,20 @@ Khi receiver nhận telemetry, việc đầu tiên không phải là đẩy dữ
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.6cm, auto]
-    \node[roundbox, fill=black!20, minimum width=4cm] (start) at (0,6.5) {Nhận Telemetry};
-    \node[box, minimum width=4.5cm] (parse) at (0,4.8) {Phân tích JSON\\(Trích xuất ID)};
-    \node[diamondbox, minimum width=4cm] (check) at (0,2.5) {Đã đăng ký (Known)?};
+\begin{tikzpicture}[node distance=2.5cm, auto]
+    \node[roundbox, fill=black!20, minimum width=5cm, minimum height=1.5cm] (start) at (0, 6) {Nhận Telemetry};
+    \node[box, minimum width=6cm, minimum height=1.5cm] (parse) at (0, 4) {Phân tích JSON (Trích xuất ID)};
+    \node[diamondbox, minimum width=5.5cm] (check) at (0, 1.5) {Đã đăng ký (Known)?};
     
-    \node[box, minimum width=4.5cm] (known) at (-3.5,0) {Cập nhật\\SenderState};
-    \node[box, minimum width=4.5cm] (unknown) at (3.5,0) {Cập nhật\\UnknownDevice};
+    \node[box, minimum width=4.5cm, minimum height=1.5cm] (known) at (-3.5, -2) {Cập nhật\\SenderState};
+    \node[box, minimum width=4.5cm, minimum height=1.5cm] (unknown) at (3.5, -2) {Cập nhật\\UnknownDevice};
 
     \draw[arrow] (start) -- (parse);
     \draw[arrow] (parse) -- (check);
-    \draw[arrow] (check) -| node[above, font=\small, pos=0.7] {Có} (known);
-    \draw[arrow] (check) -| node[above, font=\small, pos=0.7] {Không} (unknown);
-
+    
+    % Route arrows sideways then down to avoid overlapping the diamond box
+    \draw[arrow] (check.west) -- node[above, font=\small] {Có} (-3.5, 1.5) -- (known.north);
+    \draw[arrow] (check.east) -- node[above, font=\small] {Không} (3.5, 1.5) -- (unknown.north);
 \end{tikzpicture}
 \caption{Flowchart phân loại telemetry theo mã thiết bị: sender đã đăng ký được cập nhật vào bảng trạng thái, còn sender chưa đăng ký được đưa vào danh sách thiết bị lạ.}
 \label{fig:known-unknown}
@@ -875,57 +885,45 @@ TCP nội bộ cũng phù hợp với receiver đóng vai trò server và sender
 \subsection{Định dạng packet TCP}
 Trên đường TCP, hệ thống sử dụng ba loại packet chính: \texttt{telemetry}, \texttt{config} và \texttt{config\_ack}. Packet \texttt{telemetry} là gói sender gửi lên receiver theo chu kỳ. Packet \texttt{config} do receiver gửi xuống sender khi cần thay đổi threshold hoặc metadata. Packet \texttt{config\_ack} do sender trả lại sau khi áp dụng hoặc từ chối cấu hình. Thiết kế chỉ dùng ba loại gói đã đủ để xây dựng một vòng điều khiển khép kín đơn giản nhưng rõ ràng. Toàn bộ các gói này đi qua TCP server của receiver trên cổng \texttt{4100}.
 
-\begin{figure}[H]
+\begin{table}[H]
 \centering
-\begin{tikzpicture}[node distance=0.8cm, auto]
-    % Table Header
-    \node[roundbox, fill=black!20, minimum width=3.2cm, minimum height=1cm] (h1) at (0,0) {\textbf{Loại Gói}};
-    \node[roundbox, fill=black!20, minimum width=3.0cm, minimum height=1cm] (h2) at (3.5,0) {\textbf{Hướng}};
-    \node[roundbox, fill=black!20, minimum width=8.5cm, minimum height=1cm] (h3) at (9.7,0) {\textbf{Các Trường Dữ liệu Chính}};
-
-    % Row 1: Telemetry
-    \node[box, minimum width=3.2cm] (r11) at (0,-1.2) {\texttt{telemetry}};
-    \node[box, minimum width=3.0cm] (r12) at (3.5,-1.2) {S $\rightarrow$ R};
-    \node[box, minimum width=8.5cm, align=left, font=\ttfamily\small] (r13) at (9.7,-1.2) {id, temp, hum, ai\_score, ai\_status, \dots};
-
-    % Row 2: Config
-    \node[box, minimum width=3.2cm] (r21) at (0,-2.5) {\texttt{config}};
-    \node[box, minimum width=3.0cm] (r22) at (3.5,-2.5) {R $\rightarrow$ S};
-    \node[box, minimum width=8.5cm, align=left, font=\ttfamily\small] (r23) at (9.7,-2.5) {id, threshold, name, version, \dots};
-
-    % Row 3: ACK
-    \node[box, minimum width=3.2cm] (r31) at (0,-3.8) {\texttt{config\_ack}};
-    \node[box, minimum width=3.0cm] (r32) at (3.5,-3.8) {S $\rightarrow$ R};
-    \node[box, minimum width=8.5cm, align=left, font=\ttfamily\small] (r33) at (9.7,-3.8) {id, success, applied\_threshold, \dots};
-
-\end{tikzpicture}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{0.9\textwidth}{@{} l c X @{}}
+\toprule
+\textbf{Loại Gói} & \textbf{Hướng} & \textbf{Các Trường Dữ liệu Chính} \\
+\midrule
+\texttt{telemetry} & S $\rightarrow$ R & \texttt{id, temp, hum, ai\_score, ai\_status, \dots} \\
+\texttt{config} & R $\rightarrow$ S & \texttt{id, threshold, name, version, \dots} \\
+\texttt{config\_ack} & S $\rightarrow$ R & \texttt{id, success, applied\_threshold, \dots} \\
+\bottomrule
+\end{tabularx}
 \caption{Bảng tổng hợp ba loại message TCP và các trường dữ liệu chính được trao đổi giữa sender và receiver.}
 \label{fig:tcp-table}
-\end{figure}
+\end{table}
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=2.5cm, auto]
+\begin{tikzpicture}[node distance=3cm, auto]
     % Lifelines
-    \node[base] (sender) at (0,7.5) {Sender (Client)};
-    \node[base] (receiver) at (6,7.5) {Receiver (Server)};
+    \node[box, minimum width=4cm, minimum height=1cm] (sender) at (0,8.5) {\textbf{Sender} (Client)};
+    \node[box, minimum width=4cm, minimum height=1cm] (receiver) at (8,8.5) {\textbf{Receiver} (Server)};
     
-    \draw[line] (sender) -- (0,0);
-    \draw[line] (receiver) -- (6,0);
+    \draw[line] (sender) -- (0,-0.5);
+    \draw[line] (receiver) -- (8,-0.5);
 
     % Messages
-    \draw[arrow] (0,6.5) -- node[above, font=\small] {Kết nối TCP (Port:4100)} (6,6.5);
-    \draw[arrow] (6,6.0) -- node[below, font=\small] {TCP ACK} (0,6.0);
+    \draw[arrow] (0,7.5) -- node[above, font=\small] {Kết nối TCP (Port:4100)} (8,7.5);
+    \draw[arrow] (8,6.8) -- node[below, font=\small] {TCP ACK} (0,6.8);
     
-    \draw[arrow] (0,4.7) -- node[above, font=\small] {Telemetry (JSON)} (6,4.7);
-    \node[label_text, right=0.1cm of receiver] at (6,4.3) {Cập nhật sổ đăng ký};
+    \draw[arrow] (0,5.3) -- node[above, font=\small] {Telemetry (JSON)} (8,5.3);
+    \node[label_text, right=0.2cm of receiver] at (8,4.8) {Cập nhật sổ đăng ký};
     
-    \draw[arrow] (0,3.2) -- node[above, font=\small] {Telemetry (JSON)} (6,3.2);
-    \node[label_text, right=0.1cm of receiver] at (6,2.8) {Đẩy Snapshot UI};
+    \draw[arrow] (0,3.3) -- node[above, font=\small] {Telemetry (JSON)} (8,3.3);
+    \node[label_text, right=0.2cm of receiver] at (8,2.8) {Đẩy Snapshot UI};
     
-    \draw[arrow, dashed] (0,1.5) -- node[above, font=\small] {Đóng TCP} (6,1.5);
-    \draw[arrow, dashed] (6,1.0) -- node[below, font=\small] {ACK} (0,1.0);
-
+    \draw[arrow, dashed] (0,1.3) -- node[above, font=\small] {Đóng TCP} (8,1.3);
+    \draw[arrow, dashed] (8,0.6) -- node[below, font=\small] {ACK} (0,0.6);
 \end{tikzpicture}
 \caption{Sequence diagram mô tả nhiều sender gửi telemetry lên receiver, receiver cập nhật trạng thái và tiếp tục publish lên cloud.}
 \label{fig:seq-telemetry}
@@ -974,24 +972,23 @@ Với CoreIoT, receiver dùng mô hình MQTT gateway. Điều này có nghĩa re
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=2.5cm, auto]
+\begin{tikzpicture}[node distance=3cm, auto]
     % Lifelines
-    \node[base] (gateway) at (0,7.5) {Receiver};
-    \node[base] (cloud) at (7.5,7.5) {CoreIoT (MQTT)};
+    \node[box, minimum width=4cm, minimum height=1cm] (gateway) at (0,8.5) {\textbf{Receiver}};
+    \node[box, minimum width=4cm, minimum height=1cm] (cloud) at (9,8.5) {\textbf{CoreIoT} (MQTT)};
     
     \draw[line] (gateway) -- (0,0);
-    \draw[line] (cloud) -- (7.5,0);
+    \draw[line] (cloud) -- (9,0);
 
     % Messages
-    \draw[arrow] (0,6.5) -- node[above, font=\small] {MQTT CONNECT (Kèm Token)} (7.4,6.5);
-    \draw[arrow] (7.5,6.0) -- node[below, font=\small] {CONNACK} (0.1,6.0);
+    \draw[arrow] (0,7.5) -- node[above, font=\small] {MQTT CONNECT (Kèm Token)} (9,7.5);
+    \draw[arrow] (9,6.8) -- node[below, font=\small] {CONNACK} (0,6.8);
     
-    \draw[arrow] (0,4.8) -- node[above, font=\small] {gateway/connect \{"device":"..."\}} (7.4,4.8);
-    \draw[arrow] (0,3.6) -- node[above, font=\small] {gateway/attr \{"threshold":0.5\}} (7.4,3.6);
-    \draw[arrow] (0,2.4) -- node[above, font=\small] {gateway/telemetry \{"temp":30\}} (7.4,2.4);
+    \draw[arrow] (0,5.3) -- node[above, font=\small] {gateway/connect \{"device":"..."\}} (9,5.3);
+    \draw[arrow] (0,4.0) -- node[above, font=\small] {gateway/attr \{"threshold":0.5\}} (9,4.0);
+    \draw[arrow] (0,2.7) -- node[above, font=\small] {gateway/telemetry \{"temp":30\}} (9,2.7);
     
-    \draw[arrow, dashed] (7.5,1.0) -- node[below, font=\small] {gateway/rpc (getThreshold)} (0.1,1.0);
-
+    \draw[arrow, dashed] (9,1.0) -- node[below, font=\small] {gateway/rpc (getThreshold)} (0,1.0);
 \end{tikzpicture}
 \caption{Sequence diagram mô tả receiver đại diện sender khi gửi connect, telemetry, attribute và xử lý RPC qua MQTT gateway.}
 \label{fig:mqtt-seq}
@@ -1007,28 +1004,27 @@ Khi người dùng thao tác trên receiver UI để thay đổi threshold của
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=2.5cm, auto]
+\begin{tikzpicture}[node distance=3.5cm, auto]
     % Lifelines
-    \node[base] (cloud) at (0,7.5) {CoreIoT};
-    \node[base] (receiver) at (5,7.5) {Receiver};
-    \node[base] (sender) at (10,7.5) {Sender};
+    \node[box, minimum width=3cm, minimum height=1cm] (cloud) at (0,8.5) {\textbf{CoreIoT}};
+    \node[box, minimum width=3cm, minimum height=1cm] (receiver) at (6,8.5) {\textbf{Receiver}};
+    \node[box, minimum width=3cm, minimum height=1cm] (sender) at (12,8.5) {\textbf{Sender}};
     
     \draw[line] (cloud) -- (0,0);
-    \draw[line] (receiver) -- (5,0);
-    \draw[line] (sender) -- (10,0);
+    \draw[line] (receiver) -- (6,0);
+    \draw[line] (sender) -- (12,0);
 
     % Steps
-    \draw[arrow] (0,6.5) -- node[above, font=\small] {RPC setThreshold(0.8)} (4.9,6.5);
-    \node[label_text, right=0.1cm of receiver] at (5,6.1) {Cập nhật trạng thái};
+    \draw[arrow] (0,7.2) -- node[above, font=\small] {RPC setThreshold(0.8)} (6,7.2);
+    \node[label_text, right=0.2cm of receiver] at (6,6.7) {Cập nhật trạng thái};
     
-    \draw[arrow] (5.1,5.0) -- node[above, font=\small] {TCP: config} (9.9,5.0);
-    \node[label_text, right=0.1cm of sender] at (10,4.6) {Lưu vào LittleFS};
+    \draw[arrow] (6,5.2) -- node[above, font=\small] {TCP: config} (12,5.2);
+    \node[label_text, right=0.2cm of sender] at (12,4.7) {Lưu vào LittleFS};
     
-    \draw[arrow] (10.1,3.5) -- node[above, font=\small] {TCP: config\_ack} (5.1,3.5);
-    \node[label_text, right=0.1cm of receiver] at (5,3.1) {Đồng bộ thành công};
+    \draw[arrow] (12,3.2) -- node[above, font=\small] {TCP: config\_ack} (6,3.2);
+    \node[label_text, right=0.2cm of receiver] at (6,2.7) {Đồng bộ thành công};
     
-    \draw[arrow] (4.9,2.0) -- node[above, font=\small] {Phản hồi RPC (OK)} (0.1,2.0);
-
+    \draw[arrow] (6,1.2) -- node[above, font=\small] {Phản hồi RPC (OK)} (0,1.2);
 \end{tikzpicture}
 \caption{Sequence diagram mô tả quá trình receiver gửi packet cấu hình xuống sender và nhận lại gói xác nhận. Cùng cơ chế này cũng được dùng khi có RPC từ cloud.}
 \label{fig:config-seq}
@@ -1042,21 +1038,20 @@ Nếu sender chưa ACK sau một khoảng thời gian định trước, receiver
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=2.5cm, auto]
+\begin{tikzpicture}[node distance=3.5cm, auto]
     % States
-    \node[roundbox, minimum width=3.5cm] (idle) at (0,0) {\textbf{RẢNH (IDLE)}};
-    \node[roundbox, minimum width=3.5cm] (sending) at (5,0) {\textbf{ĐANG GỬI}};
-    \node[roundbox, minimum width=3.5cm] (waiting) at (10,0) {\textbf{ĐỢI ACK}};
-    \node[roundbox, fill=black!10, minimum width=3.5cm] (success) at (5,-3) {ĐỒNG BỘ XONG};
+    \node[roundbox, minimum width=4cm, minimum height=1.5cm] (idle) at (0,0) {\textbf{RẢNH (IDLE)}};
+    \node[roundbox, minimum width=4cm, minimum height=1.5cm] (sending) at (6,0) {\textbf{ĐANG GỬI}};
+    \node[roundbox, minimum width=4cm, minimum height=1.5cm] (waiting) at (12,0) {\textbf{ĐỢI ACK}};
+    \node[roundbox, fill=black!10, minimum width=4.5cm, minimum height=1.5cm] (success) at (6,-4) {ĐỒNG BỘ XONG};
 
     % Transitions
     \draw[arrow] (idle) -- node[above, font=\small] {Bắt đầu} (sending);
     \draw[arrow] (sending) -- node[above, font=\small] {sendConfig()} (waiting);
     \draw[arrow] (waiting) -- node[right, font=\small] {Nhận ACK} (success);
-    \draw[arrow] (waiting.north) to[bend right=40] node[above, font=\small] {Quá hạn (Timeout)} (sending.north);
+    \draw[arrow] (waiting.north) to[bend right=35] node[above, font=\small] {Quá hạn (Timeout)} (sending.north);
     \draw[arrow] (success) -- (sending);
     \draw[arrow] (success) -- (idle);
-
 \end{tikzpicture}
 \caption{State machine đồng bộ cấu hình giữa receiver và sender.}
 \label{fig:cfg-state}
@@ -1064,20 +1059,19 @@ Nếu sender chưa ACK sau một khoảng thời gian định trước, receiver
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.6cm, auto]
-    \node[roundbox, fill=black!20, minimum width=4cm] (start) at (0,6.5) {Vòng lặp thử lại};
-    \node[box, minimum width=5cm] (find) at (0,4.8) {Lọc Sender có\\pendingConfig};
-    \node[diamondbox, minimum width=4cm] (check) at (0,2.5) {Quá hạn\\(3 giây)?};
+\begin{tikzpicture}[node distance=2cm, auto]
+    \node[roundbox, fill=black!20, minimum width=5cm, minimum height=1.5cm] (start) at (0,7) {Vòng lặp thử lại};
+    \node[box, minimum width=5cm, minimum height=1.5cm] (find) at (0,4.5) {Lọc Sender có\\pendingConfig};
+    \node[diamondbox, minimum width=5cm] (check) at (0,1.5) {Quá hạn\\(3 giây)?};
     
-    \node[box, minimum width=4cm] (retry) at (4.5, 2.5) {Gửi lại Gói tin};
-    \node[box, minimum width=4cm] (fail) at (0,0) {Hủy chờ / Báo lỗi};
+    \node[box, minimum width=5cm, minimum height=1.5cm] (retry) at (6, 1.5) {Gửi lại Gói tin};
+    \node[box, minimum width=5cm, minimum height=1.5cm] (fail) at (0,-1.5) {Hủy chờ / Báo lỗi};
 
     \draw[arrow] (start) -- (find);
     \draw[arrow] (find) -- (check);
     \draw[arrow] (check) -- node[above, font=\small, pos=0.6] {Có} (retry);
     \draw[arrow] (retry) |- (find);
     \draw[arrow] (check) -- node[left, font=\small] {Hết hạn} (fail);
-
 \end{tikzpicture}
 \caption{Flowchart cơ chế retry cấu hình của receiver khi sender chưa ACK trong thời gian cho phép.}
 \label{fig:retry}
@@ -1183,25 +1177,26 @@ Cloud chỉ nhìn thấy sender qua gateway & Nhóm hàm MQTT gateway connect/te
 \subsection{Ghi chú hình cần chèn ở chương này}
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.5cm, auto]
-    % Row Boxes
-    \node[roundbox, fill=black!2, minimum width=7cm, minimum height=1.2cm] (up) at (0,0) {Dữ liệu (Upward Telemetry)};
-    \node[roundbox, fill=black!8, minimum width=7cm, minimum height=1.2cm] (down) at (8,0) {Điều khiển (Downward Config)};
+\begin{tikzpicture}[node distance=2.5cm, auto]
+    % Data Plane (Upward)
+    \node[roundbox, fill=black!2, minimum width=6cm, minimum height=1.5cm] (up) at (-3.5, 5) {\textbf{Dữ liệu} (Upward Telemetry)};
+    \node[box, minimum width=5.5cm, minimum height=1.5cm] (u1) at (-3.5, 3) {Sender: Gói JSON};
+    \node[box, minimum width=5.5cm, minimum height=1.5cm] (u2) at (-3.5, 1) {Receiver: Cập nhật Trạng thái};
+    \node[box, minimum width=5.5cm, minimum height=1.5cm] (u3) at (-3.5, -1) {Cloud: Lưu trữ / Đồ thị};
 
-    \node[box, below=1cm of up, minimum width=5cm] (u1) {Sender: Gói JSON};
-    \node[box, below=0.8cm of u1, minimum width=5cm] (u2) {Receiver: Cập nhật Trạng thái};
-    \node[box, below=0.8cm of u2, minimum width=5cm] (u3) {Cloud: Lưu trữ / Đồ thị};
-
-    \node[box, below=1cm of down, minimum width=5cm] (d1) {Cloud: Yêu cầu RPC};
-    \node[box, below=0.8cm of d1, minimum width=5cm] (d2) {Receiver: Trạng thái Chờ};
-    \node[box, below=0.8cm of d2, minimum width=5cm] (d3) {Sender: ACK / Lưu trữ};
+    % Control Plane (Downward)
+    \node[roundbox, fill=black!8, minimum width=6cm, minimum height=1.5cm] (down) at (3.5, 5) {\textbf{Điều khiển} (Downward Config)};
+    \node[box, minimum width=5.5cm, minimum height=1.5cm] (d1) at (3.5, 3) {Cloud: Yêu cầu RPC};
+    \node[box, minimum width=5.5cm, minimum height=1.5cm] (d2) at (3.5, 1) {Receiver: Trạng thái Chờ};
+    \node[box, minimum width=5.5cm, minimum height=1.5cm] (d3) at (3.5, -1) {Sender: ACK / Lưu trữ};
 
     \draw[arrow] (u1) -- (u2);
     \draw[arrow] (u2) -- (u3);
+    
     \draw[arrow] (d1) -- (d2);
     \draw[arrow] (d2) -- (d3);
 
-    \node[label_text] at (4, -5.5) {Mô hình đồng bộ song công (Full Duplex)};
+    \node[title_text] at (0, -3.5) {Mô hình đồng bộ song công (Full Duplex)};
 \end{tikzpicture}
 \caption{Sơ đồ state machine đồng bộ cấu hình: pending, awaiting ACK, timeout, retry, success/fail.}
 \label{fig:todo-state-config}
@@ -1211,8 +1206,8 @@ Cloud chỉ nhìn thấy sender qua gateway & Nhóm hàm MQTT gateway connect/te
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
     % Lifelines
-    \node[base] (cloud) at (0,6.5) {CoreIoT};
-    \node[base] (receiver) at (6,6.5) {Receiver};
+    \node[box, minimum width=3cm] (cloud) at (0,6.5) {CoreIoT};
+    \node[box, minimum width=3cm] (receiver) at (6,6.5) {Receiver};
     
     \draw[line] (cloud) -- (0,0);
     \draw[line] (receiver) -- (6,0);
@@ -1399,28 +1394,29 @@ Thực nghiệm được thực hiện với hai thiết bị ESP32 đóng vai t
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=3.5cm, auto, scale=0.9, every node/.style={scale=0.9}]
-    % Lifelines
-    \node[base] (browser) at (0,8) {Trình duyệt};
-    \node[base] (receiver) at (4,8) {Receiver};
-    \node[base] (sender) at (8,8) {Sender};
-    \node[base] (cloud) at (12,8) {CoreIoT};
+\begin{tikzpicture}[node distance=3.5cm, auto]
+    % Lifelines spaced evenly
+    \node[box, minimum width=2.8cm, minimum height=1cm] (browser) at (0, 9) {\textbf{Trình duyệt}};
+    \node[box, minimum width=2.8cm, minimum height=1cm] (receiver) at (4.5, 9) {\textbf{Receiver}};
+    \node[box, minimum width=2.8cm, minimum height=1cm] (sender) at (9, 9) {\textbf{Sender}};
+    \node[box, minimum width=2.8cm, minimum height=1cm] (cloud) at (13.5, 9) {\textbf{CoreIoT}};
 
-    \draw[line] (browser) -- (0,0);
-    \draw[line] (receiver) -- (4,0);
-    \draw[line] (sender) -- (8,0);
-    \draw[line] (cloud) -- (12,0);
+    \draw[line] (browser) -- (0, -1);
+    \draw[line] (receiver) -- (4.5, -1);
+    \draw[line] (sender) -- (9, -1);
+    \draw[line] (cloud) -- (13.5, -1);
 
     % Flows
-    \draw[arrow] (0,7) -- node[above, font=\small] {UI: Đặt ngưỡng} (3.9,7);
-    \draw[arrow] (4.1,6.5) -- node[above, font=\small] {TCP: config} (7.9,6.5);
-    \node[label_text, right=0.2cm of sender] at (8,6.0) {Áp dụng \& Đồng bộ AI};
+    \draw[arrow] (0, 7.5) -- node[above, font=\small] {UI: Đặt ngưỡng} (4.4, 7.5);
+    
+    \draw[arrow] (4.6, 6.0) -- node[above, font=\small] {TCP: config} (8.9, 6.0);
+    \node[label_text, right=0.1cm of sender] at (9, 5.5) {Áp dụng \& Đồng bộ AI};
 
-    \draw[arrow] (8.1,4.5) -- node[above, font=\small] {TCP: telemetry} (4.1,4.5);
-    \draw[arrow] (4.1,3.2) -- node[above, font=\small] {MQTT Telemetry} (11.9,3.2);
+    \draw[arrow] (8.9, 4.0) -- node[above, font=\small] {TCP: telemetry} (4.6, 4.0);
+    
+    \draw[arrow] (4.6, 2.5) -- node[above, font=\small, pos=0.25] {MQTT Telemetry} (13.4, 2.5);
 
-    \draw[arrow] (12.1,1.2) -- node[above, font=\small] {Đẩy Dashboard} (0.1,1.2);
-
+    \draw[arrow] (13.4, 0.5) -- node[above, font=\small] {Đẩy Dashboard} (0.1, 0.5);
 \end{tikzpicture}
 \caption{Sequence end-to-end: dữ liệu telemetry đi lên từ sender qua receiver lên cloud, lệnh điều khiển đi ngược chiều và được xác nhận bằng ACK. Đây là luồng đã được xác nhận trong thực nghiệm.}
 \label{fig:end-to-end}
@@ -1532,14 +1528,14 @@ Phân tích kiến trúc, giao thức, module và mã nguồn tiêu biểu cho t
 
 \end{itemize}
 
-\part{Phụ lục}
-
 \appendix
 \clearpage
-\section{Phụ lục A: Trích đoạn mã nguồn tiêu biểu và diễn giải ngắn}
+\chapter*{Phụ lục}
+\addcontentsline{toc}{chapter}{Phụ lục}
+\section*{Trích đoạn mã nguồn tiêu biểu và diễn giải ngắn}
 Phụ lục này tập hợp các đoạn mã nguồn tiêu biểu để người đọc đối chiếu nhanh với phần phân tích trong nội dung chính.
 
-\subsection*{A.1 Khởi tạo sender}
+\subsection*{1. Khởi tạo sender}
 \begin{lstlisting}[language=C++]
 void appSetup()
 {
@@ -1559,7 +1555,7 @@ void appSetup()
 \end{lstlisting}
 \codecaption{Sender khởi động lần lượt theo đúng các phụ thuộc: file system, config, Wi-Fi, AI và web UI.}
 
-\subsection*{A.2 Cấu trúc trạng thái sender}
+\subsection*{2. Cấu trúc trạng thái sender}
 \begin{lstlisting}[language=C++]
 struct SenderConfig
 {
@@ -1573,7 +1569,7 @@ struct SenderConfig
 \end{lstlisting}
 \codecaption{SenderConfig thể hiện triết lý cấu hình tối giản nhưng đủ cho vận hành thực tế.}
 
-\subsection*{A.3 Lưu cấu hình sender xuống LittleFS}
+\subsection*{3. Lưu cấu hình sender xuống LittleFS}
 \begin{lstlisting}[language=C++]
 void saveConfig(bool restartAfterSave)
 {
@@ -1590,7 +1586,7 @@ void saveConfig(bool restartAfterSave)
 \end{lstlisting}
 \codecaption{Storage trên sender đủ nhỏ gọn để phù hợp với bài toán cấu hình cục bộ.}
 
-\subsection*{A.4 Cấu trúc SenderState ở receiver}
+\subsection*{4. Cấu trúc SenderState ở receiver}
 \begin{lstlisting}[language=C++]
 struct SenderState
 {
@@ -1612,7 +1608,7 @@ struct SenderState
 \end{lstlisting}
 \codecaption{Receiver giữ trạng thái phong phú hơn sender vì nó phải điều phối cả data plane lẫn control plane.}
 
-\subsection*{A.5 Parse gói telemetry ở receiver}
+\subsection*{5. Parse gói telemetry ở receiver}
 \begin{lstlisting}[language=C++]
 bool parseTelemetry(JsonObject data, SenderTelemetryPacket &packet)
 {
@@ -1629,7 +1625,7 @@ bool parseTelemetry(JsonObject data, SenderTelemetryPacket &packet)
 \end{lstlisting}
 \codecaption{Packet telemetry được parse thành cấu trúc trung gian trước khi hợp nhất vào SenderState.}
 
-\subsection*{A.6 Gửi gói cấu hình}
+\subsection*{6. Gửi gói cấu hình}
 \begin{lstlisting}[language=C++]
 doc["type"] = "config";
 doc["device_id"] = sender.deviceId;
@@ -1641,7 +1637,7 @@ doc["config_version"] = sender.configVersion;
 \end{lstlisting}
 \codecaption{Các trường trong packet cấu hình đủ để sender biết được ngưỡng mới và địa chỉ receiver hiện hành.}
 
-\subsection*{A.7 Chủ đề MQTT gateway}
+\subsection*{7. Chủ đề MQTT gateway}
 \begin{lstlisting}[language=C++]
 constexpr char MQTT_GATEWAY_CONNECT_TOPIC[] = "v1/gateway/connect";
 constexpr char MQTT_GATEWAY_DISCONNECT_TOPIC[] = "v1/gateway/disconnect";
@@ -1651,7 +1647,7 @@ constexpr char MQTT_GATEWAY_RPC_TOPIC[] = "v1/gateway/rpc";
 \end{lstlisting}
 \codecaption{Receiver gom toàn bộ giao tiếp cloud vào một nhóm topic nhất quán.}
 
-\subsection*{A.8 Snapshot cho giao diện web}
+\subsection*{8. Snapshot cho giao diện web}
 \begin{lstlisting}[language=C++]
 doc["type"] = "snapshot";
 receiver["cloudStatus"] = cloudStatusText();

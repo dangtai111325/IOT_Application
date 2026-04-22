@@ -2,41 +2,40 @@
 \babel@toc {vietnamese}{}\relax 
 \contentsline {figure}{\numberline {1}{\ignorespaces Bức tranh tổng thể cho bài toán Vaccine Cold Chain Monitoring: nhiều điểm đo (sender) gửi telemetry về một gateway receiver, sau đó đồng bộ cloud để giám sát, cảnh báo và truy vết.}}{3}{figure.caption.3}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Sơ đồ mạng nội bộ cho kịch bản chuỗi lạnh vaccine: receiver vừa phát SoftAP phục vụ vận hành tại chỗ vừa kết nối hạ tầng Wi-Fi, sender gửi telemetry về gateway để hợp nhất và đẩy cloud.}}{5}{figure.caption.4}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Sơ đồ tách \textit {data plane} và \textit {control plane} giúp nhận diện rõ hai loại luồng trong hệ thống.}}{9}{figure.caption.5}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Kiến trúc module của sender gồm các khối trạng thái, mô phỏng, AI, transport, lưu trữ và giao diện web.}}{9}{figure.caption.6}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Kiến trúc module của receiver gồm runtime, transport, cloud gateway, lưu trữ và giao diện web.}}{10}{figure.caption.7}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Flowchart phần khởi tạo và vòng lặp sender. Sơ đồ cho thấy sender liên tục mô phỏng cảm biến, chạy AI và duy trì mạng.}}{11}{figure.caption.8}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Pipeline TinyML trên sender: từ dữ liệu mô phỏng sang tensor input, qua bộ thông dịch TFLite Micro, rồi trả ra điểm bất thường và nhãn trạng thái.}}{12}{figure.caption.9}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Mô hình logic của TFLite được sử dụng ở mức báo cáo: hai đầu vào đặc trưng và một đầu ra điểm bất thường.}}{12}{figure.caption.10}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Cơ chế WebSocket snapshot của sender và receiver, cho phép web UI nhận trạng thái thời gian thực mà không cần tải lại trang.}}{13}{figure.caption.11}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Giao diện web sender ESP32-01 trong thực nghiệm.}}{14}{figure.caption.12}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Giao diện web sender ESP32-02 trong thực nghiệm.}}{15}{figure.caption.13}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Dialog cài đặt Wi-Fi và receiver của sender.}}{16}{figure.caption.14}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Cấu trúc lưu trữ LittleFS dùng chung cho cả sender và receiver: tệp cấu hình, danh sách sender đã đăng ký và giao diện web tĩnh.}}{17}{figure.caption.15}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Flowchart phần khởi tạo và vòng lặp receiver. Sơ đồ cho thấy receiver đồng thời xử lý DNS, TCP, Wi-Fi, MQTT và snapshot cho UI.}}{18}{figure.caption.16}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Mô hình dữ liệu trung tâm của receiver gồm cấu hình gateway, trạng thái sender đã đăng ký, thiết bị lạ và các kết nối TCP đang sống.}}{19}{figure.caption.17}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Flowchart phân loại telemetry theo mã thiết bị: sender đã đăng ký được cập nhật vào bảng trạng thái, còn sender chưa đăng ký được đưa vào danh sách thiết bị lạ.}}{20}{figure.caption.18}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Flowchart chuyển trạng thái online/offline của sender trên receiver dựa vào timeout.}}{20}{figure.caption.19}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Giao diện receiver: tổng quan 2 sender online và trạng thái CoreIoT.}}{21}{figure.caption.20}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Chi tiết sender ESP32-01 trên giao diện receiver --- thông tin cơ bản.}}{22}{figure.caption.21}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Chi tiết sender ESP32-01 --- vị trí, cấu hình và kết nối TCP.}}{23}{figure.caption.22}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Dialog cài đặt receiver và CoreIoT.}}{24}{figure.caption.23}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Bảng tổng hợp ba loại message TCP và các trường dữ liệu chính được trao đổi giữa sender và receiver.}}{25}{figure.caption.24}%
-\contentsline {figure}{\numberline {23}{\ignorespaces Sequence diagram mô tả nhiều sender gửi telemetry lên receiver, receiver cập nhật trạng thái và tiếp tục publish lên cloud.}}{26}{figure.caption.25}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Cấu trúc phân cấp topic MQTT Gateway dùng cho tích hợp CoreIoT.}}{27}{figure.caption.26}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Sequence diagram mô tả receiver đại diện sender khi gửi connect, telemetry, attribute và xử lý RPC qua MQTT gateway.}}{27}{figure.caption.27}%
-\contentsline {figure}{\numberline {26}{\ignorespaces Sequence diagram mô tả quá trình receiver gửi packet cấu hình xuống sender và nhận lại gói xác nhận. Cùng cơ chế này cũng được dùng khi có RPC từ cloud.}}{28}{figure.caption.28}%
-\contentsline {figure}{\numberline {27}{\ignorespaces State machine đồng bộ cấu hình giữa receiver và sender.}}{29}{figure.caption.29}%
-\contentsline {figure}{\numberline {28}{\ignorespaces Flowchart cơ chế retry cấu hình của receiver khi sender chưa ACK trong thời gian cho phép.}}{29}{figure.caption.30}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Gateway dangtai trên CoreIoT với 2 thiết bị ESP32 đang hoạt động.}}{30}{figure.caption.31}%
-\contentsline {figure}{\numberline {30}{\ignorespaces Danh sách thiết bị CoreIoT sau khi receiver đăng ký hai sender.}}{31}{figure.caption.32}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Dashboard CoreIoT: telemetry và trạng thái AI của hai sender.}}{31}{figure.caption.33}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Telemetry ESP32-02 trên CoreIoT --- ai\_score ANOMALY và GPS.}}{32}{figure.caption.34}%
-\contentsline {figure}{\numberline {33}{\ignorespaces Dashboard chi tiết thiết bị CoreIoT: gauge, biểu đồ lịch sử và threshold.}}{32}{figure.caption.35}%
-\contentsline {figure}{\numberline {34}{\ignorespaces Sơ đồ state machine đồng bộ cấu hình: pending, awaiting ACK, timeout, retry, success/fail.}}{35}{figure.caption.36}%
-\contentsline {figure}{\numberline {35}{\ignorespaces Sequence xử lý lỗi RPC khi sender offline và phản hồi lại cloud.}}{36}{figure.caption.37}%
-\contentsline {figure}{\numberline {36}{\ignorespaces Flowchart phân bổ slot TCP nhiều sender và cơ chế chống starvation.}}{36}{figure.caption.38}%
-\contentsline {figure}{\numberline {37}{\ignorespaces Sequence end-to-end: dữ liệu telemetry đi lên từ sender qua receiver lên cloud, lệnh điều khiển đi ngược chiều và được xác nhận bằng ACK. Đây là luồng đã được xác nhận trong thực nghiệm.}}{41}{figure.caption.39}%
-\contentsline {figure}{\numberline {38}{\ignorespaces Hệ thống cảnh báo CoreIoT xác nhận kết quả TC5 (offline/status) và TC7 (AI anomaly).}}{43}{figure.caption.40}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Sơ đồ tách \textit {data plane} và \textit {control plane} giúp nhận diện rõ hai loại luồng trong hệ thống.}}{10}{figure.caption.5}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Kiến trúc module của sender gồm các khối trạng thái, mô phỏng, AI, transport, lưu trữ và giao diện web.}}{10}{figure.caption.6}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Kiến trúc module của receiver gồm runtime, transport, cloud gateway, lưu trữ và giao diện web.}}{11}{figure.caption.7}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Flowchart phần khởi tạo và vòng lặp sender. Sơ đồ cho thấy sender liên tục mô phỏng cảm biến, chạy AI và duy trì mạng.}}{12}{figure.caption.8}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Pipeline TinyML trên sender: từ dữ liệu mô phỏng sang tensor input, qua bộ thông dịch TFLite Micro, rồi trả ra điểm bất thường và nhãn trạng thái.}}{14}{figure.caption.9}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Mô hình logic của TFLite được sử dụng ở mức báo cáo: hai đầu vào đặc trưng và một đầu ra điểm bất thường.}}{14}{figure.caption.10}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Cơ chế WebSocket snapshot của sender và receiver, cho phép web UI nhận trạng thái thời gian thực mà không cần tải lại trang.}}{15}{figure.caption.11}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Giao diện web sender ESP32-01 trong thực nghiệm.}}{16}{figure.caption.12}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Giao diện web sender ESP32-02 trong thực nghiệm.}}{17}{figure.caption.13}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Dialog cài đặt Wi-Fi và receiver của sender.}}{18}{figure.caption.14}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Cấu trúc lưu trữ LittleFS dùng chung cho cả sender và receiver: tệp cấu hình, danh sách sender đã đăng ký và giao diện web tĩnh.}}{19}{figure.caption.15}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Flowchart phần khởi tạo và vòng lặp receiver. Sơ đồ cho thấy receiver đồng thời xử lý DNS, TCP, Wi-Fi, MQTT và snapshot cho UI.}}{20}{figure.caption.16}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Mô hình dữ liệu trung tâm của receiver gồm cấu hình gateway, trạng thái sender đã đăng ký, thiết bị lạ và các kết nối TCP đang sống.}}{21}{figure.caption.17}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Flowchart phân loại telemetry theo mã thiết bị: sender đã đăng ký được cập nhật vào bảng trạng thái, còn sender chưa đăng ký được đưa vào danh sách thiết bị lạ.}}{22}{figure.caption.18}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Flowchart chuyển trạng thái online/offline của sender trên receiver dựa vào timeout.}}{23}{figure.caption.19}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Giao diện receiver: tổng quan 2 sender online và trạng thái CoreIoT.}}{24}{figure.caption.20}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Chi tiết sender ESP32-01 trên giao diện receiver --- thông tin cơ bản.}}{25}{figure.caption.21}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Chi tiết sender ESP32-01 --- vị trí, cấu hình và kết nối TCP.}}{26}{figure.caption.22}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Dialog cài đặt receiver và CoreIoT.}}{27}{figure.caption.23}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Sequence diagram mô tả nhiều sender gửi telemetry lên receiver, receiver cập nhật trạng thái và tiếp tục publish lên cloud.}}{29}{figure.caption.25}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Cấu trúc phân cấp topic MQTT Gateway dùng cho tích hợp CoreIoT.}}{30}{figure.caption.26}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Sequence diagram mô tả receiver đại diện sender khi gửi connect, telemetry, attribute và xử lý RPC qua MQTT gateway.}}{30}{figure.caption.27}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Sequence diagram mô tả quá trình receiver gửi packet cấu hình xuống sender và nhận lại gói xác nhận. Cùng cơ chế này cũng được dùng khi có RPC từ cloud.}}{31}{figure.caption.28}%
+\contentsline {figure}{\numberline {26}{\ignorespaces State machine đồng bộ cấu hình giữa receiver và sender.}}{32}{figure.caption.29}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Flowchart cơ chế retry cấu hình của receiver khi sender chưa ACK trong thời gian cho phép.}}{33}{figure.caption.30}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Gateway dangtai trên CoreIoT với 2 thiết bị ESP32 đang hoạt động.}}{34}{figure.caption.31}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Danh sách thiết bị CoreIoT sau khi receiver đăng ký hai sender.}}{34}{figure.caption.32}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Dashboard CoreIoT: telemetry và trạng thái AI của hai sender.}}{35}{figure.caption.33}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Telemetry ESP32-02 trên CoreIoT --- ai\_score ANOMALY và GPS.}}{35}{figure.caption.34}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Dashboard chi tiết thiết bị CoreIoT: gauge, biểu đồ lịch sử và threshold.}}{36}{figure.caption.35}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Sơ đồ state machine đồng bộ cấu hình: pending, awaiting ACK, timeout, retry, success/fail.}}{40}{figure.caption.36}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Sequence xử lý lỗi RPC khi sender offline và phản hồi lại cloud.}}{40}{figure.caption.37}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Flowchart phân bổ slot TCP nhiều sender và cơ chế chống starvation.}}{41}{figure.caption.38}%
+\contentsline {figure}{\numberline {36}{\ignorespaces Sequence end-to-end: dữ liệu telemetry đi lên từ sender qua receiver lên cloud, lệnh điều khiển đi ngược chiều và được xác nhận bằng ACK. Đây là luồng đã được xác nhận trong thực nghiệm.}}{46}{figure.caption.39}%
+\contentsline {figure}{\numberline {37}{\ignorespaces Hệ thống cảnh báo CoreIoT xác nhận kết quả TC5 (offline/status) và TC7 (AI anomaly).}}{48}{figure.caption.40}%
 \contentsfinish 
 \contentsfinish 
